@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" width="900" height="260" role="img" aria-label="HTTP スループットの比較">
+	<defs>
+		<linearGradient id="g-node" x1="0" y1="1" x2="0" y2="0">
+			<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
+		</linearGradient>
+		<linearGradient id="g-deno" x1="0" y1="1" x2="0" y2="0">
+			<stop offset="0" stop-color="#0d6e8c"/><stop offset="1" stop-color="#5ecbe6"/>
+		</linearGradient>
+		<linearGradient id="g-bun" x1="0" y1="1" x2="0" y2="0">
+			<stop offset="0" stop-color="#1d7a3c"/><stop offset="1" stop-color="#45b56c"/>
+		</linearGradient>
+	</defs>
+	<rect x="0" y="0" width="900" height="260" fill="#ffffff"/>
+
+	<g font-family="sans-serif">
+		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">req/s — 長いほど速い</text>
+
+		<text x="0" y="48" fill="#1c2330" font-size="12.5">Node.js 26 <tspan fill="#4a5568">node:http</tspan></text>
+		<rect x="200" y="36" width="350" height="24" rx="4" fill="url(#g-node)"/><text x="558" y="53" font-size="12" fill="#1c2330">13,437</text>
+
+		<text x="0" y="86" fill="#1c2330" font-size="12.5">Deno <tspan fill="#4a5568">node:http</tspan></text>
+		<rect x="200" y="74" width="363" height="24" rx="4" fill="url(#g-deno)"/><text x="571" y="91" font-size="12" fill="#1c2330">13,946</text>
+
+		<text x="0" y="124" fill="#1c2330" font-size="12.5">Bun <tspan fill="#4a5568">node:http</tspan></text>
+		<rect x="200" y="112" width="477" height="24" rx="4" fill="url(#g-bun)"/><text x="685" y="129" font-size="12" fill="#1c2330">18,303</text>
+
+		<line x1="0" y1="152" x2="880" y2="152" stroke="#d9dfe8" stroke-width="1" stroke-dasharray="4 4"/>
+
+		<text x="0" y="180" fill="#1c2330" font-size="12.5" font-weight="600">Deno <tspan font-weight="400" fill="#4a5568">Deno.serve</tspan></text>
+		<rect x="200" y="168" width="620" height="24" rx="4" fill="url(#g-deno)"/><text x="828" y="185" font-size="12" fill="#1c2330" font-weight="700">23,806</text>
+
+		<text x="0" y="218" fill="#1c2330" font-size="12.5" font-weight="600">Bun <tspan font-weight="400" fill="#4a5568">Bun.serve</tspan></text>
+		<rect x="200" y="206" width="603" height="24" rx="4" fill="url(#g-bun)"/><text x="811" y="223" font-size="12" fill="#1c2330">23,175</text>
+
+		<text x="200" y="250" font-size="11.5" fill="#4a5568">点線の下はランタイム固有 API 版（共通コードではない）</text>
+	</g>
+</svg>
