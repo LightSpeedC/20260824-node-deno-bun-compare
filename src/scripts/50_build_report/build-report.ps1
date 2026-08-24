@@ -13,7 +13,8 @@ param()
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
-$Root       = Split-Path -Parent $PSScriptRoot
+# このスクリプトは src/scripts/NN_xxx/ に置くため、3 階層上がプロジェクトルート
+$Root       = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
 $RawDir     = Join-Path $Root 'results\raw'
 $ResultsDir = Join-Path $Root 'results'
 

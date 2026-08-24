@@ -613,10 +613,13 @@ JavaScript / TypeScript ランタイムである <strong>Node.js</strong>、<str
 │   │   └── bun/
 │   ├── compat/                  npm 互換性チェック用のプロジェクト
 │   └── fixtures/                テストデータ（大きい JSON 等。生成スクリプトで作る）
-├── scripts/
-│   ├── setup-runtimes.ps1       ランタイムの導入・更新
-│   ├── run-bench.ps1            本計測ドライバ
-│   └── build-report.ps1         集計とレポート生成
+├── src/scripts/                 番号付きフォルダ。各 .ps1 に同名の .cmd ランチャーを併置
+│   ├── 10_setup_runtimes/       ランタイムの導入・配置
+│   ├── 20_run_bench/            本計測ドライバ
+│   ├── 30_run_install_bench/    依存インストールと npm 互換性
+│   ├── 40_run_compile_bench/    単一実行ファイル化
+│   ├── 50_build_report/         集計
+│   └── 70_html2md/              HTML から Markdown を生成
 ├── results/
 │   ├── env.txt                  検証環境と版数の記録
 │   └── raw/                     生ログ（コミット対象）

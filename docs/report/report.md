@@ -310,21 +310,21 @@ Deno の権限モデルは今回の検証で実際に体感しました。`-A`�
 
 ```powershell
 # 1. ランタイムと計測ツールを tools/ に配置（SHA256 検証つき）
-scripts\setup-runtimes.ps1
+src\scripts\10_setup_runtimes\setup-runtimes.ps1
 
 # 2. ベンチ本体（項目を分けて実行し、-Append で結果をマージできる）
-scripts\run-bench.ps1 -Runs 10 -Warmup 3 -Only B-01,B-02,B-09,B-11
-scripts\run-bench.ps1 -Runs 10 -Warmup 3 -FileCount 2000 -Only B-04,B-05,B-06,B-07 -Append
-scripts\run-bench.ps1 -Only B-03 -HttpSeconds 10 -HttpConnections 50 -Append
+src\scripts\20_run_bench\run-bench.ps1 -Runs 10 -Warmup 3 -Only B-01,B-02,B-09,B-11
+src\scripts\20_run_bench\run-bench.ps1 -Runs 10 -Warmup 3 -FileCount 2000 -Only B-04,B-05,B-06,B-07 -Append
+src\scripts\20_run_bench\run-bench.ps1 -Only B-03 -HttpSeconds 10 -HttpConnections 50 -Append
 
 # 3. 依存インストールと npm 互換性
-scripts\run-install-bench.ps1
+src\scripts\30_run_install_bench\run-install-bench.ps1
 
 # 4. 単一実行ファイル化
-scripts\run-compile-bench.ps1
+src\scripts\40_run_compile_bench\run-compile-bench.ps1
 
 # 5. 集計（定性評価は results/qualitative.json を読む）
-scripts\build-report.ps1
+src\scripts\50_build_report\build-report.ps1
 ```
 
 | 成果物 | 内容 |

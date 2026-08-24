@@ -31,7 +31,8 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 $ProgressPreference = 'SilentlyContinue'
 
-$Root       = Split-Path -Parent $PSScriptRoot
+# このスクリプトは src/scripts/NN_xxx/ に置くため、3 階層上がプロジェクトルート
+$Root       = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
 $BenchDir   = Join-Path $Root 'bench'
 $ToolsDir   = Join-Path $Root 'tools'
 $TmpDir     = Join-Path $Root 'tmp'
@@ -52,7 +53,7 @@ foreach ($d in @($TmpDir, $RawDir)) {
 # ---------------------------------------------------------------------------
 $manifestPath = Join-Path $ToolsDir 'runtimes.json'
 if (-not (Test-Path -LiteralPath $manifestPath)) {
-	throw "tools/runtimes.json がありません。先に scripts\setup-runtimes.ps1 を実行してください。"
+	throw "tools/runtimes.json がありません。先に src\scripts\10_setup_runtimes\setup-runtimes.ps1 を実行してください。"
 }
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 
@@ -426,7 +427,7 @@ if (Test-Wanted 'B-02') {
 	$depsScript = Join-Path $BenchDir 'deps\b02-startup-deps.mjs'
 	$depsModules = Join-Path $BenchDir 'deps\node_modules'
 	if (-not (Test-Path -LiteralPath $depsModules)) {
-		Write-Host '    未実施: bench/deps/node_modules がありません（scripts\run-install-bench.ps1 を先に実行）'
+		Write-Host '    未実施: bench/deps/node_modules がありません（src\scripts\30_run_install_bench\run-install-bench.ps1 を先に実行）'
 		foreach ($rt in $Runtimes) {
 			Add-Measurement -Id 'B-02' -Item '依存込み起動' -Runtime $rt.Key -Metric '所要時間' -Unit 'ms' `
 				-Stats $null -Detail $null -Ok $false -Note '未実施: 依存が未インストール'

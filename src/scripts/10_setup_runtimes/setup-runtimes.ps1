@@ -13,7 +13,8 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 $ProgressPreference = 'SilentlyContinue'
 
-$Root        = Split-Path -Parent $PSScriptRoot
+# このスクリプトは src/scripts/NN_xxx/ に置くため、3 階層上がプロジェクトルート
+$Root        = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
 $ToolsDir    = Join-Path $Root 'tools'
 $DownloadDir = Join-Path $Root 'tmp\downloads'
 $ResultsDir  = Join-Path $Root 'results'

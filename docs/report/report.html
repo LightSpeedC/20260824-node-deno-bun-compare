@@ -848,21 +848,21 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 	<h2>再現方法</h2>
 	<p>同じ計測を後日やり直せます。<code>tools/</code> のバイナリと <code>bench/fixtures/</code> のテストデータはリポジトリに含めず、スクリプトから再生成します。</p>
 <pre><code># 1. ランタイムと計測ツールを tools/ に配置（SHA256 検証つき）
-scripts\setup-runtimes.ps1
+src\scripts\10_setup_runtimes\setup-runtimes.ps1
 
 # 2. ベンチ本体（項目を分けて実行し、-Append で結果をマージできる）
-scripts\run-bench.ps1 -Runs 10 -Warmup 3 -Only B-01,B-02,B-09,B-11
-scripts\run-bench.ps1 -Runs 10 -Warmup 3 -FileCount 2000 -Only B-04,B-05,B-06,B-07 -Append
-scripts\run-bench.ps1 -Only B-03 -HttpSeconds 10 -HttpConnections 50 -Append
+src\scripts\20_run_bench\run-bench.ps1 -Runs 10 -Warmup 3 -Only B-01,B-02,B-09,B-11
+src\scripts\20_run_bench\run-bench.ps1 -Runs 10 -Warmup 3 -FileCount 2000 -Only B-04,B-05,B-06,B-07 -Append
+src\scripts\20_run_bench\run-bench.ps1 -Only B-03 -HttpSeconds 10 -HttpConnections 50 -Append
 
 # 3. 依存インストールと npm 互換性
-scripts\run-install-bench.ps1
+src\scripts\30_run_install_bench\run-install-bench.ps1
 
 # 4. 単一実行ファイル化
-scripts\run-compile-bench.ps1
+src\scripts\40_run_compile_bench\run-compile-bench.ps1
 
 # 5. 集計（定性評価は results/qualitative.json を読む）
-scripts\build-report.ps1</code></pre>
+src\scripts\50_build_report\build-report.ps1</code></pre>
 
 	<div class="tw">
 	<table>

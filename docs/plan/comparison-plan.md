@@ -212,12 +212,13 @@ Node.js は 2009 年から続くデファクトスタンダードで、npm エ�
 │   ├── compat/                  npm 互換性チェック用のプロジェクト
 │   ├── tests/                   node:test 記法の 200 件テスト
 │   └── fixtures/                テストデータ（生成スクリプトで作る・git 管理外）
-├── scripts/
-│   ├── setup-runtimes.ps1       ランタイムの導入・配置
-│   ├── run-bench.ps1            本計測ドライバ
-│   ├── run-install-bench.ps1    依存インストールと npm 互換性
-│   ├── run-compile-bench.ps1    単一実行ファイル化
-│   └── build-report.ps1         集計
+├── src/scripts/                 番号付きフォルダ。各 .ps1 に同名の .cmd ランチャーを併置
+│   ├── 10_setup_runtimes/       ランタイムの導入・配置
+│   ├── 20_run_bench/            本計測ドライバ
+│   ├── 30_run_install_bench/    依存インストールと npm 互換性
+│   ├── 40_run_compile_bench/    単一実行ファイル化
+│   ├── 50_build_report/         集計
+│   └── 70_html2md/              HTML から Markdown を生成
 ├── results/
 │   ├── env.txt                  検証環境と版数の記録
 │   └── raw/                     生ログ（コミット対象）
