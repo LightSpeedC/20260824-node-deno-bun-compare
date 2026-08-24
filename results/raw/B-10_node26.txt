@@ -1,0 +1,11 @@
+OK=True NOTE=
+--- blob ---
+
+Wrote single executable preparation blob to sea-prep.blob
+
+--- postject ---
+
+--- inject ---
+[36mStart injection of NODE_SEA_BLOB in cli-node.exe...[0m
+[32m💉 Injection done![0m
+warning: The signature seems corrupted!

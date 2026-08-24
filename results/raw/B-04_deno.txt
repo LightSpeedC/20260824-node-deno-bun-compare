@@ -1,0 +1,20 @@
+--- run 1 ---
+BENCH {"id":"B-04","ms":122.299,"detail":{"inputMB":10,"records":52481,"parseMs":74.317,"transformMs":26.661,"stringifyMs":21.321,"outputMB":3.6,"cities":8,"heapUsedMB":60.2}}
+--- run 2 ---
+BENCH {"id":"B-04","ms":137.165,"detail":{"inputMB":10,"records":52481,"parseMs":88.958,"transformMs":28.858,"stringifyMs":19.349,"outputMB":3.6,"cities":8,"heapUsedMB":59.9}}
+--- run 3 ---
+BENCH {"id":"B-04","ms":134.333,"detail":{"inputMB":10,"records":52481,"parseMs":87.417,"transformMs":28.899,"stringifyMs":18.016,"outputMB":3.6,"cities":8,"heapUsedMB":59.9}}
+--- run 4 ---
+BENCH {"id":"B-04","ms":127.152,"detail":{"inputMB":10,"records":52481,"parseMs":72.287,"transformMs":33.171,"stringifyMs":21.694,"outputMB":3.6,"cities":8,"heapUsedMB":59.7}}
+--- run 5 ---
+BENCH {"id":"B-04","ms":131.161,"detail":{"inputMB":10,"records":52481,"parseMs":79.615,"transformMs":29.974,"stringifyMs":21.573,"outputMB":3.6,"cities":8,"heapUsedMB":60}}
+--- run 6 ---
+BENCH {"id":"B-04","ms":146.612,"detail":{"inputMB":10,"records":52481,"parseMs":95.484,"transformMs":30.245,"stringifyMs":20.883,"outputMB":3.6,"cities":8,"heapUsedMB":59.8}}
+--- run 7 ---
+BENCH {"id":"B-04","ms":120.139,"detail":{"inputMB":10,"records":52481,"parseMs":78.105,"transformMs":27.162,"stringifyMs":14.872,"outputMB":3.6,"cities":8,"heapUsedMB":60}}
+--- run 8 ---
+BENCH {"id":"B-04","ms":159.007,"detail":{"inputMB":10,"records":52481,"parseMs":98.478,"transformMs":37.226,"stringifyMs":23.303,"outputMB":3.6,"cities":8,"heapUsedMB":59.6}}
+--- run 9 ---
+BENCH {"id":"B-04","ms":142.894,"detail":{"inputMB":10,"records":52481,"parseMs":90.51,"transformMs":33.766,"stringifyMs":18.617,"outputMB":3.6,"cities":8,"heapUsedMB":60.1}}
+--- run 10 ---
+BENCH {"id":"B-04","ms":127.563,"detail":{"inputMB":10,"records":52481,"parseMs":84.52,"transformMs":26.464,"stringifyMs":16.579,"outputMB":3.6,"cities":8,"heapUsedMB":60.1}}

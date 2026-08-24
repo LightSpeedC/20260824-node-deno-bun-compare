@@ -1,0 +1,90 @@
+{
+  "startedAt": "2026-08-25 00:52:31",
+  "finishedAt": "2026-08-25 00:54:32",
+  "results": [
+    {
+      "id": "B-08",
+      "pm": "npm",
+      "label": "npm（Node 26 同梱）",
+      "scenario": "クリーン",
+      "seconds": 26.3,
+      "exitCode": 0,
+      "timedOut": false,
+      "ok": true,
+      "files": 2191,
+      "sizeMB": 74.2,
+      "scriptPolicy": "既定で実行",
+      "note": ""
+    },
+    {
+      "id": "B-08",
+      "pm": "npm",
+      "label": "npm（Node 26 同梱）",
+      "scenario": "キャッシュ有",
+      "seconds": 17.06,
+      "exitCode": 0,
+      "timedOut": false,
+      "ok": true,
+      "files": 2201,
+      "sizeMB": 74.3,
+      "scriptPolicy": "既定で実行",
+      "note": ""
+    },
+    {
+      "id": "B-08",
+      "pm": "deno",
+      "label": "deno install",
+      "scenario": "クリーン",
+      "seconds": 17.06,
+      "exitCode": 0,
+      "timedOut": false,
+      "ok": true,
+      "files": 2273,
+      "sizeMB": 74.1,
+      "scriptPolicy": "--allow-scripts で明示的に許可",
+      "note": ""
+    },
+    {
+      "id": "B-08",
+      "pm": "deno",
+      "label": "deno install",
+      "scenario": "キャッシュ有",
+      "seconds": 1.34,
+      "exitCode": 0,
+      "timedOut": false,
+      "ok": true,
+      "files": 2273,
+      "sizeMB": 74.1,
+      "scriptPolicy": "--allow-scripts で明示的に許可",
+      "note": ""
+    },
+    {
+      "id": "B-08",
+      "pm": "bun",
+      "label": "bun install",
+      "scenario": "クリーン",
+      "seconds": 25.71,
+      "exitCode": 0,
+      "timedOut": false,
+      "ok": true,
+      "files": 2197,
+      "sizeMB": 74.2,
+      "scriptPolicy": "既定でブロック（trustedDependencies が必要）",
+      "note": ""
+    },
+    {
+      "id": "B-08",
+      "pm": "bun",
+      "label": "bun install",
+      "scenario": "キャッシュ有",
+      "seconds": 10.77,
+      "exitCode": 0,
+      "timedOut": false,
+      "ok": true,
+      "files": 2197,
+      "sizeMB": 74.2,
+      "scriptPolicy": "既定でブロック（trustedDependencies が必要）",
+      "note": ""
+    }
+  ]
+}

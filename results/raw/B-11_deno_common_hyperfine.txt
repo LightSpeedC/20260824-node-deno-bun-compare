@@ -1,0 +1,2 @@
+N:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.5/deno.exe test -A --no-check N:/2026/20260824-node-deno-bun-compare/bench/tests/suite.test.mjs
+

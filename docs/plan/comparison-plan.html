@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node.js / Deno / Bun 比較検証 計画書</title>
+<style>
+:root{
+	--navy1:#12224d;
+	--navy2:#2f5fbf;
+	--ink:#1c2330;
+	--ink-soft:#4a5568;
+	--line:#d9dfe8;
+	--code-bg:#f4f6fa;
+	--accent:var(--navy1);
+	--accent2:var(--navy2);
+	--soft:#f2f5fb;
+}
+*{box-sizing:border-box;}
+body{
+	margin:0;
+	background:#fff;
+	color:var(--ink);
+	font-family:"Segoe UI","Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+	font-size:15.5px;
+	line-height:1.85;
+}
+.titlebar{
+	background:linear-gradient(135deg,var(--navy1),var(--navy2));
+	color:#fff;
+	padding:34px 30px 30px;
+}
+.titlebar .inner{max-width:1400px;margin:0 auto;}
+.titlebar h1{
+	font-size:2.05em;
+	margin:0 0 10px;
+	color:#fff;
+}
+.titlebar .meta{font-size:.88em;color:#d5e2ff;}
+.titlebar .meta span{margin-right:18px;white-space:nowrap;}
+.titlebar code{background:rgba(255,255,255,.16);color:#fff;border:none;}
+
+.wrap{max-width:1400px;margin:0 auto;padding:0 30px;}
+.backlink{margin:20px 0 0;font-size:.92em;}
+.backlink a{color:var(--navy2);text-decoration:none;font-weight:600;}
+.backlink a:hover{text-decoration:underline;}
+
+section{
+	background:linear-gradient(180deg,var(--soft),#fff 62%);
+	border:1px solid var(--line);
+	border-radius:10px;
+	padding:4px 26px 26px;
+	margin:34px 0;
+}
+section h1{
+	background:linear-gradient(100deg,var(--accent),var(--accent2));
+	color:#fff;
+	font-size:1.5em;
+	padding:14px 20px;
+	margin:26px 0 20px;
+	border-radius:8px;
+	box-shadow:0 6px 16px rgba(18,34,77,.22);
+}
+section h1 code{background:rgba(255,255,255,.16);color:#fff;border:none;}
+h2{
+	font-size:1.16em;
+	border-left:7px solid var(--accent);
+	background:linear-gradient(90deg,var(--soft),#fff);
+	padding:6px 12px;
+	margin:30px 0 12px;
+	border-radius:0 6px 6px 0;
+}
+h3{
+	font-size:1.02em;
+	color:var(--accent);
+	display:inline-block;
+	border-bottom:2px dotted var(--accent2);
+	padding-bottom:3px;
+	margin:20px 0 8px;
+}
+p{margin:10px 0;}
+ul,ol{margin:10px 0;padding-left:1.6em;}
+li{margin:5px 0;}
+code{
+	background:var(--code-bg);
+	border:1px solid var(--line);
+	color:#17335f;
+	border-radius:4px;
+	padding:1px 5px;
+	font-size:.92em;
+	font-family:Consolas,"Courier New",monospace;
+}
+pre{
+	background:var(--code-bg);
+	border:1px solid var(--line);
+	border-left:5px solid var(--accent2);
+	border-radius:6px;
+	padding:13px 16px;
+	overflow-x:auto;
+	font-size:.9em;
+	line-height:1.6;
+}
+pre code{background:none;border:none;padding:0;color:var(--ink);}
+
+.tw{overflow-x:auto;margin:14px 0;}
+table{
+	border-collapse:collapse;
+	width:100%;
+	background:#fff;
+	border-radius:8px;
+	overflow:hidden;
+	box-shadow:0 2px 8px rgba(18,34,77,.10);
+	font-size:.95em;
+}
+th{
+	background:linear-gradient(100deg,var(--accent),var(--accent2));
+	color:#fff;
+	text-align:left;
+	padding:9px 12px;
+	white-space:nowrap;
+}
+th code{background:rgba(255,255,255,.16);color:#fff;border:none;}
+td{
+	padding:9px 12px;
+	border-top:1px solid var(--line);
+	vertical-align:top;
+}
+tr:nth-child(even) td{background:#fafbfe;}
+td.nw{white-space:nowrap;}
+td.num{text-align:right;white-space:nowrap;}
+
+.badge{
+	display:inline-block;
+	color:#fff;
+	font-size:.8em;
+	font-weight:700;
+	padding:2px 9px;
+	border-radius:11px;
+	white-space:nowrap;
+	margin-right:6px;
+}
+.b-ok{background:linear-gradient(100deg,#1d7a3c,#45b56c);}
+.b-ng{background:linear-gradient(100deg,#a51f22,#e05a5c);}
+.b-none{background:linear-gradient(100deg,#5a6472,#97a1ae);}
+.b-warn{background:linear-gradient(100deg,#b8620a,#f0a548);}
+
+.callout{
+	border-left:6px solid var(--accent);
+	background:linear-gradient(180deg,var(--soft),#fff);
+	border-radius:0 8px 8px 0;
+	padding:12px 16px;
+	margin:16px 0;
+}
+.callout strong{color:var(--accent);}
+
+.toc ol{
+	list-style:none;
+	display:flex;
+	flex-wrap:wrap;
+	gap:8px;
+	padding:0;
+	margin:14px 0 4px;
+	counter-reset:toc;
+}
+.toc li{counter-increment:toc;margin:0;}
+.toc a{
+	display:-webkit-box;
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:normal;
+	width:310px;
+	max-width:100%;
+	background:linear-gradient(100deg,var(--accent),var(--accent2));
+	color:#fff;
+	text-decoration:none;
+	font-size:.94em;
+	font-weight:600;
+	padding:8px 14px;
+	border-radius:8px;
+	line-height:1.45;
+}
+.toc a::before{content:counter(toc) ". ";opacity:.85;}
+.toc a:hover{filter:brightness(1.1);}
+
+svg{max-width:100%;height:auto;display:block;margin:16px 0;}
+
+footer{
+	max-width:1400px;
+	margin:0 auto;
+	padding:18px 30px 0;
+	border-top:1px solid var(--line);
+	font-size:.92em;
+	color:var(--ink-soft);
+}
+footer a{color:var(--navy2);text-decoration:none;font-weight:600;}
+footer a:hover{text-decoration:underline;}
+
+.ch01{--accent:hsl(280,78%,25%);--accent2:hsl(280,58%,65%);--soft:hsl(280,28%,95%);}
+.ch02{--accent:hsl(233.3,78%,25%);--accent2:hsl(233.3,58%,65%);--soft:hsl(233.3,28%,95%);}
+.ch03{--accent:hsl(186.7,78%,25%);--accent2:hsl(186.7,58%,65%);--soft:hsl(186.7,28%,95%);}
+.ch04{--accent:hsl(140,78%,25%);--accent2:hsl(140,58%,65%);--soft:hsl(140,28%,95%);}
+.ch05{--accent:hsl(93.3,78%,25%);--accent2:hsl(93.3,58%,65%);--soft:hsl(93.3,28%,95%);}
+.ch06{--accent:hsl(46.7,78%,25%);--accent2:hsl(46.7,58%,65%);--soft:hsl(46.7,28%,95%);}
+.ch07{--accent:hsl(0,78%,25%);--accent2:hsl(0,58%,65%);--soft:hsl(0,28%,95%);}
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+	<div class="inner">
+		<h1>Node.js / Deno / Bun 比較検証 計画書</h1>
+		<div class="meta">
+			<span>📅 作成: 2026-08-24 / 更新: 2026-08-25</span>
+			<span>主軸: <code>Node.js 26.7.0</code> / <code>Deno 2.9.5</code> / <code>Bun 1.4.0</code></span>
+		</div>
+	</div>
+</div>
+
+<div class="wrap">
+
+<p class="backlink"><a href="../../README.html">← README に戻る</a></p>
+
+<h2>この文書について</h2>
+<p>
+JavaScript / TypeScript ランタイムである <strong>Node.js</strong>、<strong>Deno</strong>、<strong>Bun</strong> の 3 者を、
+それぞれの最新バージョンで実際に動かして比較するための計画書です。何を測り、どう測り、どう判断するかを事前に決めておくことで、
+「速そう」「新しそう」といった印象ではなく再現可能な数値と事実に基づいて選定できる状態を作ります。
+</p>
+
+<div class="toc">
+	<h2>目次</h2>
+	<ol>
+		<li class="ch01"><a href="#ch01">目的とゴール</a></li>
+		<li class="ch02"><a href="#ch02">比較対象バージョンと検証環境</a></li>
+		<li class="ch03"><a href="#ch03">比較の観点（評価軸）</a></li>
+		<li class="ch04"><a href="#ch04">検証項目とベンチマーク設計</a></li>
+		<li class="ch05"><a href="#ch05">実施手順とディレクトリ構成</a></li>
+		<li class="ch06"><a href="#ch06">成果物と評価方法</a></li>
+		<li class="ch07"><a href="#ch07">スケジュールとリスク</a></li>
+	</ol>
+</div>
+
+<!-- ===================== 章1 ===================== -->
+<section class="ch01" id="ch01">
+	<h1>目的とゴール</h1>
+
+	<h2>背景</h2>
+	<p>
+	Node.js は 2009 年から続くデファクトスタンダードで、npm エコシステムと LTS による長期運用が最大の武器です。
+	Deno は同じ作者による「Node.js の設計をやり直す」試みとして始まり、2.x 以降は npm 互換を取り込んで実務投入しやすくなりました。
+	Bun は Zig + JavaScriptCore による実装で、起動速度・実行速度とオールインワンのツールチェーンを前面に出しています。
+	3 者は今や「どれを選んでも一応動く」段階に入っており、だからこそ用途ごとの向き不向きを自分の手元で確かめる価値があります。
+	</p>
+
+	<h2>この検証のゴール</h2>
+	<ol>
+		<li><strong>定量データ</strong> — 起動時間・HTTP スループット・ファイル I/O・JSON 処理などを同一マシン・同一条件で計測し、数値を表とグラフで残す。</li>
+		<li><strong>定性評価</strong> — TypeScript の扱い、標準搭載ツール、npm 互換性、エラーメッセージの分かりやすさ、Windows での挙動を実際に触って記録する。</li>
+		<li><strong>選定指針</strong> — 「CLI ツールを作る」「API サーバを常駐させる」「スクリプトを 1 本書く」といった用途別に、どれを選ぶべきかの判断マトリクスを作る。</li>
+		<li><strong>再現性</strong> — 計測スクリプトと生ログを残し、半年後に新しいバージョンで同じ検証を回せる状態にする。</li>
+	</ol>
+
+	<h2>スコープ外</h2>
+	<ul>
+		<li>Cloudflare Workers・Vercel Edge などのエッジランタイム（V8 isolate 系）は対象に含めない。</li>
+		<li>Linux / macOS でのクロスプラットフォーム比較は行わない（今回は Windows 11 単一環境での相対比較に絞る）。</li>
+		<li>フレームワーク同士の比較（Express / Hono / Elysia など）は行わない。ただしランタイム差を見るための最小 HTTP サーバは各ランタイムの標準 API で書く。</li>
+	</ul>
+
+	<div class="callout">
+		<strong>比較の前提として明示すること</strong>：単一マシンでの測定値はハードウェア・電源プラン・常駐プロセスの影響を強く受けます。
+		絶対値を「このランタイムは毎秒 N リクエスト処理できる」と一般化はせず、同一条件下での <em>相対比</em> としてのみ扱います。
+	</div>
+</section>
+
+<!-- ===================== 章2 ===================== -->
+<section class="ch02" id="ch02">
+	<h1>比較対象バージョンと検証環境</h1>
+
+	<h2>最新バージョン（2026-08-24 時点）</h2>
+	<p>各プロジェクトの公式配布情報から取得した最新版です。Node.js は Current 系列と LTS 系列の 2 本を対象に含めます。</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>ランタイム</th><th>系列</th><th>バージョン</th><th>リリース日</th><th>備考</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="nw">Node.js</td><td class="nw">Current</td><td class="nw"><code>v26.7.0</code></td><td class="nw">2026-08-05</td><td><span class="badge b-ok">主軸</span>26.0.0 は 2026-05-05。2026 年 10 月に LTS 化予定の系列。レポートの Node.js 代表値はこの版とする</td></tr>
+			<tr><td class="nw">Node.js</td><td class="nw">Active LTS</td><td class="nw"><code>v24.19.0</code></td><td class="nw">2026-08-03</td><td><span class="badge b-none">参考</span>コードネーム Krypton。26 系との世代差を見るための比較対象</td></tr>
+			<tr><td class="nw">Node.js</td><td class="nw">Maintenance LTS</td><td class="nw"><code>v22.23.2</code></td><td class="nw">2026-07-28</td><td><span class="badge b-none">対象外</span>コードネーム Jod。今回は測らない</td></tr>
+			<tr><td class="nw">Deno</td><td class="nw">stable</td><td class="nw"><code>v2.9.5</code></td><td class="nw">2026-08-06</td><td>TypeScript をそのまま実行。ツールチェーン内蔵</td></tr>
+			<tr><td class="nw">Bun</td><td class="nw">stable</td><td class="nw"><code>v1.4.0</code></td><td class="nw">2026-08-20</td><td>3 者の中で最も新しいリリース</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>手元環境の現状とギャップ</h2>
+	<p>検証マシンに現在入っているバージョンを実測した結果です。着手前にこのギャップを埋めます。</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>ランタイム</th><th>インストール済み</th><th>目標</th><th>状態</th><th>対応</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nw">Node.js</td><td class="nw"><code>v25.8.2</code></td><td class="nw"><code>v26.7.0</code> / <code>v24.19.0</code></td>
+				<td class="nw"><span class="badge b-warn">要更新</span></td>
+				<td>25 系は奇数系列のため LTS 化されず、最終リリースは <code>v25.9.0</code>（2026-03-31）。26 と 24 を並行導入する</td>
+			</tr>
+			<tr>
+				<td class="nw">Deno</td><td class="nw"><code>1.31.1</code></td><td class="nw"><code>v2.9.5</code></td>
+				<td class="nw"><span class="badge b-ng">大幅に古い</span></td>
+				<td>1.x → 2.x はメジャー移行で API と権限モデルが変わっている。<code>deno upgrade</code> で入れ替える</td>
+			</tr>
+			<tr>
+				<td class="nw">Bun</td><td class="nw"><code>1.4.0</code></td><td class="nw"><code>v1.4.0</code></td>
+				<td class="nw"><span class="badge b-ok">最新</span></td>
+				<td>対応不要。計測直前に <code>bun upgrade</code> で再確認するだけ</td>
+			</tr>
+			<tr>
+				<td class="nw">npm</td><td class="nw"><code>11.11.1</code></td><td class="nw">Node 同梱版</td>
+				<td class="nw"><span class="badge b-none">Node に追従</span></td>
+				<td>Node 更新に伴い同梱版へ切り替わる。パッケージ管理比較の基準として記録しておく</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>バージョン切り替えの方針</h2>
+	<p>Node.js は複数系列を測るためバージョンマネージャを使い、Deno / Bun は自前のアップグレードコマンドで単一の最新版に固定します。</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>対象</th><th>方法</th><th>コマンド例</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="nw">Node.js 複数系列</td><td>fnm または nvm-windows で切り替え</td><td><code>fnm install 26.7.0</code> / <code>fnm use 26.7.0</code></td></tr>
+			<tr><td class="nw">Deno</td><td>本体のアップグレード機能</td><td><code>deno upgrade</code>（バージョン指定は <code>--version 2.9.5</code>）</td></tr>
+			<tr><td class="nw">Bun</td><td>本体のアップグレード機能</td><td><code>bun upgrade</code></td></tr>
+			<tr><td class="nw">全体</td><td>計測直前に版数を記録</td><td><code>node -v</code> / <code>deno -V</code> / <code>bun -v</code> の出力をログ先頭に保存</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>3 ランタイムの立ち位置</h2>
+	<svg viewBox="0 0 900 250" role="img" aria-label="Node.js / Deno / Bun の立ち位置の比較図">
+		<defs>
+			<!-- ランタイム識別色。README・結果レポートのバッジと同じ 3 色に揃える -->
+			<linearGradient id="g-plan-2a" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1a4ea8"/>
+				<stop offset="1" stop-color="#4f8fe6"/>
+			</linearGradient>
+			<linearGradient id="g-plan-2b" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#0d6e8c"/>
+				<stop offset="1" stop-color="#5ecbe6"/>
+			</linearGradient>
+			<linearGradient id="g-plan-2c" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1d7a3c"/>
+				<stop offset="1" stop-color="#45b56c"/>
+			</linearGradient>
+		</defs>
+
+		<g>
+			<rect x="20" y="25" width="270" height="200" rx="12" fill="url(#g-plan-2a)"/>
+			<text x="155" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Node.js 26 / 24</text>
+			<text x="155" y="92" text-anchor="middle" fill="#fff" font-size="13">エコシステム最大・実績最多</text>
+			<text x="155" y="122" text-anchor="middle" fill="#fff" font-size="13">V8 + libuv / CommonJS + ESM</text>
+			<text x="155" y="152" text-anchor="middle" fill="#fff" font-size="13">LTS による長期サポート</text>
+			<text x="155" y="182" text-anchor="middle" fill="#fff" font-size="13">TS は別途トランスパイル前提</text>
+			<text x="155" y="210" text-anchor="middle" fill="#fff" font-size="13">パッケージ管理は npm / pnpm</text>
+		</g>
+		<g>
+			<rect x="315" y="25" width="270" height="200" rx="12" fill="url(#g-plan-2b)"/>
+			<text x="450" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Deno 2.9</text>
+			<text x="450" y="92" text-anchor="middle" fill="#fff" font-size="13">権限をデフォルトで拒否</text>
+			<text x="450" y="122" text-anchor="middle" fill="#fff" font-size="13">TypeScript をそのまま実行</text>
+			<text x="450" y="152" text-anchor="middle" fill="#fff" font-size="13">Web 標準 API 志向</text>
+			<text x="450" y="182" text-anchor="middle" fill="#fff" font-size="13">test / fmt / lint / doc を内蔵</text>
+			<text x="450" y="210" text-anchor="middle" fill="#fff" font-size="13">npm: 指定で npm も利用可</text>
+		</g>
+		<g>
+			<rect x="610" y="25" width="270" height="200" rx="12" fill="url(#g-plan-2c)"/>
+			<text x="745" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Bun 1.4</text>
+			<text x="745" y="92" text-anchor="middle" fill="#fff" font-size="13">速度と起動時間を最優先</text>
+			<text x="745" y="122" text-anchor="middle" fill="#fff" font-size="13">Zig + JavaScriptCore</text>
+			<text x="745" y="152" text-anchor="middle" fill="#fff" font-size="13">Node API 互換を強く志向</text>
+			<text x="745" y="182" text-anchor="middle" fill="#fff" font-size="13">bundler / test / runner 一体</text>
+			<text x="745" y="210" text-anchor="middle" fill="#fff" font-size="13">package.json をそのまま解釈</text>
+		</g>
+	</svg>
+
+	<h2>検証環境の記録項目</h2>
+	<p>結果の再現に必要な情報を、計測結果と同じ場所に必ず残します。</p>
+	<ul>
+		<li>OS（Windows 11 Home / ビルド番号）、CPU モデル・物理コア数、メモリ容量</li>
+		<li>電源プランと電源モード、AC 接続かバッテリー駆動か、計測中の常駐アプリの状態</li>
+		<li>ストレージ種別（I/O 系ベンチに影響するため）とテスト用ディレクトリの配置ドライブ</li>
+		<li>ウイルス対策のリアルタイムスキャン設定（<code>node_modules</code> の展開速度に影響する）</li>
+	</ul>
+</section>
+
+<!-- ===================== 章3 ===================== -->
+<section class="ch03" id="ch03">
+	<h1>比較の観点（評価軸）</h1>
+
+	<h2>評価軸の一覧</h2>
+	<p>「速さ」だけで選ぶと運用で詰まるため、性能と非機能要件の両方に重み付けをします。重みは合計 100 とし、集計時のスコア算出に使います。</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>#</th><th>評価軸</th><th>測る内容</th><th class="nw">重み</th><th>判定方法</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="num">1</td><td class="nw">起動性能</td><td>プロセス起動から終了までの時間、依存を読み込んだ場合の増分</td><td class="num">15</td><td>定量</td></tr>
+			<tr><td class="num">2</td><td class="nw">実行性能</td><td>HTTP スループット、JSON 処理、ファイル I/O、計算処理</td><td class="num">20</td><td>定量</td></tr>
+			<tr><td class="num">3</td><td class="nw">npm 互換性</td><td>実務でよく使うパッケージが無修正で動くか</td><td class="num">15</td><td>定量（成功率）</td></tr>
+			<tr><td class="num">4</td><td class="nw">TypeScript</td><td>設定なしで .ts が動くか、型チェックの扱い、型解決の速度</td><td class="num">10</td><td>定性＋定量</td></tr>
+			<tr><td class="num">5</td><td class="nw">ツールチェーン</td><td>test / fmt / lint / bundle / 単一実行ファイル化の内蔵状況</td><td class="num">10</td><td>定性</td></tr>
+			<tr><td class="num">6</td><td class="nw">パッケージ管理</td><td>クリーンインストール時間、キャッシュ有効時の時間、lock ファイル互換</td><td class="num">10</td><td>定量</td></tr>
+			<tr><td class="num">7</td><td class="nw">運用・サポート</td><td>LTS の有無とサポート期間、セキュリティ修正の頻度</td><td class="num">10</td><td>定性</td></tr>
+			<tr><td class="num">8</td><td class="nw">開発体験</td><td>エラーメッセージの読みやすさ、watch / hot reload、デバッガ接続</td><td class="num">5</td><td>定性</td></tr>
+			<tr><td class="num">9</td><td class="nw">Windows 対応</td><td>パス処理・改行・シンボリックリンク・権限まわりの落とし穴</td><td class="num">5</td><td>定性</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>定性評価のスコア基準</h2>
+	<p>定性項目は主観が入るため、5 段階の意味を先に固定してから触ります。</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th class="nw">スコア</th><th>意味</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="num">5</td><td>標準機能だけで完結し、設定ファイルも追加インストールも不要</td></tr>
+			<tr><td class="num">4</td><td>標準機能で足りるが、既定値の変更や短い設定が必要</td></tr>
+			<tr><td class="num">3</td><td>公式が案内する追加パッケージ・追加ツールを入れれば実現できる</td></tr>
+			<tr><td class="num">2</td><td>サードパーティ製に依存し、組み合わせの検証が必要</td></tr>
+			<tr><td class="num">1</td><td>実現手段が無い、または回避策が実務に耐えない</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<div class="callout">
+		<strong>重みは着手前に確定させる</strong>：結果を見てから重みを動かすと、望んだ結論に合わせて配点を調整することになります。
+		重みの変更が必要になった場合は、変更前後の両方のスコアを併記して記録します。
+	</div>
+</section>
+
+<!-- ===================== 章4 ===================== -->
+<section class="ch04" id="ch04">
+	<h1>検証項目とベンチマーク設計</h1>
+
+	<h2>定量計測の項目</h2>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th class="nw">ID</th><th>項目</th><th>内容</th><th>指標</th><th>測定ツール</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="nw">B-01</td><td>空スクリプト起動</td><td><code>console.log("x")</code> のみのファイルを実行</td><td class="nw">ms（中央値）</td><td class="nw">hyperfine</td></tr>
+			<tr><td class="nw">B-02</td><td>依存込み起動</td><td>実用的な依存を数個 import した状態で起動</td><td class="nw">ms（中央値）</td><td class="nw">hyperfine</td></tr>
+			<tr><td class="nw">B-03</td><td>HTTP スループット</td><td>各ランタイムの標準 API で最小の "Hello" サーバを立てる</td><td class="nw">req/s、p99 レイテンシ</td><td class="nw">oha</td></tr>
+			<tr><td class="nw">B-04</td><td>JSON 処理</td><td>10 MB の JSON を parse → 変換 → stringify</td><td class="nw">ms、ピークメモリ</td><td class="nw">自作スクリプト</td></tr>
+			<tr><td class="nw">B-05</td><td>ファイル I/O</td><td>小ファイル <strong>2000 件</strong>の書き込み・読み込み・一覧・削除（当初 1 万件から縮小。下の注記を参照）</td><td class="nw">ms</td><td class="nw">自作スクリプト</td></tr>
+			<tr><td class="nw">B-06</td><td>CPU バウンド処理</td><td>文字列処理と数値計算のループ（V8 と JSC の差を見る）</td><td class="nw">ms</td><td class="nw">自作スクリプト</td></tr>
+			<tr><td class="nw">B-07</td><td>SQLite</td><td>組み込み SQLite への一括 INSERT と SELECT</td><td class="nw">ms</td><td class="nw">自作スクリプト</td></tr>
+			<tr><td class="nw">B-08</td><td>依存インストール</td><td>同一 package.json をキャッシュ有／無でインストール</td><td class="nw">秒、node_modules サイズ</td><td class="nw">計測スクリプト</td></tr>
+			<tr><td class="nw">B-09</td><td>TypeScript 実行</td><td>同一の .ts ファイルを設定なしで実行できるか、その所要時間</td><td class="nw">ms、可否</td><td class="nw">hyperfine</td></tr>
+			<tr><td class="nw">B-10</td><td>単一実行ファイル化</td><td>1 ファイルの CLI を実行ファイルに固める</td><td class="nw">秒、出力サイズ、可否</td><td class="nw">計測スクリプト</td></tr>
+			<tr><td class="nw">B-11</td><td>テスト実行</td><td>同一のテスト 200 件を各ランタイムのテストランナーで実行</td><td class="nw">秒</td><td class="nw">計測スクリプト</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>npm 互換性チェックの対象</h2>
+	<p>「動く／動かない」を切り分けたいので、性質の異なるパッケージを意図的に混ぜます。ネイティブアドオンを含むものは特に差が出やすい部分です。</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>分類</th><th>例</th><th>確認したいこと</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="nw">純 JS ライブラリ</td><td>日付処理・バリデーション系</td><td>ESM / CJS 両形式の解決が問題なく通るか</td></tr>
+			<tr><td class="nw">HTTP フレームワーク</td><td>Express 系（Node API 依存が濃いもの）</td><td><code>node:http</code> 互換レイヤの完成度</td></tr>
+			<tr><td class="nw">ネイティブアドオン</td><td>画像処理・暗号系など N-API を使うもの</td><td>ビルド／ロードが通るか、プリビルドが効くか</td></tr>
+			<tr><td class="nw">DB ドライバ</td><td>PostgreSQL クライアント</td><td>ソケット周りの API 互換性</td></tr>
+			<tr><td class="nw">CLI ツール</td><td>bin エントリを持つパッケージ</td><td><code>npx</code> 相当の実行経路が機能するか</td></tr>
+			<tr><td class="nw">ビルドツール</td><td>バンドラ・トランスパイラ</td><td>ワーカースレッド・子プロセスを使う処理が動くか</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>公平に測るためのルール</h2>
+	<ol>
+		<li><strong>同一のソースを使う</strong> — ランタイム固有 API（<code>Deno.serve</code>、<code>Bun.serve</code>）を使う版と、共通の <code>node:http</code> 版の両方を測り、別々に記録する。片方だけを取り上げて有利／不利を言わない。</li>
+		<li><strong>ウォームアップを行う</strong> — JIT が温まる前の値を混ぜない。hyperfine は <code>--warmup 3</code> 以上を指定する。</li>
+		<li><strong>試行回数と統計値</strong> — 各項目 10 回以上実行し、平均ではなく<strong>中央値</strong>を代表値にする。最小・最大・標準偏差も併記する。</li>
+		<li><strong>プロセスは毎回作り直す</strong> — キャッシュ状態が持ち越されないよう、計測ごとにサーバを再起動する。</li>
+		<li><strong>1 項目ずつ直列に実行</strong> — 並列実行すると CPU とディスクを取り合って結果が濁る。</li>
+		<li><strong>失敗も結果として残す</strong> — 動かなかった項目は空欄にせず、エラー内容とともに記録する。互換性の比較ではこれ自体が重要なデータになる。</li>
+	</ol>
+
+	<div class="callout">
+		<strong>B-05 の件数を 2000 件に縮小した</strong>：予備計測で 1 ファイルあたり約 3.7 ms かかることが分かり、1 万件では 1 回の試行に約 46 秒、
+		4 ランタイム × 10 回で 30 分を超える計算になりました。Windows のファイル単位オーバーヘッド（ウイルス対策のリアルタイムスキャン込み）が
+		支配的で、件数を増やしても比較の分解能は上がりません。件数は <code>BENCH_FILE_COUNT</code> で変更でき、記録にも残します。
+	</div>
+
+	<div class="callout">
+		<strong>マイクロベンチの限界</strong>：B-03 の「Hello を返すだけのサーバ」で出る差は、実アプリでは DB アクセスやテンプレート描画に埋もれてほぼ消えます。
+		この検証では B-03 の数値をそのまま実アプリの性能予測に使わず、「ランタイム層のオーバーヘッドの上限を測るもの」として扱います。
+	</div>
+</section>
+
+<!-- ===================== 章5 ===================== -->
+<section class="ch05" id="ch05">
+	<h1>実施手順とディレクトリ構成</h1>
+
+	<h2>実施フロー</h2>
+	<svg viewBox="0 0 900 150" role="img" aria-label="検証の実施フロー図">
+		<defs>
+			<linearGradient id="g-plan-5a" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="hsl(93.3,78%,25%)"/>
+				<stop offset="1" stop-color="hsl(93.3,58%,65%)"/>
+			</linearGradient>
+			<marker id="ar-plan-5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+				<path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(93.3,78%,25%)"/>
+			</marker>
+		</defs>
+
+		<rect x="14" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
+		<text x="89" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">1. 環境整備</text>
+		<text x="89" y="88" text-anchor="middle" fill="#fff" font-size="11.5">3 ランタイムを最新化</text>
+
+		<rect x="190" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
+		<text x="265" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">2. 実装</text>
+		<text x="265" y="88" text-anchor="middle" fill="#fff" font-size="11.5">計測用コードを用意</text>
+
+		<rect x="366" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
+		<text x="441" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">3. 予備計測</text>
+		<text x="441" y="88" text-anchor="middle" fill="#fff" font-size="11.5">ばらつきを確認</text>
+
+		<rect x="542" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
+		<text x="617" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">4. 本計測</text>
+		<text x="617" y="88" text-anchor="middle" fill="#fff" font-size="11.5">全項目を直列実行</text>
+
+		<rect x="718" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
+		<text x="793" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">5. 集計</text>
+		<text x="793" y="88" text-anchor="middle" fill="#fff" font-size="11.5">レポート作成</text>
+
+		<line x1="166" y1="72" x2="188" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#ar-plan-5)"/>
+		<line x1="342" y1="72" x2="364" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#ar-plan-5)"/>
+		<line x1="518" y1="72" x2="540" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#ar-plan-5)"/>
+		<line x1="694" y1="72" x2="716" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#ar-plan-5)"/>
+
+		<path d="M 793 108 L 793 130 L 441 130 L 441 110" fill="none" stroke="hsl(93.3,58%,65%)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-plan-5)"/>
+		<text x="617" y="146" text-anchor="middle" fill="hsl(93.3,78%,25%)" font-size="11.5">ばらつきが大きい項目は条件を見直して再計測</text>
+	</svg>
+
+	<h2>ステップの詳細</h2>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th class="nw">ステップ</th><th>作業内容</th><th>完了条件</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nw">1. 環境整備</td>
+				<td>Node.js 26 / 24 の導入と切り替え確認、Deno を 2.9.5 へ更新、Bun の版数確認、計測ツール（hyperfine・oha）の導入、電源プランの固定</td>
+				<td>版数一覧を <code>results/env.txt</code> に出力できる</td>
+			</tr>
+			<tr>
+				<td class="nw">2. 実装</td>
+				<td>ベンチ項目 B-01〜B-11 のコードを、共通版とランタイム固有版に分けて作成。計測を回すドライバスクリプトも用意</td>
+				<td>全項目が 1 回ずつエラーなく通る（数値の妥当性は次段階）</td>
+			</tr>
+			<tr>
+				<td class="nw">3. 予備計測</td>
+				<td>各項目を 3 回だけ回し、ばらつき（標準偏差）と所要時間を把握。異常に揺れる項目は条件を見直す</td>
+				<td>各項目の変動係数が許容範囲に収まる、または原因が特定できている</td>
+			</tr>
+			<tr>
+				<td class="nw">4. 本計測</td>
+				<td>全項目を規定回数で直列実行。生ログを JSON / CSV で保存。並行して定性評価の記録も取る</td>
+				<td><code>results/raw/</code> に全項目のログが揃う</td>
+			</tr>
+			<tr>
+				<td class="nw">5. 集計</td>
+				<td>中央値の算出、スコア化、グラフ生成、レポート HTML の作成、用途別の判断マトリクスの作成</td>
+				<td><code>docs/report/</code> にレポートが生成され、結論が書かれている</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>ディレクトリ構成</h2>
+<pre><code>20260824-node-deno-bun-compare/
+├── README.html                  プロジェクト概要（この計画書へのリンク）
+├── docs/
+│   ├── plan/
+│   │   └── comparison-plan.html この計画書
+│   └── report/                  結果レポート（ステップ 5 で生成）
+├── bench/
+│   ├── common/                  3 ランタイム共通のソース（node: API のみ使用）
+│   │   ├── b01-startup.js
+│   │   ├── b03-http.js
+│   │   └── ...
+│   ├── native/                  ランタイム固有 API 版
+│   │   ├── deno/
+│   │   └── bun/
+│   ├── compat/                  npm 互換性チェック用のプロジェクト
+│   └── fixtures/                テストデータ（大きい JSON 等。生成スクリプトで作る）
+├── scripts/
+│   ├── setup-runtimes.ps1       ランタイムの導入・更新
+│   ├── run-bench.ps1            本計測ドライバ
+│   └── build-report.ps1         集計とレポート生成
+├── results/
+│   ├── env.txt                  検証環境と版数の記録
+│   └── raw/                     生ログ（コミット対象）
+├── etc/                         セッションログ・補助スクリプト（git 管理外）
+└── tmp/                         一時ファイル（git 管理外）</code></pre>
+
+	<div class="callout">
+		<strong>fixtures はコミットしない</strong>：10 MB の JSON や 1 万件のファイルはリポジトリに入れず、生成スクリプトと乱数シードだけを残します。
+		同じシードから同じデータを作れれば再現性は保てます。
+	</div>
+</section>
+
+<!-- ===================== 章6 ===================== -->
+<section class="ch06" id="ch06">
+	<h1>成果物と評価方法</h1>
+
+	<h2>成果物</h2>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>成果物</th><th>形式</th><th>内容</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="nw">結果レポート</td><td class="nw">HTML</td><td>全項目の数値表、グラフ、定性評価、用途別の推奨と根拠</td></tr>
+			<tr><td class="nw">集計データ</td><td class="nw">CSV</td><td>項目 × ランタイムの中央値・最小・最大・標準偏差</td></tr>
+			<tr><td class="nw">生ログ</td><td class="nw">JSON / テキスト</td><td>hyperfine・oha の出力そのまま。再集計できる状態で保存</td></tr>
+			<tr><td class="nw">計測スクリプト</td><td class="nw">JS / TS / PS1</td><td>同じ手順を後日再実行するための一式</td></tr>
+			<tr><td class="nw">互換性メモ</td><td class="nw">HTML</td><td>動かなかったパッケージとエラー内容、回避策の有無</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>スコアの出し方</h2>
+	<ol>
+		<li>定量項目は、各項目でもっとも良い値を 100 とした<strong>相対スコア</strong>に正規化する（時間系は「最小値 ÷ 実測値 × 100」）。</li>
+		<li>定性項目は 5 段階スコアを 20 倍して 100 点満点に揃える。</li>
+		<li>評価軸ごとに配下の項目スコアを平均し、章 3 の重みを掛けて合計する。</li>
+		<li>総合スコアは<strong>順位付けの補助</strong>として示すだけにし、結論は用途別の判断マトリクスで述べる。</li>
+	</ol>
+
+	<h2>用途別 判断マトリクス（記入テンプレート）</h2>
+	<p>
+	最終的にこの表を埋めることが、この検証のアウトプットの本体です。
+	<strong>記入済みの表は <a href="../report/report.html">結果レポート</a> の章 1 にあります</strong>。以下は計画時のテンプレートです。
+	</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>用途</th><th>重視する評価軸</th><th class="nw">推奨</th><th>根拠</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>長期運用する業務 API サーバ</td><td>運用・サポート、npm 互換性</td><td class="nw">—</td><td>—</td></tr>
+			<tr><td>社内向け CLI ツール</td><td>起動性能、単一実行ファイル化</td><td class="nw">—</td><td>—</td></tr>
+			<tr><td>使い捨てのスクリプト・自動化</td><td>起動性能、TypeScript、権限管理</td><td class="nw">—</td><td>—</td></tr>
+			<tr><td>フロントエンドのビルド基盤</td><td>ツールチェーン、パッケージ管理</td><td class="nw">—</td><td>—</td></tr>
+			<tr><td>既存 Node.js プロジェクトの高速化</td><td>npm 互換性、実行性能</td><td class="nw">—</td><td>—</td></tr>
+			<tr><td>外部コードを実行するサンドボックス用途</td><td>権限管理、運用・サポート</td><td class="nw">—</td><td>—</td></tr>
+		</tbody>
+	</table>
+	</div>
+</section>
+
+<!-- ===================== 章7 ===================== -->
+<section class="ch07" id="ch07">
+	<h1>スケジュールとリスク</h1>
+
+	<h2>フェーズと想定工数</h2>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th class="nw">フェーズ</th><th>作業</th><th class="nw">想定工数</th><th>主な成果物</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="nw">P1</td><td>環境整備・ツール導入</td><td class="num">0.5 日</td><td><code>results/env.txt</code>、<code>setup-runtimes.ps1</code></td></tr>
+			<tr><td class="nw">P2</td><td>ベンチコード実装</td><td class="num">2 日</td><td><code>bench/</code> 一式</td></tr>
+			<tr><td class="nw">P3</td><td>npm 互換性チェック</td><td class="num">1 日</td><td>互換性メモ</td></tr>
+			<tr><td class="nw">P4</td><td>予備計測・条件調整</td><td class="num">0.5 日</td><td>調整記録</td></tr>
+			<tr><td class="nw">P5</td><td>本計測</td><td class="num">1 日</td><td><code>results/raw/</code></td></tr>
+			<tr><td class="nw">P6</td><td>集計・レポート作成</td><td class="num">1.5 日</td><td><code>docs/report/</code></td></tr>
+			<tr><td class="nw">計</td><td>—</td><td class="num">6.5 日</td><td>—</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>リスクと対策</h2>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>リスク</th><th class="nw">影響</th><th>対策</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>検証中に新バージョンがリリースされる（Bun は特に更新が速い）</td>
+				<td class="nw"><span class="badge b-warn">中</span></td>
+				<td>着手時点の版数を固定し、途中で上げない。差分が気になる場合は再計測を別回として記録する</td>
+			</tr>
+			<tr>
+				<td>計測値のばらつきが大きく差が判定できない</td>
+				<td class="nw"><span class="badge b-ng">高</span></td>
+				<td>試行回数を増やす、常駐プロセスを止める、標準偏差を必ず併記して「差なし」と言える範囲を明示する</td>
+			</tr>
+			<tr>
+				<td>Deno 1.x → 2.x の移行で既存の検証コードが動かない</td>
+				<td class="nw"><span class="badge b-warn">中</span></td>
+				<td>Deno のコードは 2.x 前提で新規に書く。1.x 時代の記憶に頼らず公式のマイグレーション情報を確認する</td>
+			</tr>
+			<tr>
+				<td>ネイティブアドオンが Windows でビルドできない</td>
+				<td class="nw"><span class="badge b-warn">中</span></td>
+				<td>ビルドツールチェーンの有無を前提条件として記録し、失敗も比較結果として残す</td>
+			</tr>
+			<tr>
+				<td>ランタイム固有 API と共通 API を混ぜて不公平な比較になる</td>
+				<td class="nw"><span class="badge b-ng">高</span></td>
+				<td>章 4 のルールどおり両方測り、表で列を分けて示す</td>
+			</tr>
+			<tr>
+				<td>工数が膨らんで結論が出ないまま終わる</td>
+				<td class="nw"><span class="badge b-warn">中</span></td>
+				<td>B-01〜B-05 と npm 互換性を必須、それ以外は任意扱いにして、必須分だけで結論が書ける構成にする</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>決定事項</h2>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>項目</th><th>決定</th><th class="nw">決定日</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>Node.js の主軸バージョン</td><td><strong>Node.js 26.7.0（Current）</strong> を主軸とし、レポートの Node.js 代表値もこの版とする。24.19.0（LTS）は世代差を見る参考値として併記する</td><td class="nw">2026-08-25</td></tr>
+			<tr><td>Maintenance LTS（22）の扱い</td><td>今回は測らない。工数を主軸の精度に振る</td><td class="nw">2026-08-25</td></tr>
+			<tr><td>ランタイムの導入先</td><td>システムには入れず、プロジェクト内 <code>tools/</code> 配下に隔離配置する。計測ツール（hyperfine・oha）も同じ扱い。既存のグローバル環境は変更しない</td><td class="nw">2026-08-25</td></tr>
+			<tr><td>計測時の電源設定</td><td>AC 接続かつ電源モード「最大パフォーマンス」で計測する。この機種には powercfg の「高パフォーマンス」プランが存在しないため、設定アプリの電源モード（オーバーレイ）で制御する</td><td class="nw">2026-08-25</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>未決事項</h2>
+	<ul>
+		<li>npm 互換性チェックの対象パッケージを具体的に何にするか（章 4 の分類ごとに 1〜2 個ずつ確定させる）。P3 の着手前までに決める。</li>
+		<li>評価軸の重み（章 3 の配点）をこのまま使うか、用途を絞って調整するか。P6 の集計前までに確定させる。</li>
+	</ul>
+</section>
+
+</div>
+
+<footer>
+	<p><a href="../../README.html">← README に戻る</a></p>
+</footer>
+
+</body>
+</html>

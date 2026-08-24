@@ -1,0 +1,22 @@
+# 一時ファイル
+tmp/
+
+# セッションログ・補助スクリプト
+etc/
+
+# ローカル設定
+.claude/
+
+# 隔離配置したランタイム・計測ツール（scripts/setup-runtimes.ps1 で再取得できる）
+tools/
+
+# ベンチ用の生成データ（生成スクリプトと乱数シードだけを残す）
+bench/fixtures/
+
+# 依存の実体（インストール時間の計測対象。lock ファイルは追跡する）
+node_modules/
+
+# OS / エディタ
+Thumbs.db
+Desktop.ini
+.DS_Store

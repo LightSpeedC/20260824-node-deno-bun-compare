@@ -1,0 +1,15 @@
+EXIT=0
+--- stdout ---
+
+--- stderr ---
+Compile file:///N:/2026/20260824-node-deno-bun-compare/bench/common/b10-cli.mjs to file:///N:/2026/20260824-node-deno-bun-compare/tmp/compile/cli-deno.exe
+
+Embedded Files
+
+cli-deno.exe
+└── b10-cli.mjs (481B)
+
+Files: 1.78KB
+Metadata: 1.23KB
+Remote modules: 12B
+

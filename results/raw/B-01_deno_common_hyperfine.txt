@@ -1,0 +1,2 @@
+N:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.5/deno.exe run -A N:/2026/20260824-node-deno-bun-compare/bench/common/b01-startup.mjs
+

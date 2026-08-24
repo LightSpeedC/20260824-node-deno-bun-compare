@@ -1,0 +1,13 @@
+{
+	"name": "bench-deps",
+	"private": true,
+	"type": "module",
+	"description": "B-02 依存込み起動の計測用。純 JS の依存だけを入れ、import コストだけを見る。",
+	"dependencies": {
+		"zod": "*",
+		"dayjs": "*",
+		"nanoid": "*",
+		"picocolors": "*",
+		"mitt": "*"
+	}
+}

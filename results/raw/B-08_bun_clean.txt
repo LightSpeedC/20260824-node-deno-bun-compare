@@ -1,0 +1,19 @@
+EXIT=0 TIMEDOUT=False
+--- stdout ---
+bun install v1.4.0 (34cbb9a40)
+
++ better-sqlite3@13.0.3
++ dayjs@1.11.23
++ esbuild@0.28.2
++ express@5.2.1
++ pg@8.23.0
++ prettier@3.9.6
++ sharp@0.35.3
++ zod@4.4.3
+
+92 packages installed [25.45s]
+
+--- stderr ---
+Resolving dependencies
+Resolved, downloaded and extracted [471]
+Saved lockfile

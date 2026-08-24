@@ -1,0 +1,113 @@
+EXIT=0 TIMEDOUT=False
+--- stdout ---
+
+--- stderr ---
+Initialize zod@4.4.3
+Initialize express@5.2.1
+Initialize better-sqlite3@13.0.3
+Initialize sharp@0.35.3
+Initialize prettier@3.9.6
+Initialize esbuild@0.28.2
+Initialize pg@8.23.0
+Initialize dayjs@1.11.23
+Initialize type-is@2.1.0
+Initialize cookie@0.7.2
+Initialize content-type@1.0.5
+Initialize fresh@2.0.0
+Initialize serve-static@2.2.1
+Initialize once@1.4.0
+Initialize vary@1.1.2
+Initialize mime-types@3.0.2
+Initialize debug@4.4.3
+Initialize finalhandler@2.1.1
+Initialize send@1.2.1
+Initialize depd@2.0.0
+Initialize cookie-signature@1.2.2
+Initialize range-parser@1.3.0
+Initialize merge-descriptors@2.0.0
+Initialize proxy-addr@2.0.7
+Initialize statuses@2.0.2
+Initialize qs@6.15.3
+Initialize escape-html@1.0.3
+Initialize accepts@2.0.0
+Initialize router@2.2.0
+Initialize content-disposition@1.1.0
+Initialize on-finished@2.4.1
+Initialize encodeurl@2.0.0
+Initialize etag@1.8.1
+Initialize http-errors@2.0.1
+Initialize parseurl@1.3.3
+Initialize body-parser@2.3.0
+Initialize node-addon-api@8.9.2
+Initialize semver@7.8.5
+Initialize detect-libc@2.1.2
+Initialize @img/colour@1.1.0
+Initialize @img/sharp-win32-x64@0.35.3
+Initialize @esbuild/win32-x64@0.28.2
+Initialize pg-connection-string@2.14.0
+Initialize pg-protocol@1.16.0
+Initialize pgpass@1.0.5
+Initialize pg-pool@3.14.0
+Initialize pg-types@2.2.0
+Initialize pg-cloudflare@1.4.0
+Initialize media-typer@1.1.1
+Initialize content-type@2.1.0
+Initialize wrappy@1.0.2
+Initialize mime-db@1.54.0
+Initialize ms@2.1.3
+Initialize forwarded@0.2.0
+Initialize ipaddr.js@1.9.1
+Initialize es-define-property@1.0.1
+Initialize side-channel@1.1.1
+Initialize negotiator@1.1.0
+Initialize is-promise@4.0.0
+Initialize path-to-regexp@8.4.2
+Initialize ee-first@1.1.1
+Initialize toidentifier@1.0.1
+Initialize inherits@2.0.4
+Initialize setprototypeof@1.2.0
+Initialize bytes@3.1.2
+Initialize raw-body@3.0.2
+Initialize iconv-lite@0.7.3
+Initialize split2@4.2.0
+Initialize postgres-bytea@1.0.1
+Initialize postgres-interval@1.2.0
+Initialize postgres-array@2.0.0
+Initialize postgres-date@1.0.7
+Initialize pg-int8@1.0.1
+Initialize object-inspect@1.13.4
+Initialize side-channel-weakmap@1.0.2
+Initialize es-errors@1.3.0
+Initialize side-channel-map@1.0.1
+Initialize side-channel-list@1.0.1
+Initialize unpipe@1.0.0
+Initialize safer-buffer@2.1.2
+Initialize xtend@4.0.2
+Initialize call-bound@1.0.4
+Initialize get-intrinsic@1.3.0
+Initialize call-bind-apply-helpers@1.0.2
+Initialize function-bind@1.1.2
+Initialize get-proto@1.0.1
+Initialize hasown@2.0.4
+Initialize math-intrinsics@1.1.0
+Initialize es-object-atoms@1.1.2
+Initialize gopd@1.2.0
+Initialize has-symbols@1.1.0
+Initialize dunder-proto@1.0.1
+Initialize esbuild@0.28.2: running 'postinstall' script
+Installed 92 packages in 1226ms
+Reused 92 packages from cache
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Downloaded 0 packages from JSR
+Downloaded 0 packages from npm
+
+Dependencies:
++ npm:better-sqlite3 13.0.3
++ npm:dayjs 1.11.23
++ npm:esbuild 0.28.2
++ npm:express 5.2.1
++ npm:pg 8.23.0
++ npm:prettier 3.9.6
++ npm:sharp 0.35.3
++ npm:zod 4.4.3
+

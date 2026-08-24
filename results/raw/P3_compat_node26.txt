@@ -1,0 +1,5 @@
+EXIT=0
+--- stdout ---
+COMPAT {"results":[{"name":"zod","kind":"純 JS ライブラリ","imported":true,"usable":true,"ms":1771.095,"reason":""},{"name":"dayjs","kind":"純 JS ライブラリ","imported":true,"usable":true,"ms":65.096,"reason":""},{"name":"express","kind":"HTTP フレームワーク","imported":true,"usable":true,"ms":3993.491,"reason":""},{"name":"pg","kind":"DB ドライバ","imported":true,"usable":true,"ms":1100.215,"reason":""},{"name":"esbuild","kind":"ビルドツール（ネイティブバイナリ同梱）","imported":true,"usable":true,"ms":46.855,"reason":""},{"name":"prettier","kind":"CLI ツール（bin エントリあり）","imported":true,"usable":true,"ms":86.076,"reason":""},{"name":"sharp","kind":"ネイティブアドオン（プリビルド配布）","imported":true,"usable":true,"ms":1675.01,"reason":""},{"name":"better-sqlite3","kind":"ネイティブアドオン（要ビルド）","imported":true,"usable":true,"ms":344.838,"reason":""}]}
+
+--- stderr ---

@@ -1,0 +1,6 @@
+EXIT=0
+--- stdout ---
+  [44ms]  bundle  1 modules
+ [490ms] compile  N:\2026\20260824-node-deno-bun-compare\tmp\compile\cli-bun.exe
+
+--- stderr ---

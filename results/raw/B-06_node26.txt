@@ -1,0 +1,20 @@
+--- run 1 ---
+BENCH {"id":"B-06","ms":977.584,"detail":{"scale":1,"numericMs":127.393,"stringMs":79.156,"arrayMs":771.035,"checksum":3170924689.119}}
+--- run 2 ---
+BENCH {"id":"B-06","ms":875.736,"detail":{"scale":1,"numericMs":67.477,"stringMs":79.188,"arrayMs":729.071,"checksum":3170924689.119}}
+--- run 3 ---
+BENCH {"id":"B-06","ms":911.657,"detail":{"scale":1,"numericMs":85.37,"stringMs":100.921,"arrayMs":725.366,"checksum":3170924689.119}}
+--- run 4 ---
+BENCH {"id":"B-06","ms":883.897,"detail":{"scale":1,"numericMs":66.581,"stringMs":77.991,"arrayMs":739.326,"checksum":3170924689.119}}
+--- run 5 ---
+BENCH {"id":"B-06","ms":905.58,"detail":{"scale":1,"numericMs":101.809,"stringMs":77.746,"arrayMs":726.026,"checksum":3170924689.119}}
+--- run 6 ---
+BENCH {"id":"B-06","ms":864.511,"detail":{"scale":1,"numericMs":62.172,"stringMs":86.07,"arrayMs":716.269,"checksum":3170924689.119}}
+--- run 7 ---
+BENCH {"id":"B-06","ms":956.935,"detail":{"scale":1,"numericMs":68.3,"stringMs":82.056,"arrayMs":806.578,"checksum":3170924689.119}}
+--- run 8 ---
+BENCH {"id":"B-06","ms":951.204,"detail":{"scale":1,"numericMs":80.997,"stringMs":85.58,"arrayMs":784.628,"checksum":3170924689.119}}
+--- run 9 ---
+BENCH {"id":"B-06","ms":919.06,"detail":{"scale":1,"numericMs":82.667,"stringMs":92.703,"arrayMs":743.69,"checksum":3170924689.119}}
+--- run 10 ---
+BENCH {"id":"B-06","ms":885.746,"detail":{"scale":1,"numericMs":75.974,"stringMs":84.603,"arrayMs":725.168,"checksum":3170924689.119}}

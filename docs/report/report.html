@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node.js / Deno / Bun 比較検証 結果レポート</title>
+<style>
+:root{
+	--navy1:#12224d;
+	--navy2:#2f5fbf;
+	--ink:#1c2330;
+	--ink-soft:#4a5568;
+	--line:#d9dfe8;
+	--code-bg:#f4f6fa;
+	--accent:var(--navy1);
+	--accent2:var(--navy2);
+	--soft:#f2f5fb;
+}
+*{box-sizing:border-box;}
+body{
+	margin:0;
+	background:#fff;
+	color:var(--ink);
+	font-family:"Segoe UI","Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+	font-size:15.5px;
+	line-height:1.85;
+}
+.titlebar{
+	background:linear-gradient(135deg,var(--navy1),var(--navy2));
+	color:#fff;
+	padding:34px 30px 30px;
+}
+.titlebar .inner{max-width:1400px;margin:0 auto;}
+.titlebar h1{font-size:2.05em;margin:0 0 10px;color:#fff;}
+.titlebar .meta{font-size:.88em;color:#d5e2ff;}
+.titlebar .meta span{margin-right:18px;white-space:nowrap;}
+.titlebar code{background:rgba(255,255,255,.16);color:#fff;border:none;}
+
+.wrap{max-width:1400px;margin:0 auto;padding:0 30px;}
+.backlink{margin:20px 0 0;font-size:.92em;}
+.backlink a{color:var(--navy2);text-decoration:none;font-weight:600;}
+.backlink a:hover{text-decoration:underline;}
+
+section{
+	background:linear-gradient(180deg,var(--soft),#fff 62%);
+	border:1px solid var(--line);
+	border-radius:10px;
+	padding:4px 26px 26px;
+	margin:34px 0;
+}
+section h1{
+	background:linear-gradient(100deg,var(--accent),var(--accent2));
+	color:#fff;
+	font-size:1.5em;
+	padding:14px 20px;
+	margin:26px 0 20px;
+	border-radius:8px;
+	box-shadow:0 6px 16px rgba(18,34,77,.22);
+}
+section h1 code{background:rgba(255,255,255,.16);color:#fff;border:none;}
+h2{
+	font-size:1.16em;
+	border-left:7px solid var(--accent);
+	background:linear-gradient(90deg,var(--soft),#fff);
+	padding:6px 12px;
+	margin:30px 0 12px;
+	border-radius:0 6px 6px 0;
+}
+h3{
+	font-size:1.02em;
+	color:var(--accent);
+	display:inline-block;
+	border-bottom:2px dotted var(--accent2);
+	padding-bottom:3px;
+	margin:20px 0 8px;
+}
+p{margin:10px 0;}
+ul,ol{margin:10px 0;padding-left:1.6em;}
+li{margin:5px 0;}
+code{
+	background:var(--code-bg);
+	border:1px solid var(--line);
+	color:#17335f;
+	border-radius:4px;
+	padding:1px 5px;
+	font-size:.92em;
+	font-family:Consolas,"Courier New",monospace;
+}
+pre{
+	background:var(--code-bg);
+	border:1px solid var(--line);
+	border-left:5px solid var(--accent2);
+	border-radius:6px;
+	padding:13px 16px;
+	overflow-x:auto;
+	font-size:.9em;
+	line-height:1.6;
+}
+pre code{background:none;border:none;padding:0;color:var(--ink);}
+
+.tw{overflow-x:auto;margin:14px 0;}
+table{
+	border-collapse:collapse;
+	width:100%;
+	background:#fff;
+	border-radius:8px;
+	overflow:hidden;
+	box-shadow:0 2px 8px rgba(18,34,77,.10);
+	font-size:.95em;
+}
+th{
+	background:linear-gradient(100deg,var(--accent),var(--accent2));
+	color:#fff;
+	text-align:left;
+	padding:9px 12px;
+	white-space:nowrap;
+}
+th code{background:rgba(255,255,255,.16);color:#fff;border:none;}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfe;}
+td.nw{white-space:nowrap;}
+td.num{text-align:right;white-space:nowrap;}
+td.best{font-weight:700;color:#17335f;}
+
+.badge{
+	display:inline-block;
+	color:#fff;
+	font-size:.8em;
+	font-weight:700;
+	padding:2px 9px;
+	border-radius:11px;
+	white-space:nowrap;
+	margin-right:6px;
+}
+.b-ok{background:linear-gradient(100deg,#1d7a3c,#45b56c);}
+.b-ng{background:linear-gradient(100deg,#a51f22,#e05a5c);}
+.b-none{background:linear-gradient(100deg,#5a6472,#97a1ae);}
+.b-warn{background:linear-gradient(100deg,#b8620a,#f0a548);}
+/* ランタイムを指すバッジ（良い/悪いの意味は持たせない）。グラフの色もこの 3 色に揃える */
+.b-node{background:linear-gradient(100deg,#1a4ea8,#4f8fe6);}
+.b-deno{background:linear-gradient(100deg,#0d6e8c,#5ecbe6);}
+.b-bun{background:linear-gradient(100deg,#1d7a3c,#45b56c);}
+
+.callout{
+	border-left:6px solid var(--accent);
+	background:linear-gradient(180deg,var(--soft),#fff);
+	border-radius:0 8px 8px 0;
+	padding:12px 16px;
+	margin:16px 0;
+}
+.callout strong{color:var(--accent);}
+
+.toc ol{
+	list-style:none;
+	display:flex;
+	flex-wrap:wrap;
+	gap:8px;
+	padding:0;
+	margin:14px 0 4px;
+	counter-reset:toc;
+}
+.toc li{counter-increment:toc;margin:0;}
+.toc a{
+	display:-webkit-box;
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:normal;
+	width:310px;
+	max-width:100%;
+	background:linear-gradient(100deg,var(--accent),var(--accent2));
+	color:#fff;
+	text-decoration:none;
+	font-size:.94em;
+	font-weight:600;
+	padding:8px 14px;
+	border-radius:8px;
+	line-height:1.45;
+}
+.toc a::before{content:counter(toc) ". ";opacity:.85;}
+.toc a:hover{filter:brightness(1.1);}
+
+svg{max-width:100%;height:auto;display:block;margin:16px 0;}
+.legend{font-size:.9em;color:var(--ink-soft);margin:2px 0 18px;}
+.legend span{margin-right:16px;white-space:nowrap;}
+.swatch{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px;}
+.sw-node{background:linear-gradient(100deg,#1a4ea8,#4f8fe6);}
+.sw-deno{background:linear-gradient(100deg,#0d6e8c,#5ecbe6);}
+.sw-bun{background:linear-gradient(100deg,#1d7a3c,#45b56c);}
+
+footer{
+	max-width:1400px;
+	margin:0 auto;
+	padding:18px 30px 0;
+	border-top:1px solid var(--line);
+	font-size:.92em;
+	color:var(--ink-soft);
+}
+footer a{color:var(--navy2);text-decoration:none;font-weight:600;}
+footer a:hover{text-decoration:underline;}
+
+.ch01{--accent:hsl(280,78%,25%);--accent2:hsl(280,58%,65%);--soft:hsl(280,28%,95%);}
+.ch02{--accent:hsl(233.3,78%,25%);--accent2:hsl(233.3,58%,65%);--soft:hsl(233.3,28%,95%);}
+.ch03{--accent:hsl(186.7,78%,25%);--accent2:hsl(186.7,58%,65%);--soft:hsl(186.7,28%,95%);}
+.ch04{--accent:hsl(140,78%,25%);--accent2:hsl(140,58%,65%);--soft:hsl(140,28%,95%);}
+.ch05{--accent:hsl(93.3,78%,25%);--accent2:hsl(93.3,58%,65%);--soft:hsl(93.3,28%,95%);}
+.ch06{--accent:hsl(46.7,78%,25%);--accent2:hsl(46.7,58%,65%);--soft:hsl(46.7,28%,95%);}
+.ch07{--accent:hsl(0,78%,25%);--accent2:hsl(0,58%,65%);--soft:hsl(0,28%,95%);}
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+	<div class="inner">
+		<h1>Node.js / Deno / Bun 比較検証 結果レポート</h1>
+		<div class="meta">
+			<span>📅 作成: 2026-08-25 / 更新: 2026-08-25</span>
+			<span><code>Node.js 26.7.0</code> / <code>Deno 2.9.5</code> / <code>Bun 1.4.0</code></span>
+			<span>計測 11 項目・各 10 回試行</span>
+		</div>
+	</div>
+</div>
+
+<div class="wrap">
+
+<p class="backlink"><a href="../../README.html">← README に戻る</a> ／ <a href="../plan/comparison-plan.html">検証計画書を見る</a></p>
+
+<h2>要約</h2>
+<p>
+Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>tools/</code> 配下に隔離配置し、11 項目のベンチマークと npm 互換性チェックを実施しました。
+<strong>Bun 1.4.0 が総合スコア 85.0 点で最上位</strong>、Deno 2.9.5 が 68.2 点、Node.js 26.7.0 が 63.0 点でした。
+ただしこの順位は「速さ」の重みが大きい配点によるもので、用途を絞ると結論は変わります。
+<strong>npm 互換性は 8 パッケージすべてが 3 ランタイムで動作し、差がつきませんでした</strong>。
+一方で LTS による長期サポートは Node.js だけが持っています。
+</p>
+
+<div class="toc">
+	<h2>目次</h2>
+	<ol>
+		<li class="ch01"><a href="#ch01">結論 — 用途別の推奨</a></li>
+		<li class="ch02"><a href="#ch02">検証条件と方法</a></li>
+		<li class="ch03"><a href="#ch03">起動性能とプロセス単位の速さ</a></li>
+		<li class="ch04"><a href="#ch04">実行性能</a></li>
+		<li class="ch05"><a href="#ch05">パッケージ管理と npm 互換性</a></li>
+		<li class="ch06"><a href="#ch06">ツールチェーンと配布</a></li>
+		<li class="ch07"><a href="#ch07">総合スコアと読み方の注意</a></li>
+	</ol>
+</div>
+
+<!-- ===================== 章1 ===================== -->
+<section class="ch01" id="ch01">
+	<h1>結論 — 用途別の推奨</h1>
+
+	<p>計画書で用意した判断マトリクスを、実測値で埋めた結果です。総合スコアではなくこの表が本レポートの結論です。</p>
+
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>用途</th><th class="nw">推奨</th><th>根拠（実測値）</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>長期運用する業務 API サーバ</td>
+				<td class="nw"><span class="badge b-node">Node.js 26</span></td>
+				<td>LTS 制度を持つのは Node.js だけで、26 系は 2026-10 に LTS 化予定。SQLite は最速（262.9 ms 対 Deno 441.3 ms）。HTTP は Bun に 1.36 倍劣るが、実アプリでは DB アクセスに埋もれる差。</td>
+			</tr>
+			<tr>
+				<td>社内向け CLI ツール</td>
+				<td class="nw"><span class="badge b-bun">Bun</span></td>
+				<td>起動 41.7 ms（Node 101.3 ms の 2.4 倍速）。実行ファイル化は 0.7 秒で完了。出力サイズを最優先するなら Deno（75.9 MB 対 Bun 84.7 MB）。</td>
+			</tr>
+			<tr>
+				<td>使い捨てのスクリプト・自動化</td>
+				<td class="nw"><span class="badge b-bun">Bun</span></td>
+				<td>起動・TypeScript 実行（99.9 ms）ともに最速で、書いてすぐ回す用途に効く。3 者とも設定なしで <code>.ts</code> が動いた。</td>
+			</tr>
+			<tr>
+				<td>フロントエンドのビルド基盤</td>
+				<td class="nw"><span class="badge b-bun">Bun</span></td>
+				<td>テスト実行 76.8 ms（Node の 3.9 倍速）、バンドルとテストが本体に同梱。CI でキャッシュを効かせるのが主眼なら Deno（キャッシュ有インストール 1.3 秒）。</td>
+			</tr>
+			<tr>
+				<td>既存 Node.js プロジェクトの高速化</td>
+				<td class="nw"><span class="badge b-bun">Bun</span></td>
+				<td>npm パッケージ 8/8 が無修正で動作。CPU 処理 1.81 倍、テスト 3.94 倍、起動 2.43 倍速い。ただし SQLite は Node が速く、置き換えで遅くなる処理もある。</td>
+			</tr>
+			<tr>
+				<td>外部コードを実行するサンドボックス用途</td>
+				<td class="nw"><span class="badge b-deno">Deno</span></td>
+				<td>権限が既定で拒否される唯一のランタイム。今回のスクリプトはすべて <code>-A</code> を明示しないと動かなかった。ファイル・ネットワーク・環境変数の粒度で許可を絞れる。</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>3 行でまとめると</h2>
+	<ul>
+		<li><strong>速さを買うなら Bun</strong>。11 項目のうち 9 項目で最速、起動系は他を 2〜4 倍引き離した。負けたのは SQLite（Node.js）と依存インストール（Deno）の 2 項目だけ。</li>
+		<li><strong>長期運用を買うなら Node.js</strong>。性能は中位だが LTS・SQLite・エコシステムの実績で崩れない。</li>
+		<li><strong>安全性とツールの一体感を買うなら Deno</strong>。権限モデルと 1 バイナリ完結が他に無い。生の速度では中位。</li>
+	</ul>
+
+	<div class="callout">
+		<strong>2026 年時点で「npm が動かない」は理由にならない</strong>：ネイティブアドオン（sharp・better-sqlite3）を含む 8 パッケージが、
+		3 ランタイムすべてで import から利用まで通りました。かつて Deno・Bun を避ける最大の理由だった互換性は、この検証範囲では判断材料になりません。
+	</div>
+</section>
+
+<!-- ===================== 章2 ===================== -->
+<section class="ch02" id="ch02">
+	<h1>検証条件と方法</h1>
+
+	<h2>検証環境</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>項目</th><th>内容</th></tr></thead>
+		<tbody>
+			<tr><td class="nw">OS</td><td>Windows 11 Home（build 26200）</td></tr>
+			<tr><td class="nw">CPU</td><td>Intel Core i7-11370H @ 3.30GHz（4 物理コア / 8 論理）</td></tr>
+			<tr><td class="nw">メモリ</td><td>15.8 GB</td></tr>
+			<tr><td class="nw">ストレージ</td><td>NVMe KIOXIA KXG60ZNV1T02</td></tr>
+			<tr><td class="nw">電源</td><td>AC 接続・電源モード「最大パフォーマンス」（この機種に powercfg の高パフォーマンスプランは存在しない）</td></tr>
+			<tr><td class="nw">計測ツール</td><td>hyperfine 1.20.0（プロセス単位）／ oha 1.16.0（HTTP 負荷）</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>検証対象</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>ランタイム</th><th class="nw">バージョン</th><th>位置づけ</th></tr></thead>
+		<tbody>
+			<tr><td class="nw">Node.js</td><td class="nw"><code>26.7.0</code></td><td><span class="badge b-ok">主軸</span>Current 系列。レポートの Node.js 代表値</td></tr>
+			<tr><td class="nw">Node.js</td><td class="nw"><code>24.19.0</code></td><td><span class="badge b-none">参考</span>Active LTS (Krypton)。26 系との世代差を見るため併記</td></tr>
+			<tr><td class="nw">Deno</td><td class="nw"><code>2.9.5</code></td><td><span class="badge b-ok">主軸</span></td></tr>
+			<tr><td class="nw">Bun</td><td class="nw"><code>1.4.0</code></td><td><span class="badge b-ok">主軸</span></td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<p>
+	3 ランタイムはいずれもシステムにインストールせず、公式配布物をプロジェクト内 <code>tools/</code> に展開して明示パスで呼び出しました。
+	Node.js と Deno は公式の SHA256 と一致することを確認済みです。既存のグローバル環境（<code>node v25.8.2</code> / <code>deno 1.31.1</code>）には触れていません。
+	</p>
+
+	<h2>公平に測るために守ったこと</h2>
+	<ul>
+		<li><strong>同一ソースで比較</strong> — HTTP は 3 ランタイム共通の <code>node:http</code> 版と、<code>Deno.serve</code> / <code>Bun.serve</code> の固有 API 版を別項目として記録しました。片方だけを取り上げていません。</li>
+		<li><strong>ウォームアップ 3 回、本計測 10 回</strong> — 代表値は平均ではなく<strong>中央値</strong>。最小・最大・標準偏差・変動係数も <code>results/measurements.csv</code> に残しています。</li>
+		<li><strong>シェルを介さない</strong> — hyperfine は <code>--shell=none</code> で実行し、起動時間に <code>cmd.exe</code> のコストを混ぜていません。</li>
+		<li><strong>1 項目ずつ直列実行</strong> — 4 コアのマシンなので並列化すると結果が濁ります。</li>
+		<li><strong>失敗も記録</strong> — 空欄にせず理由を残す方針にしましたが、結果として全項目が全ランタイムで完走しました。</li>
+	</ul>
+
+	<h2>計画から変えた点</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>項目</th><th>変更内容と理由</th></tr></thead>
+		<tbody>
+			<tr>
+				<td class="nw">B-05 の件数</td>
+				<td>1 万件 → <strong>2000 件</strong>。1 ファイルあたり約 3.7 ms かかり、1 万件では 4 ランタイム × 10 回で 30 分を超えるため。Windows のファイル単位オーバーヘッドが支配的で、件数を増やしても分解能は上がりません。</td>
+			</tr>
+			<tr>
+				<td class="nw">B-03 の試行</td>
+				<td>他項目のような 10 回反復ではなく、<strong>10 秒 × 50 接続の負荷試験を 1 回</strong>。この項目の指標は req/s であり、負荷試験の内部で十分な回数のリクエストが発生するためです。したがって B-03 には標準偏差がありません。</td>
+			</tr>
+			<tr>
+				<td class="nw">Node.js 22</td>
+				<td>対象外にしました。工数を主軸（26 系）の精度に回す判断です。</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</section>
+
+<!-- ===================== 章3 ===================== -->
+<section class="ch03" id="ch03">
+	<h1>起動性能とプロセス単位の速さ</h1>
+
+	<p>
+	プロセスを起動して終わるまでの時間を hyperfine で測った項目です。CLI ツールや使い捨てスクリプトでは、この時間がそのまま体感になります。
+	</p>
+
+	<svg viewBox="0 0 900 400" role="img" aria-label="起動系 4 項目の中央値を比較した横棒グラフ">
+		<defs>
+			<linearGradient id="g-r3-node" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
+			</linearGradient>
+			<linearGradient id="g-r3-deno" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#0d6e8c"/><stop offset="1" stop-color="#5ecbe6"/>
+			</linearGradient>
+			<linearGradient id="g-r3-bun" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1d7a3c"/><stop offset="1" stop-color="#45b56c"/>
+			</linearGradient>
+		</defs>
+
+		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">中央値 (ms) — 短いほど速い</text>
+
+		<!-- B-01 -->
+		<text x="0" y="52" fill="#1c2330" font-size="13" font-weight="600">B-01 空スクリプト起動</text>
+		<rect x="160" y="42" width="203" height="20" rx="4" fill="url(#g-r3-node)"/><text x="369" y="57" font-size="12" fill="#1c2330">101.3</text>
+		<rect x="160" y="66" width="224" height="20" rx="4" fill="url(#g-r3-deno)"/><text x="390" y="81" font-size="12" fill="#1c2330">111.8</text>
+		<rect x="160" y="90" width="83" height="20" rx="4" fill="url(#g-r3-bun)"/><text x="249" y="105" font-size="12" fill="#1c2330" font-weight="700">41.7</text>
+
+		<!-- B-02 -->
+		<text x="0" y="142" fill="#1c2330" font-size="13" font-weight="600">B-02 依存込み起動</text>
+		<rect x="160" y="132" width="372" height="20" rx="4" fill="url(#g-r3-node)"/><text x="538" y="147" font-size="12" fill="#1c2330">186.1</text>
+		<rect x="160" y="156" width="400" height="20" rx="4" fill="url(#g-r3-deno)"/><text x="566" y="171" font-size="12" fill="#1c2330">199.9</text>
+		<rect x="160" y="180" width="134" height="20" rx="4" fill="url(#g-r3-bun)"/><text x="300" y="195" font-size="12" fill="#1c2330" font-weight="700">66.9</text>
+
+		<!-- B-09 -->
+		<text x="0" y="232" fill="#1c2330" font-size="13" font-weight="600">B-09 TypeScript 実行</text>
+		<rect x="160" y="222" width="448" height="20" rx="4" fill="url(#g-r3-node)"/><text x="614" y="237" font-size="12" fill="#1c2330">224.0</text>
+		<rect x="160" y="246" width="358" height="20" rx="4" fill="url(#g-r3-deno)"/><text x="524" y="261" font-size="12" fill="#1c2330">178.8</text>
+		<rect x="160" y="270" width="200" height="20" rx="4" fill="url(#g-r3-bun)"/><text x="366" y="285" font-size="12" fill="#1c2330" font-weight="700">99.9</text>
+
+		<!-- B-11 -->
+		<text x="0" y="322" fill="#1c2330" font-size="13" font-weight="600">B-11 テスト 200 件</text>
+		<rect x="160" y="312" width="605" height="20" rx="4" fill="url(#g-r3-node)"/><text x="771" y="327" font-size="12" fill="#1c2330">302.5</text>
+		<rect x="160" y="336" width="483" height="20" rx="4" fill="url(#g-r3-deno)"/><text x="649" y="351" font-size="12" fill="#1c2330">241.3</text>
+		<rect x="160" y="360" width="154" height="20" rx="4" fill="url(#g-r3-bun)"/><text x="320" y="375" font-size="12" fill="#1c2330" font-weight="700">76.8</text>
+	</svg>
+	<p class="legend">
+		<span><span class="swatch sw-node"></span>Node.js 26.7.0</span>
+		<span><span class="swatch sw-deno"></span>Deno 2.9.5</span>
+		<span><span class="swatch sw-bun"></span>Bun 1.4.0</span>
+	</p>
+
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>項目</th><th class="nw">Node.js 26</th><th class="nw">Deno</th><th class="nw">Bun</th><th class="nw">Node.js 24（参考）</th><th class="nw">最速比</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>B-01 空スクリプト起動</td><td class="num">101.3 ms</td><td class="num">111.8 ms</td><td class="num best">41.7 ms</td><td class="num">97.5 ms</td><td class="num">Bun が 2.43 倍速</td></tr>
+			<tr><td>B-02 依存込み起動</td><td class="num">186.1 ms</td><td class="num">199.9 ms</td><td class="num best">66.9 ms</td><td class="num">191.0 ms</td><td class="num">Bun が 2.78 倍速</td></tr>
+			<tr><td>B-09 TypeScript 実行</td><td class="num">224.0 ms</td><td class="num">178.8 ms</td><td class="num best">99.9 ms</td><td class="num">239.8 ms</td><td class="num">Bun が 2.24 倍速</td></tr>
+			<tr><td>B-11 テスト 200 件</td><td class="num">302.5 ms</td><td class="num">241.3 ms</td><td class="num best">76.8 ms</td><td class="num">326.9 ms</td><td class="num">Bun が 3.94 倍速</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>読み取れること</h2>
+	<ul>
+		<li><strong>Bun の起動優位は一貫している</strong> — 4 項目すべてで最速。空起動 41.7 ms は Node.js の 2.4 倍速で、依存を 5 つ import しても 66.9 ms に収まりました。JavaScriptCore と Zig 実装の効果が最も素直に出る領域です。</li>
+		<li><strong>Deno の空起動は最も遅い</strong> — 111.8 ms で Node.js より 10 ms 遅い。ただし TypeScript を含めると 178.8 ms で Node.js（224.0 ms）を逆転します。Deno は TS を前提に最適化されており、<code>.ts</code> を投げる使い方では有利になります。</li>
+		<li><strong>TypeScript は 3 者とも設定ゼロで動いた</strong> — <code>tsconfig.json</code> もトランスパイル手順も無しに <code>.ts</code> を直接実行できました。Node.js の型ストリップは消去可能な構文に限られるため、<code>enum</code> や <code>namespace</code> を使うコードでは差が出ます（今回はそれらを避けた共通コードで測定）。</li>
+		<li><strong>Node.js 26 と 24 の差は小さい</strong> — 起動系 4 項目で最大 8% 程度。世代を上げても起動は速くなっていません。</li>
+		<li><strong>テスト実行の差は 3.94 倍</strong> — 3 ランタイムとも <code>node:test</code> 記法の 200 件を無修正で 200 件パスさせました。互換性は問題なく、差は純粋にランナーの速度です。</li>
+	</ul>
+
+	<div class="callout">
+		<strong>この差が効く場面は限られる</strong>：60 ms の差はプロセスを何度も起こす使い方（CLI・pre-commit フック・CI の細かいステップ・ファイル監視での再実行）でしか体感になりません。
+		常駐するサーバでは起動は 1 回だけなので、この章の結果はサーバ選定の根拠になりません。
+	</div>
+</section>
+
+<!-- ===================== 章4 ===================== -->
+<section class="ch04" id="ch04">
+	<h1>実行性能</h1>
+
+	<h2>B-03 HTTP スループット</h2>
+	<p>10 秒間・50 同時接続で "Hello" を返し続けたときの毎秒リクエスト数です。共通の <code>node:http</code> 版と、各ランタイム固有 API 版を分けて測りました。</p>
+
+	<svg viewBox="0 0 900 260" role="img" aria-label="HTTP スループットの比較">
+		<defs>
+			<linearGradient id="g-r4-node" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
+			</linearGradient>
+			<linearGradient id="g-r4-deno" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#0d6e8c"/><stop offset="1" stop-color="#5ecbe6"/>
+			</linearGradient>
+			<linearGradient id="g-r4-bun" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1d7a3c"/><stop offset="1" stop-color="#45b56c"/>
+			</linearGradient>
+		</defs>
+
+		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">req/s — 長いほど速い</text>
+
+		<text x="0" y="48" fill="#1c2330" font-size="12.5">Node.js 26 <tspan fill="#4a5568">node:http</tspan></text>
+		<rect x="200" y="36" width="350" height="24" rx="4" fill="url(#g-r4-node)"/><text x="558" y="53" font-size="12" fill="#1c2330">13,437</text>
+
+		<text x="0" y="86" fill="#1c2330" font-size="12.5">Deno <tspan fill="#4a5568">node:http</tspan></text>
+		<rect x="200" y="74" width="363" height="24" rx="4" fill="url(#g-r4-deno)"/><text x="571" y="91" font-size="12" fill="#1c2330">13,946</text>
+
+		<text x="0" y="124" fill="#1c2330" font-size="12.5">Bun <tspan fill="#4a5568">node:http</tspan></text>
+		<rect x="200" y="112" width="477" height="24" rx="4" fill="url(#g-r4-bun)"/><text x="685" y="129" font-size="12" fill="#1c2330">18,303</text>
+
+		<line x1="0" y1="152" x2="880" y2="152" stroke="#d9dfe8" stroke-width="1" stroke-dasharray="4 4"/>
+
+		<text x="0" y="180" fill="#1c2330" font-size="12.5" font-weight="600">Deno <tspan font-weight="400" fill="#4a5568">Deno.serve</tspan></text>
+		<rect x="200" y="168" width="620" height="24" rx="4" fill="url(#g-r4-deno)"/><text x="828" y="185" font-size="12" fill="#1c2330" font-weight="700">23,806</text>
+
+		<text x="0" y="218" fill="#1c2330" font-size="12.5" font-weight="600">Bun <tspan font-weight="400" fill="#4a5568">Bun.serve</tspan></text>
+		<rect x="200" y="206" width="603" height="24" rx="4" fill="url(#g-r4-bun)"/><text x="811" y="223" font-size="12" fill="#1c2330">23,175</text>
+
+		<text x="200" y="250" font-size="11.5" fill="#4a5568">点線の下はランタイム固有 API 版（共通コードではない）</text>
+	</svg>
+
+	<div class="tw">
+	<table>
+		<thead><tr><th>サーバ実装</th><th class="nw">req/s</th><th class="nw">p50 遅延</th><th class="nw">p99 遅延</th><th>備考</th></tr></thead>
+		<tbody>
+			<tr><td class="nw">Node.js 26 / <code>node:http</code></td><td class="num">13,437</td><td class="num">3.48 ms</td><td class="num">7.91 ms</td><td>—</td></tr>
+			<tr><td class="nw">Node.js 24 / <code>node:http</code></td><td class="num">14,367</td><td class="num">3.33 ms</td><td class="num">6.76 ms</td><td>参考値。26 より 7% 速い</td></tr>
+			<tr><td class="nw">Deno / <code>node:http</code></td><td class="num">13,946</td><td class="num">3.38 ms</td><td class="num">8.51 ms</td><td>互換レイヤ経由</td></tr>
+			<tr><td class="nw">Bun / <code>node:http</code></td><td class="num best">18,303</td><td class="num">2.61 ms</td><td class="num">5.43 ms</td><td>共通コードでの最速</td></tr>
+			<tr><td class="nw">Deno / <code>Deno.serve</code></td><td class="num best">23,806</td><td class="num">2.04 ms</td><td class="num">3.81 ms</td><td>固有 API。共通版の 1.71 倍</td></tr>
+			<tr><td class="nw">Bun / <code>Bun.serve</code></td><td class="num">23,175</td><td class="num">2.09 ms</td><td class="num">3.96 ms</td><td>固有 API。共通版の 1.27 倍</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<p>
+	<strong>固有 API を使うかどうかで結論が変わります。</strong>
+	<code>node:http</code> のままなら Bun が唯一頭ひとつ抜けますが、固有 API まで許すと Deno と Bun はほぼ同着（差 2.7%、p99 も 0.15 ms 差）です。
+	注目すべきは Deno の伸び幅で、互換レイヤを捨てると 1.71 倍になりました。Deno の <code>node:http</code> は互換のためのラッパで、性能を出す経路ではないことがはっきり出ています。
+	</p>
+
+	<h2>B-04 JSON 処理（10 MB / 52,481 レコード）</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>ランタイム</th><th class="nw">合計</th><th class="nw">parse</th><th class="nw">変換</th><th class="nw">stringify</th><th class="nw">heap 使用量</th></tr></thead>
+		<tbody>
+			<tr><td class="nw">Node.js 26</td><td class="num">137.6 ms</td><td class="num">116.5 ms</td><td class="num">20.4 ms</td><td class="num">26.5 ms</td><td class="num best">41.7 MB</td></tr>
+			<tr><td class="nw">Node.js 24</td><td class="num">153.7 ms</td><td class="num">111.7 ms</td><td class="num">16.7 ms</td><td class="num">27.0 ms</td><td class="num">61.5 MB</td></tr>
+			<tr><td class="nw">Deno</td><td class="num">132.8 ms</td><td class="num">84.5 ms</td><td class="num">26.5 ms</td><td class="num best">16.6 ms</td><td class="num">60.1 MB</td></tr>
+			<tr><td class="nw">Bun</td><td class="num best">116.8 ms</td><td class="num best">80.0 ms</td><td class="num best">8.8 ms</td><td class="num">19.8 ms</td><td class="num best">38.0 MB</td></tr>
+		</tbody>
+	</table>
+	</div>
+	<p>
+	合計では Bun が最速ですが差は 1.18 倍で、起動系ほど開きません。内訳を見ると <code>JSON.parse</code> は Deno・Bun が Node.js より 1.4 倍速く、
+	一方 Node.js 26 はメモリ使用量が最小（41.7 MB）です。Node.js 24 → 26 で heap が 61.5 MB → 41.7 MB に減っているのは、
+	この検証で見えた 26 系の明確な改善点でした。
+	</p>
+
+	<h2>B-05 ファイル I/O（2000 ファイルの書き込み・読み込み・一覧・削除）</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>ランタイム</th><th class="nw">合計</th><th class="nw">書き込み</th><th class="nw">読み込み</th><th class="nw">一覧</th><th class="nw">削除</th></tr></thead>
+		<tbody>
+			<tr><td class="nw">Node.js 26</td><td class="num">3,494.7 ms</td><td class="num">2,435.2 ms</td><td class="num best">318.4 ms</td><td class="num best">1.4 ms</td><td class="num best">684.9 ms</td></tr>
+			<tr><td class="nw">Node.js 24</td><td class="num">3,499.3 ms</td><td class="num">2,525.8 ms</td><td class="num">299.6 ms</td><td class="num">3.2 ms</td><td class="num">800.0 ms</td></tr>
+			<tr><td class="nw">Deno</td><td class="num">3,670.2 ms</td><td class="num">2,750.5 ms</td><td class="num">507.9 ms</td><td class="num">8.6 ms</td><td class="num">1,123.6 ms</td></tr>
+			<tr><td class="nw">Bun</td><td class="num best">3,486.2 ms</td><td class="num best">2,242.6 ms</td><td class="num">455.0 ms</td><td class="num best">1.4 ms</td><td class="num">752.2 ms</td></tr>
+		</tbody>
+	</table>
+	</div>
+	<p>
+	<strong>この項目はランタイムの差がほぼ出ません。</strong> 最速の Bun と最遅の Deno で 1.05 倍しかなく、
+	1 ファイルあたり約 1.75 ms を Windows のファイル操作コストが占めています。差を見るなら内訳の方が有益で、
+	Deno の削除（1,123.6 ms）と一覧（8.6 ms）は他より明確に遅く、Windows のファイルシステム実装に改善の余地があることを示しています。
+	</p>
+
+	<h2>B-06 CPU バウンド処理</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>ランタイム</th><th class="nw">合計</th><th class="nw">数値ループ</th><th class="nw">文字列処理</th><th class="nw">配列ソート</th></tr></thead>
+		<tbody>
+			<tr><td class="nw">Node.js 26</td><td class="num">908.6 ms</td><td class="num">76.0 ms</td><td class="num">84.6 ms</td><td class="num">725.2 ms</td></tr>
+			<tr><td class="nw">Node.js 24</td><td class="num">909.8 ms</td><td class="num">77.5 ms</td><td class="num">103.5 ms</td><td class="num">801.7 ms</td></tr>
+			<tr><td class="nw">Deno</td><td class="num">896.8 ms</td><td class="num best">68.5 ms</td><td class="num">73.0 ms</td><td class="num">715.4 ms</td></tr>
+			<tr><td class="nw">Bun</td><td class="num best">502.1 ms</td><td class="num">82.4 ms</td><td class="num best">54.6 ms</td><td class="num best">374.0 ms</td></tr>
+		</tbody>
+	</table>
+	</div>
+	<p>
+	合計 1.81 倍という Bun の優位は、ほぼ<strong>配列ソートの 1 点</strong>から来ています（374.0 ms 対 715.4 ms）。
+	100 万要素の <code>Array.prototype.sort</code> で JavaScriptCore が V8 の 1.9 倍速く、これが合計の差を作っています。
+	逆に数値ループでは Bun が最も遅く（82.4 ms 対 Deno 68.5 ms）、V8 と JSC の得手不得手が分かれました。
+	「Bun は CPU 処理が速い」と一般化すると誤ります。
+	</p>
+
+	<h2>B-07 SQLite（インメモリ・10 万行）</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>ランタイム</th><th class="nw">合計</th><th class="nw">一括 INSERT</th><th class="nw">集計クエリ</th><th class="nw">点参照 2 万回</th></tr></thead>
+		<tbody>
+			<tr><td class="nw">Node.js 26</td><td class="num best">262.9 ms</td><td class="num best">186.9 ms</td><td class="num best">31.3 ms</td><td class="num best">25.1 ms</td></tr>
+			<tr><td class="nw">Node.js 24</td><td class="num">264.1 ms</td><td class="num best">186.9 ms</td><td class="num">31.7 ms</td><td class="num">34.0 ms</td></tr>
+			<tr><td class="nw">Deno</td><td class="num">441.3 ms</td><td class="num">366.1 ms</td><td class="num">46.9 ms</td><td class="num">55.2 ms</td></tr>
+			<tr><td class="nw">Bun</td><td class="num">279.2 ms</td><td class="num">210.1 ms</td><td class="num">36.0 ms</td><td class="num">38.6 ms</td></tr>
+		</tbody>
+	</table>
+	</div>
+	<p>
+	<strong>Bun が唯一負けた実行性能項目です。</strong> 3 ランタイムすべてが <code>node:sqlite</code> を持っており、同じコードが無修正で動きました。
+	Node.js が全内訳で最速、Deno は INSERT で 1.96 倍遅い。DB アクセスが中心のワークロードでは、起動やソートの速さが結論を決めないことが分かります。
+	</p>
+
+	<div class="callout">
+		<strong>「Hello を返すだけ」の数値を実アプリに持ち込まない</strong>：B-03 の 13,437〜23,806 req/s は、リクエスト 1 件あたり 42〜74 マイクロ秒の差です。
+		実際の API では B-07 の SQLite アクセス（点参照 1 回あたり 1.3〜2.8 マイクロ秒 × 件数）やネットワーク待ちが支配的になり、
+		ランタイム層の差は埋もれます。B-03 は「ランタイムのオーバーヘッドの上限」を測ったものと読んでください。
+	</div>
+</section>
+
+<!-- ===================== 章5 ===================== -->
+<section class="ch05" id="ch05">
+	<h1>パッケージ管理と npm 互換性</h1>
+
+	<h2>B-08 依存インストール</h2>
+	<p>
+	性質を混ぜた 8 パッケージ（純 JS 2・HTTP フレームワーク・DB ドライバ・ビルドツール・CLI・ネイティブアドオン 2）を、
+	同一の <code>package.json</code> から各パッケージマネージャでインストールした時間です。
+	</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>コマンド</th><th class="nw">クリーン</th><th class="nw">キャッシュ有</th><th class="nw">node_modules</th><th class="nw">lock ファイル</th><th>postinstall スクリプト</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nw"><code>npm install</code></td><td class="num">26.3 秒</td><td class="num">17.1 秒</td>
+				<td class="num">2,201 件 / 74.3 MB</td><td class="nw"><code>package-lock.json</code></td><td>既定で実行</td>
+			</tr>
+			<tr>
+				<td class="nw"><code>deno install</code></td><td class="num best">17.1 秒</td><td class="num best">1.3 秒</td>
+				<td class="num">2,273 件 / 74.1 MB</td><td class="nw"><code>deno.lock</code></td><td><code>--allow-scripts</code> で明示許可</td>
+			</tr>
+			<tr>
+				<td class="nw"><code>bun install</code></td><td class="num">25.7 秒</td><td class="num">10.8 秒</td>
+				<td class="num">2,197 件 / 74.2 MB</td><td class="nw"><code>bun.lock</code></td><td>既定でブロック（<code>trustedDependencies</code> が必要）</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<p>
+	<strong>キャッシュが効いたときの差が極端です。</strong> <code>deno install</code> の 1.3 秒に対し <code>bun install</code> は 10.8 秒、<code>npm install</code> は 17.1 秒。
+	Deno はグローバルキャッシュから <code>node_modules</code> を組み立て直すだけで済む設計になっており、この条件では 13 倍の差がつきました。
+	一方クリーン（キャッシュもロックも無い）状態では 17.1〜26.3 秒に収まり、ネットワーク待ちが支配的になって差は 1.54 倍まで縮みます。
+	</p>
+	<p>
+	生成される <code>node_modules</code> はどれも 74 MB 前後・2,200 件前後でほぼ同じでした。
+	<code>bun install</code> が postinstall を既定でブロックしても完走したのは、今回の対象がプリビルドバイナリを
+	<code>optionalDependencies</code> で配る方式（sharp・better-sqlite3）だったためです。ソースからビルドが必要なパッケージでは結果が変わります。
+	</p>
+
+	<h2>P3 npm 互換性チェック</h2>
+	<p>各パッケージマネージャが作った <code>node_modules</code> に対し、対応するランタイムで import と主要エクスポートの存在確認を行いました。</p>
+	<div class="tw">
+	<table>
+		<thead>
+			<tr><th>パッケージ</th><th>分類</th><th class="nw">Node.js 26</th><th class="nw">Node.js 24</th><th class="nw">Deno</th><th class="nw">Bun</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="nw">zod</td><td>純 JS ライブラリ</td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td></tr>
+			<tr><td class="nw">dayjs</td><td>純 JS ライブラリ</td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td></tr>
+			<tr><td class="nw">express</td><td>HTTP フレームワーク</td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td></tr>
+			<tr><td class="nw">pg</td><td>DB ドライバ</td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td></tr>
+			<tr><td class="nw">esbuild</td><td>ビルドツール（ネイティブバイナリ同梱）</td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td></tr>
+			<tr><td class="nw">prettier</td><td>CLI ツール（bin エントリあり）</td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td></tr>
+			<tr><td class="nw">sharp</td><td>ネイティブアドオン（プリビルド配布）</td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td></tr>
+			<tr><td class="nw">better-sqlite3</td><td>ネイティブアドオン（要ビルド）</td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td><td class="nw"><span class="badge b-ok">OK</span></td></tr>
+			<tr><td class="nw"><strong>成功率</strong></td><td>—</td><td class="nw"><strong>8/8</strong></td><td class="nw"><strong>8/8</strong></td><td class="nw"><strong>8/8</strong></td><td class="nw"><strong>8/8</strong></td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<div class="callout">
+		<strong>この結果は「8 パッケージについて」の話</strong>：全滅も想定して失敗を残す作りにしていましたが、
+		結果は全勝で差がつきませんでした。npm には 300 万を超えるパッケージがあり、8 個で「互換性は完全」とは言えません。
+		特にソースからのネイティブビルドを要求するパッケージ、Node.js の内部 API に触るパッケージは今回の対象に含まれていません。
+		自分のプロジェクトの <code>package.json</code> でこのチェックをやり直すのが、最も確実な確認方法です。
+	</div>
+</section>
+
+<!-- ===================== 章6 ===================== -->
+<section class="ch06" id="ch06">
+	<h1>ツールチェーンと配布</h1>
+
+	<h2>B-10 単一実行ファイル化</h2>
+	<p>依存を持たない 1 ファイルの CLI を、実行ファイルに固めた結果です。生成物は実際に起動して期待した出力が出ることを確認しています。</p>
+	<div class="tw">
+	<table>
+		<thead><tr><th>ランタイム</th><th>方法</th><th class="nw">所要時間</th><th class="nw">出力サイズ</th><th class="nw">動作</th><th>手順の重さ</th></tr></thead>
+		<tbody>
+			<tr>
+				<td class="nw">Bun</td><td class="nw"><code>bun build --compile</code></td><td class="num best">0.7 秒</td><td class="num">84.7 MB</td>
+				<td class="nw"><span class="badge b-ok">OK</span></td><td>1 コマンド</td>
+			</tr>
+			<tr>
+				<td class="nw">Deno</td><td class="nw"><code>deno compile</code></td><td class="num">5.0 秒</td><td class="num best">75.9 MB</td>
+				<td class="nw"><span class="badge b-ok">OK</span></td><td>1 コマンド</td>
+			</tr>
+			<tr>
+				<td class="nw">Node.js 26</td><td class="nw">SEA（<code>--experimental-sea-config</code> ＋ postject）</td><td class="num">18.1 秒</td><td class="num">98.5 MB</td>
+				<td class="nw"><span class="badge b-ok">OK</span></td><td>3 段階。<code>postject</code> を npm から取得する必要あり</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<p>
+	3 者すべて動く実行ファイルを作れましたが、手数が違います。Bun と Deno は 1 コマンドで完結、Node.js は
+	<strong>blob 生成 → <code>node.exe</code> の複製 → postject による注入</strong>の 3 段階で、しかも postject を npm から入れる必要があります。
+	18.1 秒のうち大半はこの npm インストールです。出力サイズは Deno が最小（75.9 MB）、Node.js が最大（98.5 MB）でした。
+	</p>
+
+	<div class="callout">
+		<strong>この項目で 1 度失敗し、原因は検証側にあった</strong>：Node.js SEA は最初の実行で
+		<code>npm error Tracker "idealTree" already exists</code> で失敗しました。作業ディレクトリに <code>package.json</code> を置いていなかったため
+		npm が親ディレクトリを探索したことが原因で、Node.js の制約ではありません。<code>package.json</code> を置いて再実行し成功しています。
+		計測harnessの不備をランタイムの欠点として記録しないよう、失敗はすべて原因を切り分けました。
+	</div>
+
+	<h2>標準で持っているもの</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>機能</th><th class="nw">Node.js 26</th><th class="nw">Deno 2.9.5</th><th class="nw">Bun 1.4.0</th></tr></thead>
+		<tbody>
+			<tr><td>TypeScript の直接実行</td><td>あり（型ストリップ・消去可能構文のみ）</td><td>あり（型チェックも可）</td><td>あり</td></tr>
+			<tr><td>テストランナー</td><td>あり（<code>node --test</code>）</td><td>あり（<code>deno test</code>）</td><td>あり（<code>bun test</code>）</td></tr>
+			<tr><td><code>node:test</code> 記法の実行</td><td>200/200 パス</td><td>200/200 パス</td><td>200/200 パス</td></tr>
+			<tr><td>フォーマッタ / リンタ</td><td>なし</td><td>あり（<code>deno fmt</code> / <code>deno lint</code>）</td><td>あり（<code>bun fmt</code>）</td></tr>
+			<tr><td>バンドラ</td><td>なし</td><td>あり（<code>deno bundle</code>）</td><td>あり（<code>bun build</code>）</td></tr>
+			<tr><td>単一実行ファイル化</td><td>あり（要 postject）</td><td>あり</td><td>あり</td></tr>
+			<tr><td>SQLite</td><td>あり（<code>node:sqlite</code>）</td><td>あり（<code>node:sqlite</code>）</td><td>あり（<code>node:sqlite</code> / <code>bun:sqlite</code>）</td></tr>
+			<tr><td>権限モデル</td><td>なし（全許可）</td><td>あり（既定で拒否）</td><td>なし（全許可）</td></tr>
+			<tr><td>LTS による長期サポート</td><td>あり</td><td>なし</td><td>なし</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<p>
+	Deno の権限モデルは今回の検証で実際に体感しました。<code>-A</code>（全許可）を付けないと、
+	ファイル読み込み・環境変数参照・ポート待ち受けのいずれもエラーになります。手間ではありますが、
+	外部から持ち込んだスクリプトを走らせる場面ではこの既定拒否が他 2 者に無い価値になります。
+	</p>
+</section>
+
+<!-- ===================== 章7 ===================== -->
+<section class="ch07" id="ch07">
+	<h1>総合スコアと読み方の注意</h1>
+
+	<h2>評価軸ごとのスコア</h2>
+	<p>定量項目は「各項目の最良値を 100 とした相対値」を軸内で平均、定性項目は 5 段階を 100 点満点に換算した値です。重みは計画時に確定させたものを変更していません。</p>
+
+	<svg viewBox="0 0 900 580" role="img" aria-label="評価軸ごとのスコア比較">
+		<defs>
+			<linearGradient id="g-r7-node" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
+			</linearGradient>
+			<linearGradient id="g-r7-deno" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#0d6e8c"/><stop offset="1" stop-color="#5ecbe6"/>
+			</linearGradient>
+			<linearGradient id="g-r7-bun" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1d7a3c"/><stop offset="1" stop-color="#45b56c"/>
+			</linearGradient>
+		</defs>
+
+		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">スコア（100 点満点。各軸の重みを括弧内に併記）</text>
+
+		<text x="0" y="44" fill="#1c2330" font-size="12.5">起動性能 <tspan fill="#4a5568">(15)</tspan></text>
+		<rect x="185" y="34" width="216" height="13" rx="3" fill="url(#g-r7-node)"/><text x="409" y="44" font-size="11" fill="#1c2330">38.6</text>
+		<rect x="185" y="50" width="198" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="391" y="60" font-size="11" fill="#1c2330">35.4</text>
+		<rect x="185" y="66" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="76" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+
+		<text x="0" y="103" fill="#1c2330" font-size="12.5">実行性能 <tspan fill="#4a5568">(20)</tspan></text>
+		<rect x="185" y="93" width="463" height="13" rx="3" fill="url(#g-r7-node)"/><text x="656" y="103" font-size="11" fill="#1c2330">82.7</text>
+		<rect x="185" y="109" width="420" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="613" y="119" font-size="11" fill="#1c2330">75.0</text>
+		<rect x="185" y="125" width="553" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="746" y="135" font-size="11" fill="#1c2330" font-weight="700">98.8</text>
+
+		<text x="0" y="162" fill="#1c2330" font-size="12.5">npm 互換性 <tspan fill="#4a5568">(15)</tspan></text>
+		<rect x="185" y="152" width="560" height="13" rx="3" fill="url(#g-r7-node)"/><text x="753" y="162" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="168" width="560" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="753" y="178" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="184" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="194" font-size="11" fill="#1c2330">100.0</text>
+
+		<text x="0" y="221" fill="#1c2330" font-size="12.5">TypeScript <tspan fill="#4a5568">(10)</tspan></text>
+		<rect x="185" y="211" width="250" height="13" rx="3" fill="url(#g-r7-node)"/><text x="443" y="221" font-size="11" fill="#1c2330">44.6</text>
+		<rect x="185" y="227" width="313" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="506" y="237" font-size="11" fill="#1c2330">55.9</text>
+		<rect x="185" y="243" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="253" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+
+		<text x="0" y="280" fill="#1c2330" font-size="12.5">ツールチェーン <tspan fill="#4a5568">(10)</tspan></text>
+		<rect x="185" y="270" width="81" height="13" rx="3" fill="url(#g-r7-node)"/><text x="274" y="280" font-size="11" fill="#1c2330">14.5</text>
+		<rect x="185" y="286" width="126" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="319" y="296" font-size="11" fill="#1c2330">22.5</text>
+		<rect x="185" y="302" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="312" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+
+		<text x="0" y="339" fill="#1c2330" font-size="12.5">パッケージ管理 <tspan fill="#4a5568">(10)</tspan></text>
+		<rect x="185" y="329" width="44" height="13" rx="3" fill="url(#g-r7-node)"/><text x="237" y="339" font-size="11" fill="#1c2330">7.9</text>
+		<rect x="185" y="345" width="560" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="753" y="355" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+		<rect x="185" y="361" width="69" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="262" y="371" font-size="11" fill="#1c2330">12.4</text>
+
+		<text x="0" y="398" fill="#1c2330" font-size="12.5">運用・サポート <tspan fill="#4a5568">(10)</tspan></text>
+		<rect x="185" y="388" width="560" height="13" rx="3" fill="url(#g-r7-node)"/><text x="753" y="398" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+		<rect x="185" y="404" width="336" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="529" y="414" font-size="11" fill="#1c2330">60.0</text>
+		<rect x="185" y="420" width="224" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="417" y="430" font-size="11" fill="#1c2330">40.0</text>
+
+		<text x="0" y="457" fill="#1c2330" font-size="12.5">開発体験 <tspan fill="#4a5568">(5)</tspan></text>
+		<rect x="185" y="447" width="448" height="13" rx="3" fill="url(#g-r7-node)"/><text x="641" y="457" font-size="11" fill="#1c2330">80.0</text>
+		<rect x="185" y="463" width="560" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="753" y="473" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="479" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="489" font-size="11" fill="#1c2330">100.0</text>
+
+		<text x="0" y="516" fill="#1c2330" font-size="12.5">Windows 対応 <tspan fill="#4a5568">(5)</tspan></text>
+		<rect x="185" y="506" width="560" height="13" rx="3" fill="url(#g-r7-node)"/><text x="753" y="516" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="522" width="448" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="641" y="532" font-size="11" fill="#1c2330">80.0</text>
+		<rect x="185" y="538" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="548" font-size="11" fill="#1c2330">100.0</text>
+
+		<text x="185" y="572" font-size="11.5" fill="#4a5568">起動性能・実行性能・npm 互換性・TypeScript・ツールチェーン・パッケージ管理は定量、残り 3 軸は定性評価</text>
+	</svg>
+	<p class="legend">
+		<span><span class="swatch sw-node"></span>Node.js 26.7.0</span>
+		<span><span class="swatch sw-deno"></span>Deno 2.9.5</span>
+		<span><span class="swatch sw-bun"></span>Bun 1.4.0</span>
+	</p>
+
+	<h2>総合スコア</h2>
+	<div class="tw">
+	<table>
+		<thead><tr><th>ランタイム</th><th class="nw">総合スコア</th><th>最も強い軸</th><th>最も弱い軸</th></tr></thead>
+		<tbody>
+			<tr><td class="nw">Bun 1.4.0</td><td class="num best">85.0</td><td>起動性能・実行性能・TypeScript・ツールチェーン（すべて 100 前後）</td><td>パッケージ管理 12.4／運用・サポート 40.0</td></tr>
+			<tr><td class="nw">Deno 2.9.5</td><td class="num">68.2</td><td>パッケージ管理 100.0／開発体験 100.0</td><td>起動性能 35.4／ツールチェーン 22.5</td></tr>
+			<tr><td class="nw">Node.js 26.7.0</td><td class="num">63.0</td><td>運用・サポート 100.0／Windows 対応 100.0／実行性能 82.7</td><td>パッケージ管理 7.9／ツールチェーン 14.5</td></tr>
+			<tr><td class="nw">Node.js 24.19.0（参考）</td><td class="num">63.5</td><td>26 系とほぼ同じ</td><td>26 系とほぼ同じ</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>この総合スコアを信用しすぎないための注意</h2>
+	<ol>
+		<li>
+			<strong>相対スコアは差を誇張する</strong> — 最良値を 100 とする方式なので、実測差が小さくてもスコア差は開きません／逆に開きすぎます。
+			典型はパッケージ管理で、キャッシュ有インストールが Deno 1.3 秒・Bun 10.8 秒・npm 17.1 秒なので、Node.js は 7.9 点という壊滅的な数字になります。
+			実際には「17 秒か 1 秒か」であって、日常の開発を左右する差ではありません。逆にファイル I/O は 1.05 倍しか違わないのに、全員 95〜100 点で横並びになります。
+		</li>
+		<li>
+			<strong>重みが結論を決めている</strong> — 速さ関連（起動 15＋実行 20＋TypeScript 10）で 45 点を占める配点なので、Bun が勝つのは配点の帰結でもあります。
+			「運用・サポート」を 30 に上げれば Node.js が最上位になります。重みは計測後に動かしていませんが、自分の状況に合わせて再計算する前提の数字です。
+		</li>
+		<li>
+			<strong>ツールチェーン軸が B-10・B-11 の時間だけで決まっている</strong> — fmt / lint / bundle の有無という本来この軸で重要な要素は、
+			定量化できていないため章 6 の表に分離してあります。スコア 14.5 は「Node.js のツールチェーンが弱い」ことの証拠としては不十分です。
+		</li>
+		<li>
+			<strong>単一マシン・単一 OS の相対比較</strong> — 4 コアのノート PC 1 台、Windows のみ。絶対値を「このランタイムは毎秒 N リクエスト処理できる」と一般化はできません。
+			変動係数は多くの項目で 2〜16% あり、10% 以内の差は「差なし」として扱うべきです。
+		</li>
+		<li>
+			<strong>Deno と Bun の HTTP は固有 API では同着</strong> — 実行性能の軸には共通コード（<code>node:http</code>）のみを入れています。
+			固有 API を使う前提なら Deno の実行性能スコアは上がります。
+		</li>
+	</ol>
+
+	<h2>再現方法</h2>
+	<p>同じ計測を後日やり直せます。<code>tools/</code> のバイナリと <code>bench/fixtures/</code> のテストデータはリポジトリに含めず、スクリプトから再生成します。</p>
+<pre><code># 1. ランタイムと計測ツールを tools/ に配置（SHA256 検証つき）
+scripts\setup-runtimes.ps1
+
+# 2. ベンチ本体（項目を分けて実行し、-Append で結果をマージできる）
+scripts\run-bench.ps1 -Runs 10 -Warmup 3 -Only B-01,B-02,B-09,B-11
+scripts\run-bench.ps1 -Runs 10 -Warmup 3 -FileCount 2000 -Only B-04,B-05,B-06,B-07 -Append
+scripts\run-bench.ps1 -Only B-03 -HttpSeconds 10 -HttpConnections 50 -Append
+
+# 3. 依存インストールと npm 互換性
+scripts\run-install-bench.ps1
+
+# 4. 単一実行ファイル化
+scripts\run-compile-bench.ps1
+
+# 5. 集計（定性評価は results/qualitative.json を読む）
+scripts\build-report.ps1</code></pre>
+
+	<div class="tw">
+	<table>
+		<thead><tr><th>成果物</th><th>内容</th></tr></thead>
+		<tbody>
+			<tr><td class="nw"><code>results/env.txt</code></td><td>検証環境・版数・バイナリの SHA256</td></tr>
+			<tr><td class="nw"><code>results/measurements.csv</code></td><td>項目 × ランタイムの中央値・最小・最大・標準偏差・変動係数</td></tr>
+			<tr><td class="nw"><code>results/summary.json</code></td><td>相対スコア・評価軸スコア・総合スコアを含む集計結果</td></tr>
+			<tr><td class="nw"><code>results/qualitative.json</code></td><td>定性評価のスコアと、その根拠にした実測値</td></tr>
+			<tr><td class="nw"><code>results/raw/</code></td><td>hyperfine・oha の生出力、インストールログ、互換性チェックの生結果</td></tr>
+		</tbody>
+	</table>
+	</div>
+</section>
+
+</div>
+
+<footer>
+	<p><a href="../../README.html">← README に戻る</a></p>
+</footer>
+
+</body>
+</html>

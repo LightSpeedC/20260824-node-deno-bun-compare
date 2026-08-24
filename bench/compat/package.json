@@ -1,0 +1,16 @@
+{
+	"name": "bench-compat",
+	"private": true,
+	"type": "module",
+	"description": "P3 npm 互換性チェックと B-08 依存インストール計測の対象。性質の異なるパッケージを意図的に混ぜている。",
+	"dependencies": {
+		"zod": "*",
+		"dayjs": "*",
+		"express": "*",
+		"pg": "*",
+		"esbuild": "*",
+		"prettier": "*",
+		"sharp": "*",
+		"better-sqlite3": "*"
+	}
+}

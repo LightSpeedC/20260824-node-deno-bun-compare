@@ -1,0 +1,39 @@
+{
+  "startedAt": "2026-08-25 00:57:08",
+  "finishedAt": "2026-08-25 00:57:45",
+  "results": [
+    {
+      "id": "B-10",
+      "runtime": "deno",
+      "method": "deno compile",
+      "seconds": 4.99,
+      "sizeMB": 75.9,
+      "ok": true,
+      "exitCode": 0,
+      "verified": true,
+      "note": ""
+    },
+    {
+      "id": "B-10",
+      "runtime": "bun",
+      "method": "bun build --compile",
+      "seconds": 0.66,
+      "sizeMB": 84.7,
+      "ok": true,
+      "exitCode": 0,
+      "verified": true,
+      "note": ""
+    },
+    {
+      "id": "B-10",
+      "runtime": "node26",
+      "method": "SEA (--experimental-sea-config + postject)",
+      "seconds": 18.13,
+      "sizeMB": 98.5,
+      "ok": true,
+      "exitCode": 0,
+      "verified": true,
+      "note": "手順が 3 段（blob 生成・node.exe 複製・postject 注入）で npm 依存あり"
+    }
+  ]
+}
