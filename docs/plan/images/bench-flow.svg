@@ -1,42 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 150" width="900" height="150" role="img" aria-label="検証の実施フロー図">
-	<defs>
-		<linearGradient id="g-step" x1="0" y1="1" x2="0" y2="0">
-			<stop offset="0" stop-color="hsl(93.3,78%,25%)"/>
-			<stop offset="1" stop-color="hsl(93.3,58%,65%)"/>
-		</linearGradient>
-		<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-			<path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(93.3,78%,25%)"/>
-		</marker>
-	</defs>
-	<rect x="0" y="0" width="900" height="150" fill="#ffffff"/>
+		<defs>
+			<linearGradient id="g-plan-5a" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="hsl(93.3,78%,25%)"/>
+				<stop offset="1" stop-color="hsl(93.3,58%,65%)"/>
+			</linearGradient>
+			<marker id="ar-plan-5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+				<path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(93.3,78%,25%)"/>
+			</marker>
+		</defs>
+	<rect width="100%" height="100%" fill="#ffffff"/>
 
-	<g font-family="sans-serif">
-		<rect x="14" y="40" width="150" height="64" rx="10" fill="url(#g-step)"/>
+		<rect x="14" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
 		<text x="89" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">1. 環境整備</text>
 		<text x="89" y="88" text-anchor="middle" fill="#fff" font-size="11.5">3 ランタイムを最新化</text>
 
-		<rect x="190" y="40" width="150" height="64" rx="10" fill="url(#g-step)"/>
+		<rect x="190" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
 		<text x="265" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">2. 実装</text>
 		<text x="265" y="88" text-anchor="middle" fill="#fff" font-size="11.5">計測用コードを用意</text>
 
-		<rect x="366" y="40" width="150" height="64" rx="10" fill="url(#g-step)"/>
+		<rect x="366" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
 		<text x="441" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">3. 予備計測</text>
 		<text x="441" y="88" text-anchor="middle" fill="#fff" font-size="11.5">ばらつきを確認</text>
 
-		<rect x="542" y="40" width="150" height="64" rx="10" fill="url(#g-step)"/>
+		<rect x="542" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
 		<text x="617" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">4. 本計測</text>
 		<text x="617" y="88" text-anchor="middle" fill="#fff" font-size="11.5">全項目を直列実行</text>
 
-		<rect x="718" y="40" width="150" height="64" rx="10" fill="url(#g-step)"/>
+		<rect x="718" y="40" width="150" height="64" rx="10" fill="url(#g-plan-5a)"/>
 		<text x="793" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">5. 集計</text>
 		<text x="793" y="88" text-anchor="middle" fill="#fff" font-size="11.5">レポート作成</text>
 
-		<line x1="166" y1="72" x2="188" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#arrow)"/>
-		<line x1="342" y1="72" x2="364" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#arrow)"/>
-		<line x1="518" y1="72" x2="540" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#arrow)"/>
-		<line x1="694" y1="72" x2="716" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#arrow)"/>
+		<line x1="166" y1="72" x2="188" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#ar-plan-5)"/>
+		<line x1="342" y1="72" x2="364" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#ar-plan-5)"/>
+		<line x1="518" y1="72" x2="540" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#ar-plan-5)"/>
+		<line x1="694" y1="72" x2="716" y2="72" stroke="hsl(93.3,78%,25%)" stroke-width="2.5" marker-end="url(#ar-plan-5)"/>
 
-		<path d="M 793 108 L 793 130 L 441 130 L 441 110" fill="none" stroke="hsl(93.3,58%,65%)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+		<path d="M 793 108 L 793 130 L 441 130 L 441 110" fill="none" stroke="hsl(93.3,58%,65%)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-plan-5)"/>
 		<text x="617" y="146" text-anchor="middle" fill="hsl(93.3,78%,25%)" font-size="11.5">ばらつきが大きい項目は条件を見直して再計測</text>
-	</g>
-</svg>
+	</svg>

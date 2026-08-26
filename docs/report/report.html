@@ -301,7 +301,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 		<li><strong>安全性とツールの一体感を買うなら Deno</strong>。権限モデルと 1 バイナリ完結が他に無い。生の速度では中位。</li>
 	</ul>
 
-	<div class="callout">
+	<div class="callout callout-important">
 		<strong>2026 年時点で「npm が動かない」は理由にならない</strong>：ネイティブアドオン（sharp・better-sqlite3）を含む 8 パッケージが、
 		3 ランタイムすべてで import から利用まで通りました。かつて Deno・Bun を避ける最大の理由だった互換性は、この検証範囲では判断材料になりません。
 	</div>
@@ -383,7 +383,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 	プロセスを起動して終わるまでの時間を hyperfine で測った項目です。CLI ツールや使い捨てスクリプトでは、この時間がそのまま体感になります。
 	</p>
 
-	<svg viewBox="0 0 900 400" role="img" aria-label="起動系 4 項目の中央値を比較した横棒グラフ">
+	<svg id="chart-startup" viewBox="0 0 900 400" role="img" aria-label="起動系 4 項目の中央値を比較した横棒グラフ">
 		<defs>
 			<linearGradient id="g-r3-node" x1="0" y1="1" x2="0" y2="0">
 				<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
@@ -396,7 +396,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 			</linearGradient>
 		</defs>
 
-		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">中央値 (ms) — 短いほど速い</text>
+		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">中央値 (ms) — 短いほど速い　■ 青=Node.js 26　■ 水色=Deno　■ 緑=Bun</text>
 
 		<!-- B-01 -->
 		<text x="0" y="52" fill="#1c2330" font-size="13" font-weight="600">B-01 空スクリプト起動</text>
@@ -422,11 +422,6 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 		<rect x="160" y="336" width="483" height="20" rx="4" fill="url(#g-r3-deno)"/><text x="649" y="351" font-size="12" fill="#1c2330">241.3</text>
 		<rect x="160" y="360" width="154" height="20" rx="4" fill="url(#g-r3-bun)"/><text x="320" y="375" font-size="12" fill="#1c2330" font-weight="700">76.8</text>
 	</svg>
-	<p class="legend">
-		<span><span class="swatch sw-node"></span>Node.js 26.7.0</span>
-		<span><span class="swatch sw-deno"></span>Deno 2.9.5</span>
-		<span><span class="swatch sw-bun"></span>Bun 1.4.0</span>
-	</p>
 
 	<div class="tw">
 	<table>
@@ -464,7 +459,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 	<h2>B-03 HTTP スループット</h2>
 	<p>10 秒間・50 同時接続で "Hello" を返し続けたときの毎秒リクエスト数です。共通の <code>node:http</code> 版と、各ランタイム固有 API 版を分けて測りました。</p>
 
-	<svg viewBox="0 0 900 260" role="img" aria-label="HTTP スループットの比較">
+	<svg id="chart-http" viewBox="0 0 900 260" role="img" aria-label="HTTP スループットの比較">
 		<defs>
 			<linearGradient id="g-r4-node" x1="0" y1="1" x2="0" y2="0">
 				<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
@@ -591,7 +586,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 	Node.js が全内訳で最速、Deno は INSERT で 1.96 倍遅い。DB アクセスが中心のワークロードでは、起動やソートの速さが結論を決めないことが分かります。
 	</p>
 
-	<div class="callout">
+	<div class="callout callout-warning">
 		<strong>「Hello を返すだけ」の数値を実アプリに持ち込まない</strong>：B-03 の 13,437〜23,806 req/s は、リクエスト 1 件あたり 42〜74 マイクロ秒の差です。
 		実際の API では B-07 の SQLite アクセス（点参照 1 回あたり 1.3〜2.8 マイクロ秒 × 件数）やネットワーク待ちが支配的になり、
 		ランタイム層の差は埋もれます。B-03 は「ランタイムのオーバーヘッドの上限」を測ったものと読んでください。
@@ -661,7 +656,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 	</table>
 	</div>
 
-	<div class="callout">
+	<div class="callout callout-caution">
 		<strong>この結果は「8 パッケージについて」の話</strong>：全滅も想定して失敗を残す作りにしていましたが、
 		結果は全勝で差がつきませんでした。npm には 300 万を超えるパッケージがあり、8 個で「互換性は完全」とは言えません。
 		特にソースからのネイティブビルドを要求するパッケージ、Node.js の内部 API に触るパッケージは今回の対象に含まれていません。
@@ -739,7 +734,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 	<h2>評価軸ごとのスコア</h2>
 	<p>定量項目は「各項目の最良値を 100 とした相対値」を軸内で平均、定性項目は 5 段階を 100 点満点に換算した値です。重みは計画時に確定させたものを変更していません。</p>
 
-	<svg viewBox="0 0 900 580" role="img" aria-label="評価軸ごとのスコア比較">
+	<svg id="chart-scores" viewBox="0 0 900 580" role="img" aria-label="評価軸ごとのスコア比較">
 		<defs>
 			<linearGradient id="g-r7-node" x1="0" y1="1" x2="0" y2="0">
 				<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
@@ -752,7 +747,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 			</linearGradient>
 		</defs>
 
-		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">スコア（100 点満点。各軸の重みを括弧内に併記）</text>
+		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">スコア（100 点満点。各軸の重みを括弧内に併記）　■ 青=Node.js 26　■ 水色=Deno　■ 緑=Bun</text>
 
 		<text x="0" y="44" fill="#1c2330" font-size="12.5">起動性能 <tspan fill="#4a5568">(15)</tspan></text>
 		<rect x="185" y="34" width="216" height="13" rx="3" fill="url(#g-r7-node)"/><text x="409" y="44" font-size="11" fill="#1c2330">38.6</text>
@@ -801,11 +796,6 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 
 		<text x="185" y="572" font-size="11.5" fill="#4a5568">起動性能・実行性能・npm 互換性・TypeScript・ツールチェーン・パッケージ管理は定量、残り 3 軸は定性評価</text>
 	</svg>
-	<p class="legend">
-		<span><span class="swatch sw-node"></span>Node.js 26.7.0</span>
-		<span><span class="swatch sw-deno"></span>Deno 2.9.5</span>
-		<span><span class="swatch sw-bun"></span>Bun 1.4.0</span>
-	</p>
 
 	<h2>総合スコア</h2>
 	<div class="tw">
@@ -847,7 +837,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 
 	<h2>再現方法</h2>
 	<p>同じ計測を後日やり直せます。<code>tools/</code> のバイナリと <code>bench/fixtures/</code> のテストデータはリポジトリに含めず、スクリプトから再生成します。</p>
-<pre><code># 1. ランタイムと計測ツールを tools/ に配置（SHA256 検証つき）
+<pre><code class="language-powershell"># 1. ランタイムと計測ツールを tools/ に配置（SHA256 検証つき）
 src\scripts\10_setup_runtimes\setup-runtimes.ps1
 
 # 2. ベンチ本体（項目を分けて実行し、-Append で結果をマージできる）

@@ -184,7 +184,7 @@ Node.js・Deno・Bun を、それぞれの最新バージョンで Windows 11 �
 	<h1>結果レポート</h1>
 
 	<p>用途別の推奨、11 項目の実測値と内訳、評価軸ごとのスコア、そして結果の読み方の注意までをまとめたものです。</p>
-	<p><a class="doclink" href="docs/report/report.html">📊 docs/report/report.html を開く</a></p>
+	<p><a class="doclink" href="docs/report/report.html">結果レポートを開く</a></p>
 
 	<h2>総合スコア</h2>
 	<div class="tw">
@@ -214,7 +214,7 @@ Node.js・Deno・Bun を、それぞれの最新バージョンで Windows 11 �
 	</table>
 	</div>
 
-	<div class="callout">
+	<div class="callout callout-warning">
 		<strong>総合スコアだけで決めない</strong>：配点は速さ関連で 45 点を占めており、順位は重みの帰結でもあります。
 		「運用・サポート」の重みを上げれば Node.js が最上位になります。レポートの章 7 に、この数字を信用しすぎないための注意を 5 点挙げています。
 	</div>
@@ -224,10 +224,10 @@ Node.js・Deno・Bun を、それぞれの最新バージョンで Windows 11 �
 <section class="ch02">
 	<h1>比較検証 計画書</h1>
 	<p>何を測り、どう測り、どう判断するかを着手前に決めた文書です。評価軸の重み付け、ベンチマーク項目 B-01〜B-11 の設計、公平に測るためのルール、実施フロー、リスクと対策を含みます。計画から変えた点（B-05 の件数など）も記録してあります。</p>
-	<p><a class="doclink" href="docs/plan/comparison-plan.html">📄 docs/plan/comparison-plan.html を開く</a></p>
+	<p><a class="doclink" href="docs/plan/comparison-plan.html">検証計画書を開く</a></p>
 
 	<h2>再現手順</h2>
-<pre><code># 1. ランタイムと計測ツールを tools/ に配置（SHA256 検証つき）
+<pre><code class="language-powershell"># 1. ランタイムと計測ツールを tools/ に配置（SHA256 検証つき）
 src\scripts\10_setup_runtimes\setup-runtimes.ps1
 
 # 2. ベンチ本体（-Append で項目を分けて実行できる）

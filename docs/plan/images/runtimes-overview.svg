@@ -1,40 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" width="900" height="250" role="img" aria-label="Node.js / Deno / Bun の立ち位置の比較図">
-	<defs>
-		<linearGradient id="g-node" x1="0" y1="1" x2="0" y2="0">
-			<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
-		</linearGradient>
-		<linearGradient id="g-deno" x1="0" y1="1" x2="0" y2="0">
-			<stop offset="0" stop-color="#0d6e8c"/><stop offset="1" stop-color="#5ecbe6"/>
-		</linearGradient>
-		<linearGradient id="g-bun" x1="0" y1="1" x2="0" y2="0">
-			<stop offset="0" stop-color="#1d7a3c"/><stop offset="1" stop-color="#45b56c"/>
-		</linearGradient>
-	</defs>
-	<rect x="0" y="0" width="900" height="250" fill="#ffffff"/>
+		<defs>
+			
+			<linearGradient id="g-plan-2a" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1a4ea8"/>
+				<stop offset="1" stop-color="#4f8fe6"/>
+			</linearGradient>
+			<linearGradient id="g-plan-2b" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#0d6e8c"/>
+				<stop offset="1" stop-color="#5ecbe6"/>
+			</linearGradient>
+			<linearGradient id="g-plan-2c" x1="0" y1="1" x2="0" y2="0">
+				<stop offset="0" stop-color="#1d7a3c"/>
+				<stop offset="1" stop-color="#45b56c"/>
+			</linearGradient>
+		</defs>
+	<rect width="100%" height="100%" fill="#ffffff"/>
 
-	<g font-family="sans-serif">
-		<rect x="20" y="25" width="270" height="200" rx="12" fill="url(#g-node)"/>
-		<text x="155" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Node.js 26 / 24</text>
-		<text x="155" y="92" text-anchor="middle" fill="#fff" font-size="13">エコシステム最大・実績最多</text>
-		<text x="155" y="122" text-anchor="middle" fill="#fff" font-size="13">V8 + libuv / CommonJS + ESM</text>
-		<text x="155" y="152" text-anchor="middle" fill="#fff" font-size="13">LTS による長期サポート</text>
-		<text x="155" y="182" text-anchor="middle" fill="#fff" font-size="13">TS は別途トランスパイル前提</text>
-		<text x="155" y="210" text-anchor="middle" fill="#fff" font-size="13">パッケージ管理は npm / pnpm</text>
-
-		<rect x="315" y="25" width="270" height="200" rx="12" fill="url(#g-deno)"/>
-		<text x="450" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Deno 2.9</text>
-		<text x="450" y="92" text-anchor="middle" fill="#fff" font-size="13">権限をデフォルトで拒否</text>
-		<text x="450" y="122" text-anchor="middle" fill="#fff" font-size="13">TypeScript をそのまま実行</text>
-		<text x="450" y="152" text-anchor="middle" fill="#fff" font-size="13">Web 標準 API 志向</text>
-		<text x="450" y="182" text-anchor="middle" fill="#fff" font-size="13">test / fmt / lint / doc を内蔵</text>
-		<text x="450" y="210" text-anchor="middle" fill="#fff" font-size="13">npm: 指定で npm も利用可</text>
-
-		<rect x="610" y="25" width="270" height="200" rx="12" fill="url(#g-bun)"/>
-		<text x="745" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Bun 1.4</text>
-		<text x="745" y="92" text-anchor="middle" fill="#fff" font-size="13">速度と起動時間を最優先</text>
-		<text x="745" y="122" text-anchor="middle" fill="#fff" font-size="13">Zig + JavaScriptCore</text>
-		<text x="745" y="152" text-anchor="middle" fill="#fff" font-size="13">Node API 互換を強く志向</text>
-		<text x="745" y="182" text-anchor="middle" fill="#fff" font-size="13">bundler / test / runner 一体</text>
-		<text x="745" y="210" text-anchor="middle" fill="#fff" font-size="13">package.json をそのまま解釈</text>
-	</g>
-</svg>
+		<g>
+			<rect x="20" y="25" width="270" height="200" rx="12" fill="url(#g-plan-2a)"/>
+			<text x="155" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Node.js 26 / 24</text>
+			<text x="155" y="92" text-anchor="middle" fill="#fff" font-size="13">エコシステム最大・実績最多</text>
+			<text x="155" y="122" text-anchor="middle" fill="#fff" font-size="13">V8 + libuv / CommonJS + ESM</text>
+			<text x="155" y="152" text-anchor="middle" fill="#fff" font-size="13">LTS による長期サポート</text>
+			<text x="155" y="182" text-anchor="middle" fill="#fff" font-size="13">TS は別途トランスパイル前提</text>
+			<text x="155" y="210" text-anchor="middle" fill="#fff" font-size="13">パッケージ管理は npm / pnpm</text>
+		</g>
+		<g>
+			<rect x="315" y="25" width="270" height="200" rx="12" fill="url(#g-plan-2b)"/>
+			<text x="450" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Deno 2.9</text>
+			<text x="450" y="92" text-anchor="middle" fill="#fff" font-size="13">権限をデフォルトで拒否</text>
+			<text x="450" y="122" text-anchor="middle" fill="#fff" font-size="13">TypeScript をそのまま実行</text>
+			<text x="450" y="152" text-anchor="middle" fill="#fff" font-size="13">Web 標準 API 志向</text>
+			<text x="450" y="182" text-anchor="middle" fill="#fff" font-size="13">test / fmt / lint / doc を内蔵</text>
+			<text x="450" y="210" text-anchor="middle" fill="#fff" font-size="13">npm: 指定で npm も利用可</text>
+		</g>
+		<g>
+			<rect x="610" y="25" width="270" height="200" rx="12" fill="url(#g-plan-2c)"/>
+			<text x="745" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Bun 1.4</text>
+			<text x="745" y="92" text-anchor="middle" fill="#fff" font-size="13">速度と起動時間を最優先</text>
+			<text x="745" y="122" text-anchor="middle" fill="#fff" font-size="13">Zig + JavaScriptCore</text>
+			<text x="745" y="152" text-anchor="middle" fill="#fff" font-size="13">Node API 互換を強く志向</text>
+			<text x="745" y="182" text-anchor="middle" fill="#fff" font-size="13">bundler / test / runner 一体</text>
+			<text x="745" y="210" text-anchor="middle" fill="#fff" font-size="13">package.json をそのまま解釈</text>
+		</g>
+	</svg>
