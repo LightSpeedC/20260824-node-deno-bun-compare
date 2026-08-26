@@ -1,6 +1,6 @@
 # Node.js / Deno / Bun 比較検証
 
-> 📅 作成: 2026-08-24 / 更新: 2026-08-25 検証完了。11 項目 × 各 10 回試行
+> 📅 作成: 2026-08-24 / 更新: 2026-08-26 検証完了。11 項目 × 各 10 回試行
 
 ## 概要
 
@@ -66,7 +66,7 @@ src\scripts\50_build_report\build-report.ps1
 ### ディレクトリ構成
 
 ```
-README.html              このファイル
+README.*                 このファイル
 docs/plan/               検証計画書
 docs/report/             結果レポート
 bench/                   ベンチマーク本体（common / native / deps / compat / tests）

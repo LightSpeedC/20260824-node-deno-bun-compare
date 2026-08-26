@@ -1,6 +1,6 @@
 # Node.js / Deno / Bun 比較検証 計画書
 
-> 📅 作成: 2026-08-24 / 更新: 2026-08-25 主軸: `Node.js 26.7.0` / `Deno 2.9.5` / `Bun 1.4.0`
+> 📅 作成: 2026-08-24 / 更新: 2026-08-26 主軸: `Node.js 26.7.0` / `Deno 2.9.5` / `Bun 1.4.0`
 
 [← README に戻る](../../README.md)
 
@@ -191,10 +191,10 @@ Node.js は複数系列を測るためバージョンマネージャを使い、
 
 ```
 20260824-node-deno-bun-compare/
-├── README.html                  プロジェクト概要（この計画書へのリンク）
+├── README.*                     プロジェクト概要（この計画書へのリンク）
 ├── docs/
 │   ├── plan/
-│   │   └── comparison-plan.html この計画書
+│   │   └── comparison-plan.*    この計画書
 │   └── report/                  結果レポート（ステップ 5 で生成）
 ├── bench/
 │   ├── common/                  3 ランタイム共通のソース（node: API のみ使用）
