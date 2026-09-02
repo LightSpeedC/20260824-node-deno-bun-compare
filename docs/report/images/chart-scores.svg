@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" width="900" height="580" role="img" aria-label="評価軸ごとのスコア比較">
 		<defs>
-			<linearGradient id="g-r7-node" x1="0" y1="1" x2="0" y2="0">
+			<linearGradient id="i1" x1="0" y1="1" x2="0" y2="0">
 				<stop offset="0" stop-color="#1a4ea8"/><stop offset="1" stop-color="#4f8fe6"/>
 			</linearGradient>
-			<linearGradient id="g-r7-deno" x1="0" y1="1" x2="0" y2="0">
+			<linearGradient id="i2" x1="0" y1="1" x2="0" y2="0">
 				<stop offset="0" stop-color="#0d6e8c"/><stop offset="1" stop-color="#5ecbe6"/>
 			</linearGradient>
-			<linearGradient id="g-r7-bun" x1="0" y1="1" x2="0" y2="0">
+			<linearGradient id="i3" x1="0" y1="1" x2="0" y2="0">
 				<stop offset="0" stop-color="#1d7a3c"/><stop offset="1" stop-color="#45b56c"/>
 			</linearGradient>
 		</defs>
@@ -15,49 +15,49 @@
 		<text x="0" y="16" fill="#4a5568" font-size="13" font-weight="700">スコア（100 点満点。各軸の重みを括弧内に併記）　■ 青=Node.js 26　■ 水色=Deno　■ 緑=Bun</text>
 
 		<text x="0" y="44" fill="#1c2330" font-size="12.5">起動性能 <tspan fill="#4a5568">(15)</tspan></text>
-		<rect x="185" y="34" width="216" height="13" rx="3" fill="url(#g-r7-node)"/><text x="409" y="44" font-size="11" fill="#1c2330">38.6</text>
-		<rect x="185" y="50" width="198" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="391" y="60" font-size="11" fill="#1c2330">35.4</text>
-		<rect x="185" y="66" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="76" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+		<rect x="185" y="34" width="216" height="13" rx="3" fill="url(#i1)"/><text x="409" y="44" font-size="11" fill="#1c2330">38.6</text>
+		<rect x="185" y="50" width="198" height="13" rx="3" fill="url(#i2)"/><text x="391" y="60" font-size="11" fill="#1c2330">35.4</text>
+		<rect x="185" y="66" width="560" height="13" rx="3" fill="url(#i3)"/><text x="753" y="76" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
 
 		<text x="0" y="103" fill="#1c2330" font-size="12.5">実行性能 <tspan fill="#4a5568">(20)</tspan></text>
-		<rect x="185" y="93" width="463" height="13" rx="3" fill="url(#g-r7-node)"/><text x="656" y="103" font-size="11" fill="#1c2330">82.7</text>
-		<rect x="185" y="109" width="420" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="613" y="119" font-size="11" fill="#1c2330">75.0</text>
-		<rect x="185" y="125" width="553" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="746" y="135" font-size="11" fill="#1c2330" font-weight="700">98.8</text>
+		<rect x="185" y="93" width="463" height="13" rx="3" fill="url(#i1)"/><text x="656" y="103" font-size="11" fill="#1c2330">82.7</text>
+		<rect x="185" y="109" width="420" height="13" rx="3" fill="url(#i2)"/><text x="613" y="119" font-size="11" fill="#1c2330">75.0</text>
+		<rect x="185" y="125" width="553" height="13" rx="3" fill="url(#i3)"/><text x="746" y="135" font-size="11" fill="#1c2330" font-weight="700">98.8</text>
 
 		<text x="0" y="162" fill="#1c2330" font-size="12.5">npm 互換性 <tspan fill="#4a5568">(15)</tspan></text>
-		<rect x="185" y="152" width="560" height="13" rx="3" fill="url(#g-r7-node)"/><text x="753" y="162" font-size="11" fill="#1c2330">100.0</text>
-		<rect x="185" y="168" width="560" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="753" y="178" font-size="11" fill="#1c2330">100.0</text>
-		<rect x="185" y="184" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="194" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="152" width="560" height="13" rx="3" fill="url(#i1)"/><text x="753" y="162" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="168" width="560" height="13" rx="3" fill="url(#i2)"/><text x="753" y="178" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="184" width="560" height="13" rx="3" fill="url(#i3)"/><text x="753" y="194" font-size="11" fill="#1c2330">100.0</text>
 
 		<text x="0" y="221" fill="#1c2330" font-size="12.5">TypeScript <tspan fill="#4a5568">(10)</tspan></text>
-		<rect x="185" y="211" width="250" height="13" rx="3" fill="url(#g-r7-node)"/><text x="443" y="221" font-size="11" fill="#1c2330">44.6</text>
-		<rect x="185" y="227" width="313" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="506" y="237" font-size="11" fill="#1c2330">55.9</text>
-		<rect x="185" y="243" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="253" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+		<rect x="185" y="211" width="250" height="13" rx="3" fill="url(#i1)"/><text x="443" y="221" font-size="11" fill="#1c2330">44.6</text>
+		<rect x="185" y="227" width="313" height="13" rx="3" fill="url(#i2)"/><text x="506" y="237" font-size="11" fill="#1c2330">55.9</text>
+		<rect x="185" y="243" width="560" height="13" rx="3" fill="url(#i3)"/><text x="753" y="253" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
 
 		<text x="0" y="280" fill="#1c2330" font-size="12.5">ツールチェーン <tspan fill="#4a5568">(10)</tspan></text>
-		<rect x="185" y="270" width="81" height="13" rx="3" fill="url(#g-r7-node)"/><text x="274" y="280" font-size="11" fill="#1c2330">14.5</text>
-		<rect x="185" y="286" width="126" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="319" y="296" font-size="11" fill="#1c2330">22.5</text>
-		<rect x="185" y="302" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="312" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+		<rect x="185" y="270" width="81" height="13" rx="3" fill="url(#i1)"/><text x="274" y="280" font-size="11" fill="#1c2330">14.5</text>
+		<rect x="185" y="286" width="126" height="13" rx="3" fill="url(#i2)"/><text x="319" y="296" font-size="11" fill="#1c2330">22.5</text>
+		<rect x="185" y="302" width="560" height="13" rx="3" fill="url(#i3)"/><text x="753" y="312" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
 
 		<text x="0" y="339" fill="#1c2330" font-size="12.5">パッケージ管理 <tspan fill="#4a5568">(10)</tspan></text>
-		<rect x="185" y="329" width="44" height="13" rx="3" fill="url(#g-r7-node)"/><text x="237" y="339" font-size="11" fill="#1c2330">7.9</text>
-		<rect x="185" y="345" width="560" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="753" y="355" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
-		<rect x="185" y="361" width="69" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="262" y="371" font-size="11" fill="#1c2330">12.4</text>
+		<rect x="185" y="329" width="44" height="13" rx="3" fill="url(#i1)"/><text x="237" y="339" font-size="11" fill="#1c2330">7.9</text>
+		<rect x="185" y="345" width="560" height="13" rx="3" fill="url(#i2)"/><text x="753" y="355" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+		<rect x="185" y="361" width="69" height="13" rx="3" fill="url(#i3)"/><text x="262" y="371" font-size="11" fill="#1c2330">12.4</text>
 
 		<text x="0" y="398" fill="#1c2330" font-size="12.5">運用・サポート <tspan fill="#4a5568">(10)</tspan></text>
-		<rect x="185" y="388" width="560" height="13" rx="3" fill="url(#g-r7-node)"/><text x="753" y="398" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
-		<rect x="185" y="404" width="336" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="529" y="414" font-size="11" fill="#1c2330">60.0</text>
-		<rect x="185" y="420" width="224" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="417" y="430" font-size="11" fill="#1c2330">40.0</text>
+		<rect x="185" y="388" width="560" height="13" rx="3" fill="url(#i1)"/><text x="753" y="398" font-size="11" fill="#1c2330" font-weight="700">100.0</text>
+		<rect x="185" y="404" width="336" height="13" rx="3" fill="url(#i2)"/><text x="529" y="414" font-size="11" fill="#1c2330">60.0</text>
+		<rect x="185" y="420" width="224" height="13" rx="3" fill="url(#i3)"/><text x="417" y="430" font-size="11" fill="#1c2330">40.0</text>
 
 		<text x="0" y="457" fill="#1c2330" font-size="12.5">開発体験 <tspan fill="#4a5568">(5)</tspan></text>
-		<rect x="185" y="447" width="448" height="13" rx="3" fill="url(#g-r7-node)"/><text x="641" y="457" font-size="11" fill="#1c2330">80.0</text>
-		<rect x="185" y="463" width="560" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="753" y="473" font-size="11" fill="#1c2330">100.0</text>
-		<rect x="185" y="479" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="489" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="447" width="448" height="13" rx="3" fill="url(#i1)"/><text x="641" y="457" font-size="11" fill="#1c2330">80.0</text>
+		<rect x="185" y="463" width="560" height="13" rx="3" fill="url(#i2)"/><text x="753" y="473" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="479" width="560" height="13" rx="3" fill="url(#i3)"/><text x="753" y="489" font-size="11" fill="#1c2330">100.0</text>
 
 		<text x="0" y="516" fill="#1c2330" font-size="12.5">Windows 対応 <tspan fill="#4a5568">(5)</tspan></text>
-		<rect x="185" y="506" width="560" height="13" rx="3" fill="url(#g-r7-node)"/><text x="753" y="516" font-size="11" fill="#1c2330">100.0</text>
-		<rect x="185" y="522" width="448" height="13" rx="3" fill="url(#g-r7-deno)"/><text x="641" y="532" font-size="11" fill="#1c2330">80.0</text>
-		<rect x="185" y="538" width="560" height="13" rx="3" fill="url(#g-r7-bun)"/><text x="753" y="548" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="506" width="560" height="13" rx="3" fill="url(#i1)"/><text x="753" y="516" font-size="11" fill="#1c2330">100.0</text>
+		<rect x="185" y="522" width="448" height="13" rx="3" fill="url(#i2)"/><text x="641" y="532" font-size="11" fill="#1c2330">80.0</text>
+		<rect x="185" y="538" width="560" height="13" rx="3" fill="url(#i3)"/><text x="753" y="548" font-size="11" fill="#1c2330">100.0</text>
 
 		<text x="185" y="572" font-size="11.5" fill="#4a5568">起動性能・実行性能・npm 互換性・TypeScript・ツールチェーン・パッケージ管理は定量、残り 3 軸は定性評価</text>
 	</svg>

@@ -212,7 +212,7 @@ footer a:hover{text-decoration:underline;}
 	<div class="inner">
 		<h1>Node.js / Deno / Bun 比較検証 計画書</h1>
 		<div class="meta">
-			<span>📅 作成: 2026-08-24 / 更新: 2026-08-26</span>
+			<span>📅 作成: 2026-08-24 / 更新: 2026-09-03</span>
 			<span>主軸: <code>Node.js 26.7.0</code> / <code>Deno 2.9.5</code> / <code>Bun 1.4.0</code></span>
 		</div>
 	</div>
@@ -618,8 +618,9 @@ JavaScript / TypeScript ランタイムである <strong>Node.js</strong>、<str
 │   ├── 20_run_bench/            本計測ドライバ
 │   ├── 30_run_install_bench/    依存インストールと npm 互換性
 │   ├── 40_run_compile_bench/    単一実行ファイル化
-│   ├── 50_build_report/         集計
-│   └── 70_html2md/              HTML から Markdown を生成
+│   └── 50_build_report/         集計
+├── tools/
+│   └── 30_html2md/              共通の html2md.exe を呼ぶランチャー
 ├── results/
 │   ├── env.txt                  検証環境と版数の記録
 │   └── raw/                     生ログ（コミット対象）

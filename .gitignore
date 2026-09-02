@@ -7,8 +7,11 @@ etc/
 # ローカル設定
 .claude/
 
-# 隔離配置したランタイム・計測ツール（scripts/setup-runtimes.ps1 で再取得できる）
-tools/
+# 隔離配置したランタイム・計測ツールの実体
+# （src/scripts/10_setup_runtimes/setup-runtimes.ps1 で再取得できる）
+# 30_html2md は共通 html2md.exe を呼ぶランチャーなので追跡する
+tools/*
+!tools/30_html2md/
 
 # ベンチ用の生成データ（生成スクリプトと乱数シードだけを残す）
 bench/fixtures/
