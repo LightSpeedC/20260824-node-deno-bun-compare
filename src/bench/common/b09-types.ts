@@ -60,5 +60,5 @@ report("B-09", t1 - t0, {
 	members: members.length,
 	groups: summary.length,
 	// join を1回呼んで node:path の解決も含める
-	sample: join("bench", "common", "b09-types.ts"),
+	sample: join("src", "bench", "common", "b09-types.ts"),
 });

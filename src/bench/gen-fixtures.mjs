@@ -1,5 +1,5 @@
 // ベンチ用のテストデータ生成。
-// 生成物（bench/fixtures/）は .gitignore で除外し、このスクリプトと固定シードだけを残す。
+// 生成物（src/bench/fixtures/）は .gitignore で除外し、このスクリプトと固定シードだけを残す。
 // 同じシードから同じデータが再現できるので、後日でも同条件で計測できる。
 
 import { mkdirSync, writeFileSync, existsSync, statSync } from "node:fs";

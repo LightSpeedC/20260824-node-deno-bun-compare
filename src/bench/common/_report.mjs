@@ -4,17 +4,17 @@
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
-/** このファイルのあるディレクトリ（bench/common） */
+/** このファイルのあるディレクトリ（src/bench/common） */
 export const commonDir = dirname(fileURLToPath(import.meta.url));
 
-/** bench/ ディレクトリ */
+/** src/bench/ ディレクトリ */
 export const benchDir = join(commonDir, "..");
 
-/** bench/fixtures ディレクトリ */
+/** src/bench/fixtures ディレクトリ */
 export const fixturesDir = join(benchDir, "fixtures");
 
-/** プロジェクトルート */
-export const projectRoot = join(benchDir, "..");
+/** プロジェクトルート（src/bench から 2 階層上） */
+export const projectRoot = join(benchDir, "..", "..");
 
 /** 高分解能タイマ */
 export function now() {

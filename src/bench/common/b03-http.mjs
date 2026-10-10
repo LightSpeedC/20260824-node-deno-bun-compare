@@ -1,6 +1,6 @@
 // B-03 HTTP スループット（共通版）
 // 3 ランタイム共通の node:http だけで書いた最小サーバ。
-// ランタイム固有 API 版（bench/native/）とは別項目として集計する。
+// ランタイム固有 API 版（src/bench/native/）とは別項目として集計する。
 
 import { createServer } from "node:http";
 // Deno では Buffer がグローバルに無いため明示的に import する

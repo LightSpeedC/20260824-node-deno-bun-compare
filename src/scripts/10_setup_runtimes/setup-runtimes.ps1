@@ -17,7 +17,7 @@ $ProgressPreference = 'SilentlyContinue'
 $Root        = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
 $ToolsDir    = Join-Path $Root 'tools'
 $DownloadDir = Join-Path $Root 'tmp\downloads'
-$ResultsDir  = Join-Path $Root 'results'
+$ResultsDir  = Join-Path $Root 'docs/results'
 
 # ---------------------------------------------------------------------------
 # 対象一覧（バージョンはここで固定する。検証中は上げない）
@@ -276,7 +276,7 @@ $json = $manifest | ConvertTo-Json -Depth 5
 Write-Host ("定義ファイルを出力: {0}" -f $manifestPath)
 
 # ---------------------------------------------------------------------------
-# 検証環境の記録（results/env.txt）
+# 検証環境の記録（docs/results/env.txt）
 # ---------------------------------------------------------------------------
 $os    = Get-CimInstance Win32_OperatingSystem
 $cpu   = Get-CimInstance Win32_Processor | Select-Object -First 1

@@ -1,10 +1,10 @@
 ﻿<#
 	Node.js / Deno / Bun 比較検証 — P6 集計
 
-	results/raw/ 配下の生結果（measurements.json / install.json / compat.json / compile.json）を
+	docs/results/raw/ 配下の生結果（measurements.json / install.json / compat.json / compile.json）を
 	1 つに束ね、項目ごとの相対スコアと評価軸ごとの重み付きスコアを計算する。
 
-	定性評価は results/qualitative.json に手で書いたスコアを読み込む（無ければ該当軸を除外する）。
+	定性評価は docs/results/qualitative.json に手で書いたスコアを読み込む（無ければ該当軸を除外する）。
 	結論の文章は人が書く。このスクリプトは数値だけを出す。
 #>
 [CmdletBinding()]
@@ -15,8 +15,8 @@ Set-StrictMode -Version Latest
 
 # このスクリプトは src/scripts/NN_xxx/ に置くため、3 階層上がプロジェクトルート
 $Root       = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
-$RawDir     = Join-Path $Root 'results\raw'
-$ResultsDir = Join-Path $Root 'results'
+$RawDir     = Join-Path $Root 'docs/results/raw'
+$ResultsDir = Join-Path $Root 'docs/results'
 
 function Read-JsonIfExists {
 	param([Parameter(Mandatory)][string]$Path)
@@ -30,7 +30,7 @@ $compat  = Read-JsonIfExists (Join-Path $RawDir 'compat.json')
 $compile = Read-JsonIfExists (Join-Path $RawDir 'compile.json')
 $qual    = Read-JsonIfExists (Join-Path $ResultsDir 'qualitative.json')
 
-if (-not $meas) { throw 'results/raw/measurements.json がありません。先に run-bench.ps1 を実行してください。' }
+if (-not $meas) { throw 'docs/results/raw/measurements.json がありません。先に run-bench.ps1 を実行してください。' }
 
 # 比較対象（node24 は参考値として最後に置く）
 $RuntimeOrder = @('node26', 'deno', 'bun', 'node24')

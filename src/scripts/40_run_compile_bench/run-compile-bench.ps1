@@ -1,7 +1,7 @@
 ﻿<#
 	Node.js / Deno / Bun 比較検証 — B-10 単一実行ファイル化
 
-	同じ 1 ファイルの CLI（bench/common/b10-cli.mjs）を各ランタイムの機能で
+	同じ 1 ファイルの CLI（src/bench/common/b10-cli.mjs）を各ランタイムの機能で
 	実行ファイルに固め、所要時間・出力サイズ・実際に動くかを比べる。
 
 	  Deno : deno compile
@@ -20,10 +20,10 @@ $ProgressPreference = 'SilentlyContinue'
 
 # このスクリプトは src/scripts/NN_xxx/ に置くため、3 階層上がプロジェクトルート
 $Root     = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
-$BenchDir = Join-Path $Root 'bench'
+$BenchDir = Join-Path $Root 'src/bench'
 $ToolsDir = Join-Path $Root 'tools'
 $WorkRoot = Join-Path $Root 'tmp\compile'
-$RawDir   = Join-Path $Root 'results\raw'
+$RawDir   = Join-Path $Root 'docs/results/raw'
 
 foreach ($d in @($WorkRoot, $RawDir)) {
 	if (-not (Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }

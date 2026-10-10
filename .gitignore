@@ -4,8 +4,15 @@ tmp/
 # セッションログ・補助スクリプト
 etc/
 
-# ローカル設定
-.claude/
+# 自動生成するログ・レポート
+logs/
+
+# ローカル設定（共有するものだけ名指しで戻す）
+.claude/*
+!.claude/settings.json
+!.claude/commands/
+!.claude/agents/
+!.claude/skills/
 
 # 隔離配置したランタイム・計測ツールの実体
 # （src/scripts/10_setup_runtimes/setup-runtimes.ps1 で再取得できる）
@@ -14,7 +21,7 @@ tools/*
 !tools/30_html2md/
 
 # ベンチ用の生成データ（生成スクリプトと乱数シードだけを残す）
-bench/fixtures/
+src/bench/fixtures/
 
 # 依存の実体（インストール時間の計測対象。lock ファイルは追跡する）
 node_modules/

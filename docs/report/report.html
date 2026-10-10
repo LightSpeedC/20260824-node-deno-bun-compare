@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -215,7 +215,7 @@ footer a:hover{text-decoration:underline;}
 	<div class="inner">
 		<h1>Node.js / Deno / Bun 比較検証 結果レポート</h1>
 		<div class="meta">
-			<span>📅 作成: 2026-08-25 / 更新: 2026-08-26</span>
+			<span>📅 作成: 2026-08-25 / 更新: 2026-10-10</span>
 			<span><code>Node.js 26.7.0</code> / <code>Deno 2.9.5</code> / <code>Bun 1.4.0</code></span>
 			<span>計測 11 項目・各 10 回試行</span>
 		</div>
@@ -347,7 +347,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 	<h2>公平に測るために守ったこと</h2>
 	<ul>
 		<li><strong>同一ソースで比較</strong> — HTTP は 3 ランタイム共通の <code>node:http</code> 版と、<code>Deno.serve</code> / <code>Bun.serve</code> の固有 API 版を別項目として記録しました。片方だけを取り上げていません。</li>
-		<li><strong>ウォームアップ 3 回、本計測 10 回</strong> — 代表値は平均ではなく<strong>中央値</strong>。最小・最大・標準偏差・変動係数も <code>results/measurements.csv</code> に残しています。</li>
+		<li><strong>ウォームアップ 3 回、本計測 10 回</strong> — 代表値は平均ではなく<strong>中央値</strong>。最小・最大・標準偏差・変動係数も <code>docs/results/measurements.csv</code> に残しています。</li>
 		<li><strong>シェルを介さない</strong> — hyperfine は <code>--shell=none</code> で実行し、起動時間に <code>cmd.exe</code> のコストを混ぜていません。</li>
 		<li><strong>1 項目ずつ直列実行</strong> — 4 コアのマシンなので並列化すると結果が濁ります。</li>
 		<li><strong>失敗も記録</strong> — 空欄にせず理由を残す方針にしましたが、結果として全項目が全ランタイムで完走しました。</li>
@@ -369,6 +369,10 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 			<tr>
 				<td class="nw">Node.js 22</td>
 				<td>対象外にしました。工数を主軸（26 系）の精度に回す判断です。</td>
+			</tr>
+			<tr>
+				<td class="nw">計測コードの拡張子</td>
+				<td>12 本のうち 10 本を <code>.mjs</code> で書いています。TypeScript を優先する取り決めとは外れますが、<strong>計測済みの数値を守るためにそのままにしました</strong>。<code>.ts</code> に変えると型ストリップの処理が起動時に入り、B-01・B-02・B-09 の値がここに載っているものと変わります。拡張子を揃えるなら 11 項目すべてを測り直す必要があります。</td>
 			</tr>
 		</tbody>
 	</table>
@@ -836,7 +840,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 	</ol>
 
 	<h2>再現方法</h2>
-	<p>同じ計測を後日やり直せます。<code>tools/</code> のバイナリと <code>bench/fixtures/</code> のテストデータはリポジトリに含めず、スクリプトから再生成します。</p>
+	<p>同じ計測を後日やり直せます。<code>tools/</code> のバイナリと <code>src/bench/fixtures/</code> のテストデータはリポジトリに含めず、スクリプトから再生成します。</p>
 <pre><code class="language-powershell"># 1. ランタイムと計測ツールを tools/ に配置（SHA256 検証つき）
 src\scripts\10_setup_runtimes\setup-runtimes.ps1
 
@@ -851,18 +855,18 @@ src\scripts\30_run_install_bench\run-install-bench.ps1
 # 4. 単一実行ファイル化
 src\scripts\40_run_compile_bench\run-compile-bench.ps1
 
-# 5. 集計（定性評価は results/qualitative.json を読む）
+# 5. 集計（定性評価は docs/results/qualitative.json を読む）
 src\scripts\50_build_report\build-report.ps1</code></pre>
 
 	<div class="tw">
 	<table>
 		<thead><tr><th>成果物</th><th>内容</th></tr></thead>
 		<tbody>
-			<tr><td class="nw"><code>results/env.txt</code></td><td>検証環境・版数・バイナリの SHA256</td></tr>
-			<tr><td class="nw"><code>results/measurements.csv</code></td><td>項目 × ランタイムの中央値・最小・最大・標準偏差・変動係数</td></tr>
-			<tr><td class="nw"><code>results/summary.json</code></td><td>相対スコア・評価軸スコア・総合スコアを含む集計結果</td></tr>
-			<tr><td class="nw"><code>results/qualitative.json</code></td><td>定性評価のスコアと、その根拠にした実測値</td></tr>
-			<tr><td class="nw"><code>results/raw/</code></td><td>hyperfine・oha の生出力、インストールログ、互換性チェックの生結果</td></tr>
+			<tr><td class="nw"><code>docs/results/env.txt</code></td><td>検証環境・版数・バイナリの SHA256</td></tr>
+			<tr><td class="nw"><code>docs/results/measurements.csv</code></td><td>項目 × ランタイムの中央値・最小・最大・標準偏差・変動係数</td></tr>
+			<tr><td class="nw"><code>docs/results/summary.json</code></td><td>相対スコア・評価軸スコア・総合スコアを含む集計結果</td></tr>
+			<tr><td class="nw"><code>docs/results/qualitative.json</code></td><td>定性評価のスコアと、その根拠にした実測値</td></tr>
+			<tr><td class="nw"><code>docs/results/raw/</code></td><td>hyperfine・oha の生出力、インストールログ、互換性チェックの生結果</td></tr>
 		</tbody>
 	</table>
 	</div>

@@ -33,10 +33,10 @@ $ProgressPreference = 'SilentlyContinue'
 
 # このスクリプトは src/scripts/NN_xxx/ に置くため、3 階層上がプロジェクトルート
 $Root       = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
-$BenchDir   = Join-Path $Root 'bench'
+$BenchDir   = Join-Path $Root 'src/bench'
 $ToolsDir   = Join-Path $Root 'tools'
 $TmpDir     = Join-Path $Root 'tmp'
-$RawDir     = Join-Path $Root 'results\raw'
+$RawDir     = Join-Path $Root 'docs/results/raw'
 
 if ($Quick) {
 	if (-not $PSBoundParameters.ContainsKey('Runs'))        { $Runs = 3 }
@@ -427,7 +427,7 @@ if (Test-Wanted 'B-02') {
 	$depsScript = Join-Path $BenchDir 'deps\b02-startup-deps.mjs'
 	$depsModules = Join-Path $BenchDir 'deps\node_modules'
 	if (-not (Test-Path -LiteralPath $depsModules)) {
-		Write-Host '    未実施: bench/deps/node_modules がありません（src\scripts\30_run_install_bench\run-install-bench.ps1 を先に実行）'
+		Write-Host '    未実施: src/bench/deps/node_modules がありません（src/scripts/30_run_install_bench/run-install-bench.ps1 を先に実行）'
 		foreach ($rt in $Runtimes) {
 			Add-Measurement -Id 'B-02' -Item '依存込み起動' -Runtime $rt.Key -Metric '所要時間' -Unit 'ms' `
 				-Stats $null -Detail $null -Ok $false -Note '未実施: 依存が未インストール'
@@ -535,7 +535,7 @@ function Get-Field {
 	return ''
 }
 
-$csvPath = Join-Path $Root 'results\measurements.csv'
+$csvPath = Join-Path $Root 'docs/results/measurements.csv'
 $csvRows = $Measurements | Select-Object id, item, runtime, variant, metric, unit, ok,
 	@{ Name = 'n';      Expression = { Get-Field -Row $_ -Name 'n' } },
 	@{ Name = 'median'; Expression = { Get-Field -Row $_ -Name 'median' } },

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -163,7 +163,7 @@ td.best{font-weight:700;color:#17335f;}
 	<div class="inner">
 		<h1>Node.js / Deno / Bun 比較検証</h1>
 		<div class="meta">
-			<span>📅 作成: 2026-08-24 / 更新: 2026-09-03</span>
+			<span>📅 作成: 2026-08-24 / 更新: 2026-10-10</span>
 			<span>検証完了。11 項目 × 各 10 回試行</span>
 		</div>
 	</div>
@@ -248,9 +248,9 @@ src\scripts\50_build_report\build-report.ps1</code></pre>
 <pre><code>README.*                 このファイル
 docs/plan/               検証計画書
 docs/report/             結果レポート
-bench/                   ベンチマーク本体（common / native / deps / compat / tests）
+docs/results/            env.txt・measurements.csv・summary.json・qualitative.json・raw/
+src/bench/               ベンチマーク本体（common / native / deps / compat / tests）
 src/scripts/             導入・計測・集計スクリプト（NN_名前/ の番号付きフォルダ。.ps1 と .cmd ランチャー）
-results/                 env.txt・measurements.csv・summary.json・qualitative.json・raw/
 tools/                   隔離配置したランタイムの実体（git 管理外・再取得可）と html2md ランチャー
 tmp/                     一時ファイル（git 管理外）</code></pre>
 </section>
@@ -277,7 +277,7 @@ tmp/                     一時ファイル（git 管理外）</code></pre>
 	<p>
 	Windows 11 Home（build 26200）／ Intel Core i7-11370H（4 物理コア・8 論理）／ メモリ 15.8 GB ／ NVMe SSD。
 	計測は AC 接続かつ電源モード「最大パフォーマンス」で実施しました。計測ツールは hyperfine 1.20.0 と oha 1.16.0 です。
-	環境と版数、バイナリの SHA256 は <code>results/env.txt</code> に記録しています。
+	環境と版数、バイナリの SHA256 は <code>docs/results/env.txt</code> に記録しています。
 	</p>
 
 	<p>

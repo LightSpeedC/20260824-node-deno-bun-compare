@@ -2,7 +2,7 @@
 	Node.js / Deno / Bun 比較検証 — B-08 依存インストール計測 と P3 npm 互換性チェック
 
 	各パッケージマネージャに専用の作業ディレクトリとキャッシュを与え、
-	同一の package.json（bench/compat）に対して
+	同一の package.json（src/bench/compat）に対して
 	  1) クリーン（キャッシュ無し・lock 無し）
 	  2) キャッシュ有り（node_modules だけ削除）
 	の 2 条件でインストール時間を測る。
@@ -23,10 +23,10 @@ $ProgressPreference = 'SilentlyContinue'
 
 # このスクリプトは src/scripts/NN_xxx/ に置くため、3 階層上がプロジェクトルート
 $Root      = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
-$BenchDir  = Join-Path $Root 'bench'
+$BenchDir  = Join-Path $Root 'src/bench'
 $ToolsDir  = Join-Path $Root 'tools'
 $WorkRoot  = Join-Path $Root 'tmp\install'
-$RawDir    = Join-Path $Root 'results\raw'
+$RawDir    = Join-Path $Root 'docs/results/raw'
 
 foreach ($d in @($WorkRoot, $RawDir)) {
 	if (-not (Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }

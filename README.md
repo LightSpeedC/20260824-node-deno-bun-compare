@@ -1,6 +1,6 @@
 # Node.js / Deno / Bun 比較検証
 
-> 📅 作成: 2026-08-24 / 更新: 2026-09-03 検証完了。11 項目 × 各 10 回試行
+> 📅 作成: 2026-08-24 / 更新: 2026-10-10 検証完了。11 項目 × 各 10 回試行
 
 ## 概要
 
@@ -68,9 +68,9 @@ src\scripts\50_build_report\build-report.ps1
 README.*                 このファイル
 docs/plan/               検証計画書
 docs/report/             結果レポート
-bench/                   ベンチマーク本体（common / native / deps / compat / tests）
+docs/results/            env.txt・measurements.csv・summary.json・qualitative.json・raw/
+src/bench/               ベンチマーク本体（common / native / deps / compat / tests）
 src/scripts/             導入・計測・集計スクリプト（NN_名前/ の番号付きフォルダ。.ps1 と .cmd ランチャー）
-results/                 env.txt・measurements.csv・summary.json・qualitative.json・raw/
 tools/                   隔離配置したランタイムの実体（git 管理外・再取得可）と html2md ランチャー
 tmp/                     一時ファイル（git 管理外）
 ```
@@ -81,12 +81,12 @@ tmp/                     一時ファイル（git 管理外）
 |---|---|---|---|---|
 | Node.js ✅ **主軸** | Current | `v26.7.0` | 2026-08-05 | 公式 SHASUMS と一致 |
 | Node.js | Active LTS (Krypton) | `v24.19.0` | 2026-08-03 | 公式 SHASUMS と一致 |
-| Node.js | Maintenance LTS (Jod) | `v22.23.2` | 2026-07-28 | **対象外** |
+| Node.js | Maintenance LTS (Jod) | `v22.23.2` | 2026-07-28 | ⬜ **対象外** |
 | Deno ✅ **主軸** | stable | `v2.9.5` | 2026-08-06 | 公式 sha256sum と一致 |
 | Bun ✅ **主軸** | stable | `v1.4.0` | 2026-08-20 | 公式照合値なし（実測値を記録） |
 
 ### 検証環境
 
-Windows 11 Home（build 26200）／ Intel Core i7-11370H（4 物理コア・8 論理）／ メモリ 15.8 GB ／ NVMe SSD。 計測は AC 接続かつ電源モード「最大パフォーマンス」で実施しました。計測ツールは hyperfine 1.20.0 と oha 1.16.0 です。 環境と版数、バイナリの SHA256 は `results/env.txt` に記録しています。
+Windows 11 Home（build 26200）／ Intel Core i7-11370H（4 物理コア・8 論理）／ メモリ 15.8 GB ／ NVMe SSD。 計測は AC 接続かつ電源モード「最大パフォーマンス」で実施しました。計測ツールは hyperfine 1.20.0 と oha 1.16.0 です。 環境と版数、バイナリの SHA256 は `docs/results/env.txt` に記録しています。
 
 システムのグローバル環境（`node v25.8.2` / `deno 1.31.1` / `bun 1.4.0`）には手を入れていません。 計測はすべて `tools/` 配下の実行ファイルを明示パスで呼び出しています。
