@@ -32,7 +32,7 @@ foreach ($d in @($WorkRoot, $RawDir)) {
 	if (-not (Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }
 }
 
-$manifest = Get-Content -LiteralPath (Join-Path $ToolsDir 'runtimes.json') -Raw | ConvertFrom-Json
+$manifest = Get-Content -LiteralPath (Join-Path $ToolsDir 'runtimes.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 function Get-ToolExe {
 	param([Parameter(Mandatory)][string]$Key)
 	$e = $manifest.entries | Where-Object { $_.key -eq $Key } | Select-Object -First 1
@@ -128,8 +128,8 @@ function Invoke-Measured {
 
 	$outText = ''
 	$errText = ''
-	try { $outText = Get-Content -LiteralPath $outLog -Raw -ErrorAction Stop } catch { $outText = '' }
-	try { $errText = Get-Content -LiteralPath $errLog -Raw -ErrorAction Stop } catch { $errText = '' }
+	try { $outText = Get-Content -LiteralPath $outLog -Raw -Encoding UTF8 -ErrorAction Stop } catch { $outText = '' }
+	try { $errText = Get-Content -LiteralPath $errLog -Raw -Encoding UTF8 -ErrorAction Stop } catch { $errText = '' }
 
 	return [pscustomobject]@{
 		Ms       = $sw.Elapsed.TotalMilliseconds

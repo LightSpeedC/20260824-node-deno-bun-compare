@@ -1,2 +1,2 @@
-N:/2026/20260824-node-deno-bun-compare/tools/node-v24.19.0-win-x64/node.exe --test N:/2026/20260824-node-deno-bun-compare/bench/tests/suite.test.mjs
+W:/2026/20260824-node-deno-bun-compare/tools/node-v24.21.0-win-x64/node.exe --test W:/2026/20260824-node-deno-bun-compare/src/bench/tests/suite.test.mjs
 

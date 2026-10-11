@@ -31,6 +31,9 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 $ProgressPreference = 'SilentlyContinue'
 
+# -File で起動すると "B-01,B-02" が 1 つの文字列で届くため、カンマで分けて揃える
+if ($Only) { $Only = @($Only | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ }) }
+
 # このスクリプトは src/scripts/NN_xxx/ に置くため、3 階層上がプロジェクトルート
 $Root       = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
 $BenchDir   = Join-Path $Root 'src/bench'
@@ -55,7 +58,7 @@ $manifestPath = Join-Path $ToolsDir 'runtimes.json'
 if (-not (Test-Path -LiteralPath $manifestPath)) {
 	throw "tools/runtimes.json がありません。先に src\scripts\10_setup_runtimes\setup-runtimes.ps1 を実行してください。"
 }
-$manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
+$manifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
 
 function Get-ToolExe {
 	param([Parameter(Mandatory)][string]$Key)
@@ -69,10 +72,10 @@ $Hyperfine = Get-ToolExe 'hyperfine'
 $Oha       = Get-ToolExe 'oha'
 
 $Runtimes = @(
-	[pscustomobject]@{ Key = 'node26'; Label = 'Node.js 26.7.0'; Exe = (Get-ToolExe 'node26'); RunArgs = @();               TestArgs = @('--test') }
-	[pscustomobject]@{ Key = 'node24'; Label = 'Node.js 24.19.0'; Exe = (Get-ToolExe 'node24'); RunArgs = @();               TestArgs = @('--test') }
-	[pscustomobject]@{ Key = 'deno';   Label = 'Deno 2.9.5';      Exe = (Get-ToolExe 'deno');   RunArgs = @('run', '-A');    TestArgs = @('test', '-A', '--no-check') }
-	[pscustomobject]@{ Key = 'bun';    Label = 'Bun 1.4.0';       Exe = (Get-ToolExe 'bun');    RunArgs = @('run');          TestArgs = @('test') }
+	[pscustomobject]@{ Key = 'node26'; Label = 'Node.js 26.11.1'; Exe = (Get-ToolExe 'node26'); RunArgs = @();               TestArgs = @('--test') }
+	[pscustomobject]@{ Key = 'node24'; Label = 'Node.js 24.21.0'; Exe = (Get-ToolExe 'node24'); RunArgs = @();               TestArgs = @('--test') }
+	[pscustomobject]@{ Key = 'deno';   Label = 'Deno 2.9.7';      Exe = (Get-ToolExe 'deno');   RunArgs = @('run', '-A');    TestArgs = @('test', '-A', '--no-check') }
+	[pscustomobject]@{ Key = 'bun';    Label = 'Bun 1.4.3';       Exe = (Get-ToolExe 'bun');    RunArgs = @('run');          TestArgs = @('test') }
 )
 
 # ---------------------------------------------------------------------------
@@ -287,7 +290,7 @@ function Start-BenchServer {
 		[System.Threading.Thread]::Sleep(250)
 		if ($proc.HasExited) { break }
 		$txt = ''
-		try { $txt = Get-Content -LiteralPath $outLog -Raw -ErrorAction Stop } catch { $txt = '' }
+		try { $txt = Get-Content -LiteralPath $outLog -Raw -Encoding UTF8 -ErrorAction Stop } catch { $txt = '' }
 		if ($txt -and $txt -match 'READY') {
 			try {
 				$c = New-Object System.Net.Sockets.TcpClient
@@ -300,7 +303,7 @@ function Start-BenchServer {
 		}
 	}
 	$errText = ''
-	try { $errText = (Get-Content -LiteralPath $errLog -Raw -ErrorAction Stop) } catch { $errText = '' }
+	try { $errText = (Get-Content -LiteralPath $errLog -Raw -Encoding UTF8 -ErrorAction Stop) } catch { $errText = '' }
 	return [pscustomobject]@{ Process = $proc; Ready = $ready; OutLog = $outLog; ErrLog = $errLog; ErrText = $errText }
 }
 
@@ -504,7 +507,7 @@ $outJson = Join-Path $RawDir 'measurements.json'
 # -Append 指定時は、今回測り直していない項目を前回の結果から引き継ぐ
 $Combined = New-Object System.Collections.Generic.List[object]
 if ($Append -and (Test-Path -LiteralPath $outJson)) {
-	$prev = Get-Content -LiteralPath $outJson -Raw | ConvertFrom-Json
+	$prev = Get-Content -LiteralPath $outJson -Raw -Encoding UTF8 | ConvertFrom-Json
 	$newKeys = @{}
 	foreach ($m in $Measurements) { $newKeys[("{0}|{1}|{2}" -f $m.id, $m.runtime, $m.variant)] = $true }
 	$carried = 0

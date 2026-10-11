@@ -10,7 +10,8 @@ const TARGETS = [
 	{ name: "esbuild", kind: "ビルドツール（ネイティブバイナリ同梱）", spec: "esbuild", check: (m) => typeof (m.transformSync ?? m.default?.transformSync) === "function" },
 	{ name: "prettier", kind: "CLI ツール（bin エントリあり）", spec: "prettier", check: (m) => typeof (m.format ?? m.default?.format) === "function" },
 	{ name: "sharp", kind: "ネイティブアドオン（プリビルド配布）", spec: "sharp", check: (m) => typeof (m.default ?? m) === "function" },
-	{ name: "better-sqlite3", kind: "ネイティブアドオン（要ビルド）", spec: "better-sqlite3", check: (m) => typeof (m.default ?? m) === "function" },
+	// ネイティブ部を実際に呼ぶ（読めなければ例外になる）。コスト 4 は最小値
+	{ name: "bcrypt", kind: "ネイティブアドオン（Node-API・同梱バイナリ）", spec: "bcrypt", check: (m) => { const b = m.default ?? m; return b.compareSync("x", b.hashSync("x", 4)); } },
 ];
 
 const results = [];

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node.js / Deno / Bun 開発での AI 利用 調査</title>
+<style>
+:root{
+	--navy1:#12224d;
+	--navy2:#2f5fbf;
+	--ink:#1c2330;
+	--ink-soft:#4a5568;
+	--line:#d9dfe8;
+	--code-bg:#f4f6fa;
+	--link:#1a4fa0;
+	--accent:var(--navy1);
+	--accent2:var(--navy2);
+	--soft:#f2f5fb;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Segoe UI","Yu Gothic UI",Meiryo,sans-serif;font-size:15.5px;line-height:1.85;}
+.titlebar{background:linear-gradient(135deg,var(--navy1),var(--navy2));color:#fff;padding:34px 30px 30px;}
+.titlebar .inner{max-width:1600px;margin:0 auto;}
+.titlebar h1{font-size:2em;margin:0 0 10px;color:#fff;}
+.titlebar .lead{color:#e6edff;background:transparent;margin:0 0 6px;}
+.titlebar .date{font-size:.88em;color:#d5e2ff;background:transparent;}
+.wrap{max-width:1600px;margin:0 auto;padding:0 30px;}
+.backlink{margin:18px 0 0;}
+.back-home{display:inline-block;background:linear-gradient(100deg,var(--navy1),var(--navy2));color:#fff;text-decoration:none;font-weight:700;padding:2px 12px;border-radius:6px;}
+a{color:var(--link);background:transparent;}
+section{background:linear-gradient(180deg,var(--soft),#fff 62%);border:1px solid var(--line);border-radius:10px;padding:4px 26px 26px;margin:34px 0;}
+section h1{background:linear-gradient(100deg,var(--accent),var(--accent2));color:#fff;font-size:1.5em;padding:14px 20px;margin:26px 0 20px;border-radius:8px;box-shadow:0 6px 16px rgba(18,34,77,.22);}
+h2{font-size:1.16em;border-left:7px solid var(--accent);background:linear-gradient(90deg,var(--soft),#fff);color:var(--ink);padding:6px 12px;margin:30px 0 12px;border-radius:0 6px 6px 0;}
+code{background:var(--code-bg);border:1px solid var(--line);color:#17335f;border-radius:4px;padding:1px 5px;font-family:Consolas,monospace;font-size:.92em;}
+.tablewrap{overflow-x:auto;margin:14px 0;}
+table{border-collapse:collapse;width:100%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(18,34,77,.10);font-size:.95em;}
+th{background:linear-gradient(100deg,var(--accent),var(--accent2));color:#fff;text-align:left;padding:9px 12px;white-space:nowrap;}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfe;}
+td.nowrap{white-space:nowrap;}
+.callout{border-left:6px solid var(--accent);background:linear-gradient(180deg,var(--soft),#fff);color:var(--ink);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;}
+.callout strong{color:var(--accent);background:transparent;}
+footer{max-width:1600px;margin:0 auto;padding:18px 30px 30px;}
+.ch01{--accent:hsl(280,78%,25%);--accent2:hsl(280,58%,55%);--soft:hsl(280,28%,95%);}
+.ch02{--accent:hsl(186.7,78%,25%);--accent2:hsl(186.7,58%,55%);--soft:hsl(186.7,28%,95%);}
+.ch03{--accent:hsl(93.3,78%,25%);--accent2:hsl(93.3,58%,55%);--soft:hsl(93.3,28%,95%);}
+.ch04{--accent:hsl(0,78%,25%);--accent2:hsl(0,58%,55%);--soft:hsl(0,28%,95%);}
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+	<div class="inner">
+		<h1>Node.js / Deno / Bun 開発での AI 利用 調査</h1>
+		<p class="lead">3 つのランタイムの開発そのものに AI が使われているか、いつ頃からか、どんな方針か</p>
+		<div class="date">📅 作成: 2026-10-11 / 更新: 2026-10-11</div>
+	</div>
+</div>
+
+<div class="wrap">
+<p class="backlink"><a class="back-home" href="../../README.html" title="README">⌂</a></p>
+
+<div class="callout callout-important">
+	<strong>浅い調査です</strong>：Web 検索 3 件・ページ取得 5 件の範囲です。各リポジトリのコミット履歴（<code>Co-Authored-By</code>・<code>Assisted-by</code>）は検索しておらず、「いつから使っているか」は 3 つとも特定できていません。確認できたのは方針の文書と、その日付までです。
+</div>
+
+<section class="ch01" id="ch01">
+	<h1>要約</h1>
+	<div class="tablewrap">
+	<table>
+		<thead><tr><th>ランタイム</th><th>使っているか</th><th>確認できた時期</th><th>方針</th></tr></thead>
+		<tbody>
+			<tr><td class="nowrap">Node.js</td><td>使う前提の方針がある。実際の度合いは未確認</td><td>方針の PR を 2026-03-04 に作成、2026-08-12 にマージ</td><td><code>Assisted-by</code> で開示。人が sign-off し全責任を負う。無人のエージェントは禁止。新しい貢献者は使わない</td></tr>
+			<tr><td class="nowrap">Deno</td><td>貢献者の利用を想定している。開発側の利用は未確認</td><td>未確認</td><td>PR の説明で開示。使うこと自体は罰しない。開示しない疑いがあれば却下。AI のスパムはアカウント停止</td></tr>
+			<tr><td class="nowrap">Bun</td><td>状況証拠あり（リポジトリに <code>CLAUDE.md</code> と <code>.claude/docs/</code>）。実際の度合いは未確認</td><td>Anthropic による買収の発表が 2025-12-03。<code>CLAUDE.md</code> がいつ入ったかは未確認</td><td>AI 生成コードの受け入れ規則は見つからなかった</td></tr>
+		</tbody>
+	</table>
+	</div>
+</section>
+
+<section class="ch02" id="ch02">
+	<h1>Node.js</h1>
+	<h2>方針の文書</h2>
+	<p>リポジトリに <a href="https://github.com/nodejs/node/blob/main/AGENTS.md">AGENTS.md</a> があり、AI エージェントを使うときの決まりを定めています。README に載っているコラボレータは注意して使ってよく、新しい貢献者は使わないよう求めています。</p>
+	<ul>
+		<li>人がすべてのコミットに sign-off し、PR を出した人が全責任を負う</li>
+		<li>AI の支援は <code>Assisted-by: &lt;エージェント名&gt;</code> で開示する。エージェント名義の sign-off・co-author は付けない</li>
+		<li>エージェントを無人で動かさない。人の関与なしの push・PR・Issue・コメントは禁止</li>
+		<li>テストを人の判断なしに消したり変えたりしない</li>
+		<li>違反すると PR のクローズ、ツールのブロック、投稿禁止がありうる</li>
+	</ul>
+	<h2>時期と議論</h2>
+	<p>方針の PR <a href="https://github.com/nodejs/node/pull/62105">#62105</a> は 2026-03-04 に作られ、2026-08-12 にマージされました。議論では LLVM の AI ツール方針を手本にする案が出た一方、LLM が生成したコードは出どころとライセンスが分からないという反対もありました。TSC の投票（nodejs/TSC#1831）と OpenJS Foundation の理事会にも諮られています。投票の結果は未確認です。</p>
+	<p>コアへの AI コードの禁止を求める署名活動もありました（<a href="https://change.org/p/no-ai-code-in-node-js-core">change.org</a>）。約 1.9 万行の PR がきっかけとされています。検索結果の要約から得た情報で、ページ本体は確かめていません。</p>
+</section>
+
+<section class="ch03" id="ch03">
+	<h1>Deno</h1>
+	<p><a href="https://github.com/denoland/deno/blob/main/.github/CONTRIBUTING.md">CONTRIBUTING.md</a> の冒頭に、AI ツール（Copilot・ChatGPT・Claude・Cursor など）で書いた貢献は PR の説明で開示するよう書かれています。</p>
+	<ul>
+		<li>使うこと自体は罰しない</li>
+		<li>開示せずに使った疑いのある PR は却下する</li>
+		<li>中身の無い AI 生成の Issue・PR・コメントを大量に出すと、アカウント停止がありうる</li>
+	</ul>
+	<p>開発チーム自身が AI を使っているかを示す痕跡（ボットのアカウント、エージェントの設定ファイルなど）は調べていません。</p>
+</section>
+
+<section class="ch04" id="ch04">
+	<h1>Bun</h1>
+	<p>リポジトリに <a href="https://github.com/oven-sh/bun/blob/main/CLAUDE.md">CLAUDE.md</a> があります。中身は、ビルドとテストの手順、コードの構成、PR の作法をまとめた開発ガイドです。レビューの基準として <code>REVIEW.md</code> と <code>.claude/docs/landing-prs.md</code> を参照しています。Claude 系のエージェントを開発に使っている強い状況証拠ですが、コミットや PR の上での実際の度合いは確かめていません。</p>
+	<p>Anthropic は 2025-12-03 に Bun の買収を<a href="https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone">発表</a>しました。それ以前から数か月の協業があり、Claude Code のインフラとネイティブインストーラーに Bun が使われていました。買収後も MIT ライセンスのオープンソースを続けるとしています。この発表では、Bun 自身の開発に AI を使うとは述べていません。</p>
+	<div class="callout">
+		<strong>要確認</strong>：取得したページの要約に「Bun は主に Rust で書かれている」という記述がありました。Bun は Zig で書かれているというのが従来の理解で、要約の誤りか実際の変化かは確かめていません。
+	</div>
+</section>
+
+</div>
+
+<footer><a class="back-home" href="../../README.html" title="README">⌂</a></footer>
+
+</body>
+</html>

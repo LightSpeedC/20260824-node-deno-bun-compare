@@ -1,963 +1,963 @@
 {
-  "startedAt": "2026-08-25 01:07:16",
-  "finishedAt": "2026-08-25 01:08:23",
-  "settings": {
-    "runs": 10,
-    "warmup": 3,
-    "fileCount": 2000,
-    "httpSeconds": 10,
-    "httpConnections": 50,
-    "quick": false,
-    "appended": true
-  },
-  "measurements": [
-    {
-      "id": "B-01",
-      "item": "空スクリプト起動",
-      "runtime": "node26",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 101.262,
-      "mean": 101.164,
-      "min": 83.987,
-      "max": 115.076,
-      "sd": 10.106,
-      "cv": 0.0999,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/node-v26.7.0-win-x64/node.exe N:/2026/20260824-node-deno-bun-compare/bench/common/b01-startup.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-01",
-      "item": "空スクリプト起動",
-      "runtime": "node24",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 97.453,
-      "mean": 98.271,
-      "min": 87.182,
-      "max": 118.523,
-      "sd": 8.714,
-      "cv": 0.0887,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/node-v24.19.0-win-x64/node.exe N:/2026/20260824-node-deno-bun-compare/bench/common/b01-startup.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-01",
-      "item": "空スクリプト起動",
-      "runtime": "deno",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 111.782,
-      "mean": 113.061,
-      "min": 94.802,
-      "max": 145.288,
-      "sd": 13.936,
-      "cv": 0.1233,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.5/deno.exe run -A N:/2026/20260824-node-deno-bun-compare/bench/common/b01-startup.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-01",
-      "item": "空スクリプト起動",
-      "runtime": "bun",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 41.686,
-      "mean": 41.956,
-      "min": 31.378,
-      "max": 53.122,
-      "sd": 6.743,
-      "cv": 0.1607,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.0/bun.exe run N:/2026/20260824-node-deno-bun-compare/bench/common/b01-startup.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-02",
-      "item": "依存込み起動",
-      "runtime": "node26",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 186.048,
-      "mean": 191.266,
-      "min": 169.366,
-      "max": 219.698,
-      "sd": 16.732,
-      "cv": 0.0875,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/node-v26.7.0-win-x64/node.exe N:/2026/20260824-node-deno-bun-compare/bench/deps/b02-startup-deps.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-02",
-      "item": "依存込み起動",
-      "runtime": "node24",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 190.978,
-      "mean": 194.576,
-      "min": 172.176,
-      "max": 218.523,
-      "sd": 14.207,
-      "cv": 0.073,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/node-v24.19.0-win-x64/node.exe N:/2026/20260824-node-deno-bun-compare/bench/deps/b02-startup-deps.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-02",
-      "item": "依存込み起動",
-      "runtime": "deno",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 199.942,
-      "mean": 197.596,
-      "min": 177.456,
-      "max": 214.266,
-      "sd": 13.964,
-      "cv": 0.0707,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.5/deno.exe run -A N:/2026/20260824-node-deno-bun-compare/bench/deps/b02-startup-deps.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-02",
-      "item": "依存込み起動",
-      "runtime": "bun",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 66.914,
-      "mean": 67.838,
-      "min": 59.259,
-      "max": 78.65,
-      "sd": 7.894,
-      "cv": 0.1164,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.0/bun.exe run N:/2026/20260824-node-deno-bun-compare/bench/deps/b02-startup-deps.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-09",
-      "item": "TypeScript 実行",
-      "runtime": "node26",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 223.982,
-      "mean": 221.992,
-      "min": 190.891,
-      "max": 242.375,
-      "sd": 18.444,
-      "cv": 0.0831,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/node-v26.7.0-win-x64/node.exe N:/2026/20260824-node-deno-bun-compare/bench/common/b09-types.ts",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-09",
-      "item": "TypeScript 実行",
-      "runtime": "node24",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 239.781,
-      "mean": 237.941,
-      "min": 217.286,
-      "max": 255.922,
-      "sd": 13.429,
-      "cv": 0.0564,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/node-v24.19.0-win-x64/node.exe N:/2026/20260824-node-deno-bun-compare/bench/common/b09-types.ts",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-09",
-      "item": "TypeScript 実行",
-      "runtime": "deno",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 178.833,
-      "mean": 180.74,
-      "min": 159.146,
-      "max": 219.501,
-      "sd": 17.918,
-      "cv": 0.0991,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.5/deno.exe run -A N:/2026/20260824-node-deno-bun-compare/bench/common/b09-types.ts",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-09",
-      "item": "TypeScript 実行",
-      "runtime": "bun",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 99.916,
-      "mean": 102.465,
-      "min": 91.432,
-      "max": 117.902,
-      "sd": 7.681,
-      "cv": 0.075,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.0/bun.exe run N:/2026/20260824-node-deno-bun-compare/bench/common/b09-types.ts",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-11",
-      "item": "テスト実行",
-      "runtime": "node26",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 302.526,
-      "mean": 299.24,
-      "min": 272.578,
-      "max": 319.994,
-      "sd": 14.896,
-      "cv": 0.0498,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/node-v26.7.0-win-x64/node.exe --test N:/2026/20260824-node-deno-bun-compare/bench/tests/suite.test.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-11",
-      "item": "テスト実行",
-      "runtime": "node24",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 326.927,
-      "mean": 329.931,
-      "min": 309.87,
-      "max": 357.036,
-      "sd": 17.946,
-      "cv": 0.0544,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/node-v24.19.0-win-x64/node.exe --test N:/2026/20260824-node-deno-bun-compare/bench/tests/suite.test.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-11",
-      "item": "テスト実行",
-      "runtime": "deno",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 241.261,
-      "mean": 240.552,
-      "min": 211.217,
-      "max": 275.88,
-      "sd": 19.181,
-      "cv": 0.0797,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.5/deno.exe test -A --no-check N:/2026/20260824-node-deno-bun-compare/bench/tests/suite.test.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-11",
-      "item": "テスト実行",
-      "runtime": "bun",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 76.793,
-      "mean": 78.225,
-      "min": 64.378,
-      "max": 94.203,
-      "sd": 10.53,
-      "cv": 0.1346,
-      "detail": {
-        "command": "N:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.0/bun.exe test N:/2026/20260824-node-deno-bun-compare/bench/tests/suite.test.mjs",
-        "exitCodes": [
-          0
-        ]
-      }
-    },
-    {
-      "id": "B-04",
-      "item": "JSON 処理",
-      "runtime": "node26",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 137.59,
-      "mean": 139.45,
-      "min": 109.633,
-      "max": 180.92,
-      "sd": 21.526,
-      "cv": 0.1544,
-      "detail": {
-        "inputMB": 10,
-        "records": 52481,
-        "parseMs": 116.506,
-        "transformMs": 20.433,
-        "stringifyMs": 26.489,
-        "outputMB": 3.6,
-        "cities": 8,
-        "heapUsedMB": 41.7
-      }
-    },
-    {
-      "id": "B-04",
-      "item": "JSON 処理",
-      "runtime": "node24",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 153.724,
-      "mean": 149.504,
-      "min": 137.056,
-      "max": 158.951,
-      "sd": 8.759,
-      "cv": 0.0586,
-      "detail": {
-        "inputMB": 10,
-        "records": 52481,
-        "parseMs": 111.749,
-        "transformMs": 16.743,
-        "stringifyMs": 27.035,
-        "outputMB": 3.6,
-        "cities": 8,
-        "heapUsedMB": 61.5
-      }
-    },
-    {
-      "id": "B-04",
-      "item": "JSON 処理",
-      "runtime": "deno",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 132.747,
-      "mean": 134.833,
-      "min": 120.139,
-      "max": 159.007,
-      "sd": 11.982,
-      "cv": 0.0889,
-      "detail": {
-        "inputMB": 10,
-        "records": 52481,
-        "parseMs": 84.52,
-        "transformMs": 26.464,
-        "stringifyMs": 16.579,
-        "outputMB": 3.6,
-        "cities": 8,
-        "heapUsedMB": 60.1
-      }
-    },
-    {
-      "id": "B-04",
-      "item": "JSON 処理",
-      "runtime": "bun",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 116.833,
-      "mean": 115.883,
-      "min": 103.624,
-      "max": 136.117,
-      "sd": 10.369,
-      "cv": 0.0895,
-      "detail": {
-        "inputMB": 10,
-        "records": 52481,
-        "parseMs": 80.025,
-        "transformMs": 8.845,
-        "stringifyMs": 19.786,
-        "outputMB": 3.6,
-        "cities": 8,
-        "heapUsedMB": 38
-      }
-    },
-    {
-      "id": "B-05",
-      "item": "ファイル I/O",
-      "runtime": "node26",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 3494.649,
-      "mean": 3539.145,
-      "min": 3384.567,
-      "max": 3788.062,
-      "sd": 143.871,
-      "cv": 0.0407,
-      "detail": {
-        "count": 2000,
-        "writeMs": 2435.239,
-        "readMs": 318.364,
-        "listMs": 1.381,
-        "deleteMs": 684.924,
-        "listed": 2000,
-        "readBytes": 1030890
-      }
-    },
-    {
-      "id": "B-05",
-      "item": "ファイル I/O",
-      "runtime": "node24",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 3499.286,
-      "mean": 3496.901,
-      "min": 3363.862,
-      "max": 3628.62,
-      "sd": 82.949,
-      "cv": 0.0237,
-      "detail": {
-        "count": 2000,
-        "writeMs": 2525.822,
-        "readMs": 299.558,
-        "listMs": 3.225,
-        "deleteMs": 800.015,
-        "listed": 2000,
-        "readBytes": 1030890
-      }
-    },
-    {
-      "id": "B-05",
-      "item": "ファイル I/O",
-      "runtime": "deno",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 3670.237,
-      "mean": 3759.651,
-      "min": 3584.872,
-      "max": 4390.508,
-      "sd": 257.089,
-      "cv": 0.0684,
-      "detail": {
-        "count": 2000,
-        "writeMs": 2750.505,
-        "readMs": 507.85,
-        "listMs": 8.57,
-        "deleteMs": 1123.582,
-        "listed": 2000,
-        "readBytes": 1030890
-      }
-    },
-    {
-      "id": "B-05",
-      "item": "ファイル I/O",
-      "runtime": "bun",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 3486.216,
-      "mean": 3548.522,
-      "min": 3351.074,
-      "max": 3906.65,
-      "sd": 186.012,
-      "cv": 0.0524,
-      "detail": {
-        "count": 2000,
-        "writeMs": 2242.611,
-        "readMs": 455.005,
-        "listMs": 1.398,
-        "deleteMs": 752.152,
-        "listed": 2000,
-        "readBytes": 1030890
-      }
-    },
-    {
-      "id": "B-06",
-      "item": "CPU バウンド処理",
-      "runtime": "node26",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 908.618,
-      "mean": 913.191,
-      "min": 864.511,
-      "max": 977.584,
-      "sd": 37.982,
-      "cv": 0.0416,
-      "detail": {
-        "scale": 1,
-        "numericMs": 75.974,
-        "stringMs": 84.603,
-        "arrayMs": 725.168,
-        "checksum": 3170924689.119
-      }
-    },
-    {
-      "id": "B-06",
-      "item": "CPU バウンド処理",
-      "runtime": "node24",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 909.749,
-      "mean": 918.033,
-      "min": 852.201,
-      "max": 982.814,
-      "sd": 45.302,
-      "cv": 0.0493,
-      "detail": {
-        "scale": 1,
-        "numericMs": 77.547,
-        "stringMs": 103.543,
-        "arrayMs": 801.724,
-        "checksum": 3170924689.119
-      }
-    },
-    {
-      "id": "B-06",
-      "item": "CPU バウンド処理",
-      "runtime": "deno",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 896.841,
-      "mean": 919.881,
-      "min": 856.88,
-      "max": 1031.303,
-      "sd": 56.344,
-      "cv": 0.0613,
-      "detail": {
-        "scale": 1,
-        "numericMs": 68.45,
-        "stringMs": 73.017,
-        "arrayMs": 715.412,
-        "checksum": 3170924689.119
-      }
-    },
-    {
-      "id": "B-06",
-      "item": "CPU バウンド処理",
-      "runtime": "bun",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 502.12,
-      "mean": 508.799,
-      "min": 442.066,
-      "max": 594.815,
-      "sd": 41.825,
-      "cv": 0.0822,
-      "detail": {
-        "scale": 1,
-        "numericMs": 82.37,
-        "stringMs": 54.625,
-        "arrayMs": 374.041,
-        "checksum": 3170924689.119
-      }
-    },
-    {
-      "id": "B-07",
-      "item": "SQLite",
-      "runtime": "node26",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 262.892,
-      "mean": 264.694,
-      "min": 243.807,
-      "max": 299.287,
-      "sd": 17.896,
-      "cv": 0.0676,
-      "detail": {
-        "rows": 100000,
-        "createMs": 0.497,
-        "insertMs": 186.914,
-        "aggregateMs": 31.329,
-        "pointSelectMs": 25.067,
-        "groups": 8,
-        "pointHits": 20000
-      }
-    },
-    {
-      "id": "B-07",
-      "item": "SQLite",
-      "runtime": "node24",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 264.068,
-      "mean": 272.541,
-      "min": 249.917,
-      "max": 312.431,
-      "sd": 22.356,
-      "cv": 0.082,
-      "detail": {
-        "rows": 100000,
-        "createMs": 0.585,
-        "insertMs": 186.87,
-        "aggregateMs": 31.707,
-        "pointSelectMs": 34.029,
-        "groups": 8,
-        "pointHits": 20000
-      }
-    },
-    {
-      "id": "B-07",
-      "item": "SQLite",
-      "runtime": "deno",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 441.31,
-      "mean": 435.887,
-      "min": 404.817,
-      "max": 468.4,
-      "sd": 22.775,
-      "cv": 0.0522,
-      "detail": {
-        "rows": 100000,
-        "createMs": 0.255,
-        "insertMs": 366.092,
-        "aggregateMs": 46.896,
-        "pointSelectMs": 55.157,
-        "groups": 8,
-        "pointHits": 20000
-      }
-    },
-    {
-      "id": "B-07",
-      "item": "SQLite",
-      "runtime": "bun",
-      "variant": "common",
-      "metric": "所要時間",
-      "unit": "ms",
-      "ok": true,
-      "note": "",
-      "n": 10,
-      "median": 279.21,
-      "mean": 282.345,
-      "min": 247.805,
-      "max": 328.376,
-      "sd": 25.703,
-      "cv": 0.091,
-      "detail": {
-        "rows": 100000,
-        "createMs": 0.489,
-        "insertMs": 210.102,
-        "aggregateMs": 36.032,
-        "pointSelectMs": 38.635,
-        "groups": 8,
-        "pointHits": 20000
-      }
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "runtime": "node26",
-      "variant": "node:http",
-      "metric": "req/s",
-      "unit": "req/s",
-      "ok": true,
-      "note": "",
-      "n": 1,
-      "median": 13437.415,
-      "mean": 13437.415,
-      "min": 13437.415,
-      "max": 13437.415,
-      "sd": 0.0,
-      "cv": 0.0,
-      "detail": {
-        "connections": 50,
-        "durationSec": 10,
-        "successRate": 1.0,
-        "p50Ms": 3.484,
-        "p99Ms": 7.906,
-        "statusCodes": {
-          "200": 134587
-        },
-        "port": 3201
-      }
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "runtime": "node24",
-      "variant": "node:http",
-      "metric": "req/s",
-      "unit": "req/s",
-      "ok": true,
-      "note": "",
-      "n": 1,
-      "median": 14367.266,
-      "mean": 14367.266,
-      "min": 14367.266,
-      "max": 14367.266,
-      "sd": 0.0,
-      "cv": 0.0,
-      "detail": {
-        "connections": 50,
-        "durationSec": 10,
-        "successRate": 1.0,
-        "p50Ms": 3.327,
-        "p99Ms": 6.762,
-        "statusCodes": {
-          "200": 143877
-        },
-        "port": 3202
-      }
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "runtime": "deno",
-      "variant": "node:http",
-      "metric": "req/s",
-      "unit": "req/s",
-      "ok": true,
-      "note": "",
-      "n": 1,
-      "median": 13946.378,
-      "mean": 13946.378,
-      "min": 13946.378,
-      "max": 13946.378,
-      "sd": 0.0,
-      "cv": 0.0,
-      "detail": {
-        "connections": 50,
-        "durationSec": 10,
-        "successRate": 1.0,
-        "p50Ms": 3.378,
-        "p99Ms": 8.508,
-        "statusCodes": {
-          "200": 139559
-        },
-        "port": 3203
-      }
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "runtime": "bun",
-      "variant": "node:http",
-      "metric": "req/s",
-      "unit": "req/s",
-      "ok": true,
-      "note": "",
-      "n": 1,
-      "median": 18303.186,
-      "mean": 18303.186,
-      "min": 18303.186,
-      "max": 18303.186,
-      "sd": 0.0,
-      "cv": 0.0,
-      "detail": {
-        "connections": 50,
-        "durationSec": 10,
-        "successRate": 1.0,
-        "p50Ms": 2.608,
-        "p99Ms": 5.43,
-        "statusCodes": {
-          "200": 183061
-        },
-        "port": 3204
-      }
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "runtime": "deno",
-      "variant": "Deno.serve",
-      "metric": "req/s",
-      "unit": "req/s",
-      "ok": true,
-      "note": "",
-      "n": 1,
-      "median": 23805.555,
-      "mean": 23805.555,
-      "min": 23805.555,
-      "max": 23805.555,
-      "sd": 0.0,
-      "cv": 0.0,
-      "detail": {
-        "connections": 50,
-        "durationSec": 10,
-        "successRate": 1.0,
-        "p50Ms": 2.038,
-        "p99Ms": 3.806,
-        "statusCodes": {
-          "200": 238421
-        },
-        "port": 3205
-      }
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "runtime": "bun",
-      "variant": "Bun.serve",
-      "metric": "req/s",
-      "unit": "req/s",
-      "ok": true,
-      "note": "",
-      "n": 1,
-      "median": 23175.365,
-      "mean": 23175.365,
-      "min": 23175.365,
-      "max": 23175.365,
-      "sd": 0.0,
-      "cv": 0.0,
-      "detail": {
-        "connections": 50,
-        "durationSec": 10,
-        "successRate": 1.0,
-        "p50Ms": 2.089,
-        "p99Ms": 3.963,
-        "statusCodes": {
-          "200": 232145
-        },
-        "port": 3206
-      }
-    }
-  ]
+    "startedAt":  "2026-10-10 21:04:37",
+    "finishedAt":  "2026-10-10 21:06:40",
+    "settings":  {
+                     "runs":  10,
+                     "warmup":  3,
+                     "fileCount":  2000,
+                     "httpSeconds":  10,
+                     "httpConnections":  50,
+                     "quick":  false,
+                     "appended":  true
+                 },
+    "measurements":  [
+                         {
+                             "id":  "B-03",
+                             "item":  "HTTP スループット",
+                             "runtime":  "node26",
+                             "variant":  "node:http",
+                             "metric":  "req/s",
+                             "unit":  "req/s",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  1,
+                             "median":  25003.945,
+                             "mean":  25003.945,
+                             "min":  25003.945,
+                             "max":  25003.945,
+                             "sd":  0,
+                             "cv":  0,
+                             "detail":  {
+                                            "connections":  50,
+                                            "durationSec":  10,
+                                            "successRate":  1.0,
+                                            "p50Ms":  1.782,
+                                            "p99Ms":  5.623,
+                                            "statusCodes":  {
+                                                                "200":  250141
+                                                            },
+                                            "port":  3201
+                                        }
+                         },
+                         {
+                             "id":  "B-03",
+                             "item":  "HTTP スループット",
+                             "runtime":  "node24",
+                             "variant":  "node:http",
+                             "metric":  "req/s",
+                             "unit":  "req/s",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  1,
+                             "median":  20014.534,
+                             "mean":  20014.534,
+                             "min":  20014.534,
+                             "max":  20014.534,
+                             "sd":  0,
+                             "cv":  0,
+                             "detail":  {
+                                            "connections":  50,
+                                            "durationSec":  10,
+                                            "successRate":  1.0,
+                                            "p50Ms":  2.255,
+                                            "p99Ms":  6.848,
+                                            "statusCodes":  {
+                                                                "200":  200179
+                                                            },
+                                            "port":  3202
+                                        }
+                         },
+                         {
+                             "id":  "B-03",
+                             "item":  "HTTP スループット",
+                             "runtime":  "deno",
+                             "variant":  "node:http",
+                             "metric":  "req/s",
+                             "unit":  "req/s",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  1,
+                             "median":  16329.765,
+                             "mean":  16329.765,
+                             "min":  16329.765,
+                             "max":  16329.765,
+                             "sd":  0,
+                             "cv":  0,
+                             "detail":  {
+                                            "connections":  50,
+                                            "durationSec":  10,
+                                            "successRate":  1.0,
+                                            "p50Ms":  2.647,
+                                            "p99Ms":  9.11,
+                                            "statusCodes":  {
+                                                                "200":  163297
+                                                            },
+                                            "port":  3203
+                                        }
+                         },
+                         {
+                             "id":  "B-03",
+                             "item":  "HTTP スループット",
+                             "runtime":  "bun",
+                             "variant":  "node:http",
+                             "metric":  "req/s",
+                             "unit":  "req/s",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  1,
+                             "median":  24607.193,
+                             "mean":  24607.193,
+                             "min":  24607.193,
+                             "max":  24607.193,
+                             "sd":  0,
+                             "cv":  0,
+                             "detail":  {
+                                            "connections":  50,
+                                            "durationSec":  10,
+                                            "successRate":  1.0,
+                                            "p50Ms":  1.829,
+                                            "p99Ms":  5.583,
+                                            "statusCodes":  {
+                                                                "200":  246335
+                                                            },
+                                            "port":  3204
+                                        }
+                         },
+                         {
+                             "id":  "B-03",
+                             "item":  "HTTP スループット",
+                             "runtime":  "deno",
+                             "variant":  "Deno.serve",
+                             "metric":  "req/s",
+                             "unit":  "req/s",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  1,
+                             "median":  32911.35,
+                             "mean":  32911.35,
+                             "min":  32911.35,
+                             "max":  32911.35,
+                             "sd":  0,
+                             "cv":  0,
+                             "detail":  {
+                                            "connections":  50,
+                                            "durationSec":  10,
+                                            "successRate":  1.0,
+                                            "p50Ms":  1.266,
+                                            "p99Ms":  5.462,
+                                            "statusCodes":  {
+                                                                "200":  329313
+                                                            },
+                                            "port":  3205
+                                        }
+                         },
+                         {
+                             "id":  "B-03",
+                             "item":  "HTTP スループット",
+                             "runtime":  "bun",
+                             "variant":  "Bun.serve",
+                             "metric":  "req/s",
+                             "unit":  "req/s",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  1,
+                             "median":  30251.709,
+                             "mean":  30251.709,
+                             "min":  30251.709,
+                             "max":  30251.709,
+                             "sd":  0,
+                             "cv":  0,
+                             "detail":  {
+                                            "connections":  50,
+                                            "durationSec":  10,
+                                            "successRate":  1.0,
+                                            "p50Ms":  1.496,
+                                            "p99Ms":  4.454,
+                                            "statusCodes":  {
+                                                                "200":  302732
+                                                            },
+                                            "port":  3206
+                                        }
+                         },
+                         {
+                             "id":  "B-01",
+                             "item":  "空スクリプト起動",
+                             "runtime":  "node26",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  48.013,
+                             "mean":  51.845,
+                             "min":  44.248,
+                             "max":  71.611,
+                             "sd":  8.721,
+                             "cv":  0.1682,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/node-v26.11.1-win-x64/node.exe W:/2026/20260824-node-deno-bun-compare/src/bench/common/b01-startup.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-01",
+                             "item":  "空スクリプト起動",
+                             "runtime":  "node24",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  50.336,
+                             "mean":  52.154,
+                             "min":  46.342,
+                             "max":  63.904,
+                             "sd":  5.443,
+                             "cv":  0.1044,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/node-v24.21.0-win-x64/node.exe W:/2026/20260824-node-deno-bun-compare/src/bench/common/b01-startup.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-01",
+                             "item":  "空スクリプト起動",
+                             "runtime":  "deno",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  82.123,
+                             "mean":  83.759,
+                             "min":  69.534,
+                             "max":  106.196,
+                             "sd":  11.146,
+                             "cv":  0.1331,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.7/deno.exe run -A W:/2026/20260824-node-deno-bun-compare/src/bench/common/b01-startup.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-01",
+                             "item":  "空スクリプト起動",
+                             "runtime":  "bun",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  20.449,
+                             "mean":  22.102,
+                             "min":  19.303,
+                             "max":  37.407,
+                             "sd":  5.419,
+                             "cv":  0.2452,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.3/bun.exe run W:/2026/20260824-node-deno-bun-compare/src/bench/common/b01-startup.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-02",
+                             "item":  "依存込み起動",
+                             "runtime":  "node26",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  116.38,
+                             "mean":  136.855,
+                             "min":  102.971,
+                             "max":  272.386,
+                             "sd":  52.774,
+                             "cv":  0.3856,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/node-v26.11.1-win-x64/node.exe W:/2026/20260824-node-deno-bun-compare/src/bench/deps/b02-startup-deps.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-02",
+                             "item":  "依存込み起動",
+                             "runtime":  "node24",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  123.724,
+                             "mean":  125.139,
+                             "min":  111.225,
+                             "max":  145.5,
+                             "sd":  12.926,
+                             "cv":  0.1033,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/node-v24.21.0-win-x64/node.exe W:/2026/20260824-node-deno-bun-compare/src/bench/deps/b02-startup-deps.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-02",
+                             "item":  "依存込み起動",
+                             "runtime":  "deno",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  130.912,
+                             "mean":  129.98,
+                             "min":  117.561,
+                             "max":  140.556,
+                             "sd":  7.707,
+                             "cv":  0.0593,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.7/deno.exe run -A W:/2026/20260824-node-deno-bun-compare/src/bench/deps/b02-startup-deps.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-02",
+                             "item":  "依存込み起動",
+                             "runtime":  "bun",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  41.681,
+                             "mean":  40.791,
+                             "min":  36.225,
+                             "max":  42.556,
+                             "sd":  2.107,
+                             "cv":  0.0517,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.3/bun.exe run W:/2026/20260824-node-deno-bun-compare/src/bench/deps/b02-startup-deps.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-09",
+                             "item":  "TypeScript 実行",
+                             "runtime":  "node26",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  129.62,
+                             "mean":  129.146,
+                             "min":  117.893,
+                             "max":  136.285,
+                             "sd":  6.599,
+                             "cv":  0.0511,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/node-v26.11.1-win-x64/node.exe W:/2026/20260824-node-deno-bun-compare/src/bench/common/b09-types.ts",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-09",
+                             "item":  "TypeScript 実行",
+                             "runtime":  "node24",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  140.299,
+                             "mean":  143.277,
+                             "min":  127.12,
+                             "max":  175.255,
+                             "sd":  15.065,
+                             "cv":  0.1051,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/node-v24.21.0-win-x64/node.exe W:/2026/20260824-node-deno-bun-compare/src/bench/common/b09-types.ts",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-09",
+                             "item":  "TypeScript 実行",
+                             "runtime":  "deno",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  118.976,
+                             "mean":  122.274,
+                             "min":  114.285,
+                             "max":  146.818,
+                             "sd":  10.031,
+                             "cv":  0.082,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.7/deno.exe run -A W:/2026/20260824-node-deno-bun-compare/src/bench/common/b09-types.ts",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-09",
+                             "item":  "TypeScript 実行",
+                             "runtime":  "bun",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  62.682,
+                             "mean":  64.495,
+                             "min":  57.354,
+                             "max":  74.4,
+                             "sd":  5.539,
+                             "cv":  0.0859,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.3/bun.exe run W:/2026/20260824-node-deno-bun-compare/src/bench/common/b09-types.ts",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-11",
+                             "item":  "テスト実行",
+                             "runtime":  "node26",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  178.277,
+                             "mean":  185.369,
+                             "min":  173.838,
+                             "max":  241.394,
+                             "sd":  20.197,
+                             "cv":  0.109,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/node-v26.11.1-win-x64/node.exe --test W:/2026/20260824-node-deno-bun-compare/src/bench/tests/suite.test.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-11",
+                             "item":  "テスト実行",
+                             "runtime":  "node24",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  192.492,
+                             "mean":  196.027,
+                             "min":  181.204,
+                             "max":  238.816,
+                             "sd":  16.831,
+                             "cv":  0.0859,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/node-v24.21.0-win-x64/node.exe --test W:/2026/20260824-node-deno-bun-compare/src/bench/tests/suite.test.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-11",
+                             "item":  "テスト実行",
+                             "runtime":  "deno",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  169.946,
+                             "mean":  169.461,
+                             "min":  144.672,
+                             "max":  193.472,
+                             "sd":  15.328,
+                             "cv":  0.0904,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/deno-2.9.7/deno.exe test -A --no-check W:/2026/20260824-node-deno-bun-compare/src/bench/tests/suite.test.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-11",
+                             "item":  "テスト実行",
+                             "runtime":  "bun",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  41.026,
+                             "mean":  41.584,
+                             "min":  38.511,
+                             "max":  46.724,
+                             "sd":  2.86,
+                             "cv":  0.0688,
+                             "detail":  {
+                                            "command":  "W:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.3/bun.exe test W:/2026/20260824-node-deno-bun-compare/src/bench/tests/suite.test.mjs",
+                                            "exitCodes":  [
+                                                              0
+                                                          ]
+                                        }
+                         },
+                         {
+                             "id":  "B-04",
+                             "item":  "JSON 処理",
+                             "runtime":  "node26",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  81.98,
+                             "mean":  82.408,
+                             "min":  69.46,
+                             "max":  101.528,
+                             "sd":  9.944,
+                             "cv":  0.1207,
+                             "detail":  {
+                                            "inputMB":  10,
+                                            "records":  52481,
+                                            "parseMs":  59.371,
+                                            "transformMs":  9.369,
+                                            "stringifyMs":  11.667,
+                                            "outputMB":  3.6,
+                                            "cities":  8,
+                                            "heapUsedMB":  41.8
+                                        }
+                         },
+                         {
+                             "id":  "B-04",
+                             "item":  "JSON 処理",
+                             "runtime":  "node24",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  90.306,
+                             "mean":  89.703,
+                             "min":  79.69,
+                             "max":  97.874,
+                             "sd":  6.339,
+                             "cv":  0.0707,
+                             "detail":  {
+                                            "inputMB":  10,
+                                            "records":  52481,
+                                            "parseMs":  54.876,
+                                            "transformMs":  7.81,
+                                            "stringifyMs":  17.004,
+                                            "outputMB":  3.6,
+                                            "cities":  8,
+                                            "heapUsedMB":  61.7
+                                        }
+                         },
+                         {
+                             "id":  "B-04",
+                             "item":  "JSON 処理",
+                             "runtime":  "deno",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  84.238,
+                             "mean":  85.118,
+                             "min":  79.293,
+                             "max":  95.203,
+                             "sd":  4.677,
+                             "cv":  0.055,
+                             "detail":  {
+                                            "inputMB":  10,
+                                            "records":  52481,
+                                            "parseMs":  58.475,
+                                            "transformMs":  15.413,
+                                            "stringifyMs":  10.396,
+                                            "outputMB":  3.6,
+                                            "cities":  8,
+                                            "heapUsedMB":  60.2
+                                        }
+                         },
+                         {
+                             "id":  "B-04",
+                             "item":  "JSON 処理",
+                             "runtime":  "bun",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  56.36,
+                             "mean":  58.34,
+                             "min":  53.123,
+                             "max":  73.083,
+                             "sd":  6.458,
+                             "cv":  0.1107,
+                             "detail":  {
+                                            "inputMB":  10,
+                                            "records":  52481,
+                                            "parseMs":  41.007,
+                                            "transformMs":  14.095,
+                                            "stringifyMs":  11.59,
+                                            "outputMB":  3.6,
+                                            "cities":  8,
+                                            "heapUsedMB":  39
+                                        }
+                         },
+                         {
+                             "id":  "B-05",
+                             "item":  "ファイル I/O",
+                             "runtime":  "node26",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  1798.276,
+                             "mean":  1946.428,
+                             "min":  1720.651,
+                             "max":  3122.383,
+                             "sd":  423.102,
+                             "cv":  0.2174,
+                             "detail":  {
+                                            "count":  2000,
+                                            "writeMs":  1356.546,
+                                            "readMs":  183.682,
+                                            "listMs":  0.844,
+                                            "deleteMs":  219.446,
+                                            "listed":  2000,
+                                            "readBytes":  1030890
+                                        }
+                         },
+                         {
+                             "id":  "B-05",
+                             "item":  "ファイル I/O",
+                             "runtime":  "node24",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  1742.318,
+                             "mean":  1755.814,
+                             "min":  1628.14,
+                             "max":  1867.079,
+                             "sd":  79.384,
+                             "cv":  0.0452,
+                             "detail":  {
+                                            "count":  2000,
+                                            "writeMs":  1449.471,
+                                            "readMs":  162.663,
+                                            "listMs":  0.986,
+                                            "deleteMs":  213.251,
+                                            "listed":  2000,
+                                            "readBytes":  1030890
+                                        }
+                         },
+                         {
+                             "id":  "B-05",
+                             "item":  "ファイル I/O",
+                             "runtime":  "deno",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  1811.784,
+                             "mean":  1812.243,
+                             "min":  1749.869,
+                             "max":  1867.518,
+                             "sd":  37.86,
+                             "cv":  0.0209,
+                             "detail":  {
+                                            "count":  2000,
+                                            "writeMs":  1302.325,
+                                            "readMs":  181.82,
+                                            "listMs":  3.464,
+                                            "deleteMs":  276.548,
+                                            "listed":  2000,
+                                            "readBytes":  1030890
+                                        }
+                         },
+                         {
+                             "id":  "B-05",
+                             "item":  "ファイル I/O",
+                             "runtime":  "bun",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  1755.698,
+                             "mean":  1954.028,
+                             "min":  1681.439,
+                             "max":  2528.915,
+                             "sd":  346.872,
+                             "cv":  0.1775,
+                             "detail":  {
+                                            "count":  2000,
+                                            "writeMs":  1526.462,
+                                            "readMs":  149.719,
+                                            "listMs":  0.631,
+                                            "deleteMs":  222.224,
+                                            "listed":  2000,
+                                            "readBytes":  1030890
+                                        }
+                         },
+                         {
+                             "id":  "B-06",
+                             "item":  "CPU バウンド処理",
+                             "runtime":  "node26",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  641.04,
+                             "mean":  661.21,
+                             "min":  588.52,
+                             "max":  875.25,
+                             "sd":  82.902,
+                             "cv":  0.1254,
+                             "detail":  {
+                                            "scale":  1,
+                                            "numericMs":  56.082,
+                                            "stringMs":  56.895,
+                                            "arrayMs":  489.122,
+                                            "checksum":  3170924689.119
+                                        }
+                         },
+                         {
+                             "id":  "B-06",
+                             "item":  "CPU バウンド処理",
+                             "runtime":  "node24",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  683.826,
+                             "mean":  731.766,
+                             "min":  651.366,
+                             "max":  924.122,
+                             "sd":  103.681,
+                             "cv":  0.1417,
+                             "detail":  {
+                                            "scale":  1,
+                                            "numericMs":  52.948,
+                                            "stringMs":  70.292,
+                                            "arrayMs":  556.264,
+                                            "checksum":  3170924689.119
+                                        }
+                         },
+                         {
+                             "id":  "B-06",
+                             "item":  "CPU バウンド処理",
+                             "runtime":  "deno",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  670.916,
+                             "mean":  688.743,
+                             "min":  627.973,
+                             "max":  791.946,
+                             "sd":  57.092,
+                             "cv":  0.0829,
+                             "detail":  {
+                                            "scale":  1,
+                                            "numericMs":  52.268,
+                                            "stringMs":  65.765,
+                                            "arrayMs":  563.754,
+                                            "checksum":  3170924689.119
+                                        }
+                         },
+                         {
+                             "id":  "B-06",
+                             "item":  "CPU バウンド処理",
+                             "runtime":  "bun",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  359.818,
+                             "mean":  365.357,
+                             "min":  335.331,
+                             "max":  401.345,
+                             "sd":  22.842,
+                             "cv":  0.0625,
+                             "detail":  {
+                                            "scale":  1,
+                                            "numericMs":  59.785,
+                                            "stringMs":  41.954,
+                                            "arrayMs":  250.963,
+                                            "checksum":  3170924689.119
+                                        }
+                         },
+                         {
+                             "id":  "B-07",
+                             "item":  "SQLite",
+                             "runtime":  "node26",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  194.19,
+                             "mean":  192.889,
+                             "min":  172.868,
+                             "max":  216.971,
+                             "sd":  14.923,
+                             "cv":  0.0774,
+                             "detail":  {
+                                            "rows":  100000,
+                                            "createMs":  0.357,
+                                            "insertMs":  161.931,
+                                            "aggregateMs":  22.768,
+                                            "pointSelectMs":  18.527,
+                                            "groups":  8,
+                                            "pointHits":  20000
+                                        }
+                         },
+                         {
+                             "id":  "B-07",
+                             "item":  "SQLite",
+                             "runtime":  "node24",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  213.211,
+                             "mean":  212.283,
+                             "min":  172.917,
+                             "max":  271.418,
+                             "sd":  30.978,
+                             "cv":  0.1459,
+                             "detail":  {
+                                            "rows":  100000,
+                                            "createMs":  0.345,
+                                            "insertMs":  167.129,
+                                            "aggregateMs":  22.708,
+                                            "pointSelectMs":  24.016,
+                                            "groups":  8,
+                                            "pointHits":  20000
+                                        }
+                         },
+                         {
+                             "id":  "B-07",
+                             "item":  "SQLite",
+                             "runtime":  "deno",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  320.869,
+                             "mean":  321.434,
+                             "min":  278.822,
+                             "max":  395.93,
+                             "sd":  32.973,
+                             "cv":  0.1026,
+                             "detail":  {
+                                            "rows":  100000,
+                                            "createMs":  0.145,
+                                            "insertMs":  338.256,
+                                            "aggregateMs":  27.897,
+                                            "pointSelectMs":  29.632,
+                                            "groups":  8,
+                                            "pointHits":  20000
+                                        }
+                         },
+                         {
+                             "id":  "B-07",
+                             "item":  "SQLite",
+                             "runtime":  "bun",
+                             "variant":  "common",
+                             "metric":  "所要時間",
+                             "unit":  "ms",
+                             "ok":  true,
+                             "note":  "",
+                             "n":  10,
+                             "median":  204.749,
+                             "mean":  204.964,
+                             "min":  184.176,
+                             "max":  240.48,
+                             "sd":  15.659,
+                             "cv":  0.0764,
+                             "detail":  {
+                                            "rows":  100000,
+                                            "createMs":  0.336,
+                                            "insertMs":  134.747,
+                                            "aggregateMs":  25.257,
+                                            "pointSelectMs":  23.837,
+                                            "groups":  8,
+                                            "pointHits":  20000
+                                        }
+                         }
+                     ]
 }

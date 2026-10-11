@@ -11,6 +11,6 @@
 		"esbuild": "*",
 		"prettier": "*",
 		"sharp": "*",
-		"better-sqlite3": "*"
+		"bcrypt": "6.0.0"
 	}
 }

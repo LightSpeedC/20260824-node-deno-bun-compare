@@ -1,20 +1,20 @@
 --- run 1 ---
-BENCH {"id":"B-04","ms":136.217,"detail":{"inputMB":10,"records":52481,"parseMs":100.119,"transformMs":15.158,"stringifyMs":20.939,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
+BENCH {"id":"B-04","ms":89.646,"detail":{"inputMB":10,"records":52481,"parseMs":69.123,"transformMs":8.845,"stringifyMs":11.678,"outputMB":3.6,"cities":8,"heapUsedMB":41.7}}
 --- run 2 ---
-BENCH {"id":"B-04","ms":123.647,"detail":{"inputMB":10,"records":52481,"parseMs":79.26,"transformMs":17.301,"stringifyMs":27.085,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
+BENCH {"id":"B-04","ms":101.528,"detail":{"inputMB":10,"records":52481,"parseMs":70.258,"transformMs":15.464,"stringifyMs":15.806,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
 --- run 3 ---
-BENCH {"id":"B-04","ms":147.091,"detail":{"inputMB":10,"records":52481,"parseMs":106.065,"transformMs":18.144,"stringifyMs":22.883,"outputMB":3.6,"cities":8,"heapUsedMB":41.5}}
+BENCH {"id":"B-04","ms":85.204,"detail":{"inputMB":10,"records":52481,"parseMs":65.152,"transformMs":8.551,"stringifyMs":11.501,"outputMB":3.6,"cities":8,"heapUsedMB":41.7}}
 --- run 4 ---
-BENCH {"id":"B-04","ms":180.92,"detail":{"inputMB":10,"records":52481,"parseMs":132.112,"transformMs":22.559,"stringifyMs":26.25,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
+BENCH {"id":"B-04","ms":73.504,"detail":{"inputMB":10,"records":52481,"parseMs":52.227,"transformMs":10.205,"stringifyMs":11.073,"outputMB":3.6,"cities":8,"heapUsedMB":41.8}}
 --- run 5 ---
-BENCH {"id":"B-04","ms":124.543,"detail":{"inputMB":10,"records":52481,"parseMs":84.401,"transformMs":17.843,"stringifyMs":22.299,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
+BENCH {"id":"B-04","ms":83.554,"detail":{"inputMB":10,"records":52481,"parseMs":60.596,"transformMs":11.735,"stringifyMs":11.224,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
 --- run 6 ---
-BENCH {"id":"B-04","ms":109.633,"detail":{"inputMB":10,"records":52481,"parseMs":76.082,"transformMs":17.204,"stringifyMs":16.347,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
+BENCH {"id":"B-04","ms":79.261,"detail":{"inputMB":10,"records":52481,"parseMs":57.312,"transformMs":10.446,"stringifyMs":11.503,"outputMB":3.6,"cities":8,"heapUsedMB":41.8}}
 --- run 7 ---
-BENCH {"id":"B-04","ms":138.962,"detail":{"inputMB":10,"records":52481,"parseMs":87.944,"transformMs":21.003,"stringifyMs":30.015,"outputMB":3.6,"cities":8,"heapUsedMB":41.5}}
+BENCH {"id":"B-04","ms":70.844,"detail":{"inputMB":10,"records":52481,"parseMs":50.539,"transformMs":9,"stringifyMs":11.306,"outputMB":3.6,"cities":8,"heapUsedMB":41.7}}
 --- run 8 ---
-BENCH {"id":"B-04","ms":120.776,"detail":{"inputMB":10,"records":52481,"parseMs":81.194,"transformMs":15.68,"stringifyMs":23.902,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
+BENCH {"id":"B-04","ms":69.46,"detail":{"inputMB":10,"records":52481,"parseMs":50.34,"transformMs":8.663,"stringifyMs":10.457,"outputMB":3.6,"cities":8,"heapUsedMB":41.7}}
 --- run 9 ---
-BENCH {"id":"B-04","ms":149.283,"detail":{"inputMB":10,"records":52481,"parseMs":106.02,"transformMs":20.242,"stringifyMs":23.022,"outputMB":3.6,"cities":8,"heapUsedMB":41.6}}
+BENCH {"id":"B-04","ms":90.668,"detail":{"inputMB":10,"records":52481,"parseMs":68.914,"transformMs":10.219,"stringifyMs":11.534,"outputMB":3.6,"cities":8,"heapUsedMB":41.7}}
 --- run 10 ---
-BENCH {"id":"B-04","ms":163.429,"detail":{"inputMB":10,"records":52481,"parseMs":116.506,"transformMs":20.433,"stringifyMs":26.489,"outputMB":3.6,"cities":8,"heapUsedMB":41.7}}
+BENCH {"id":"B-04","ms":80.407,"detail":{"inputMB":10,"records":52481,"parseMs":59.371,"transformMs":9.369,"stringifyMs":11.667,"outputMB":3.6,"cities":8,"heapUsedMB":41.8}}

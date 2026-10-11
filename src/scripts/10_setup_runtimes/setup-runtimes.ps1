@@ -27,30 +27,30 @@ $ResultsDir  = Join-Path $Root 'docs/results'
 # ---------------------------------------------------------------------------
 $Items = @(
 	[pscustomobject]@{
-		Key = 'node26'; Label = 'Node.js 26 (Current)'; Version = '26.7.0'; Role = '主軸'
-		Dir = 'node-v26.7.0-win-x64'; Exe = 'node.exe'; Mode = 'tree'
-		Url = 'https://nodejs.org/dist/v26.7.0/node-v26.7.0-win-x64.zip'
-		Sha256Url = 'https://nodejs.org/dist/v26.7.0/SHASUMS256.txt'; Sha256Kind = 'list'
+		Key = 'node26'; Label = 'Node.js 26 (Current)'; Version = '26.11.1'; Role = '主軸'
+		Dir = 'node-v26.11.1-win-x64'; Exe = 'node.exe'; Mode = 'tree'
+		Url = 'https://nodejs.org/dist/v26.11.1/node-v26.11.1-win-x64.zip'
+		Sha256Url = 'https://nodejs.org/dist/v26.11.1/SHASUMS256.txt'; Sha256Kind = 'list'
 		VersionArg = '-v'
 	}
 	[pscustomobject]@{
-		Key = 'node24'; Label = 'Node.js 24 (Active LTS)'; Version = '24.19.0'; Role = '参考'
-		Dir = 'node-v24.19.0-win-x64'; Exe = 'node.exe'; Mode = 'tree'
-		Url = 'https://nodejs.org/dist/v24.19.0/node-v24.19.0-win-x64.zip'
-		Sha256Url = 'https://nodejs.org/dist/v24.19.0/SHASUMS256.txt'; Sha256Kind = 'list'
+		Key = 'node24'; Label = 'Node.js 24 (Active LTS)'; Version = '24.21.0'; Role = '参考'
+		Dir = 'node-v24.21.0-win-x64'; Exe = 'node.exe'; Mode = 'tree'
+		Url = 'https://nodejs.org/dist/v24.21.0/node-v24.21.0-win-x64.zip'
+		Sha256Url = 'https://nodejs.org/dist/v24.21.0/SHASUMS256.txt'; Sha256Kind = 'list'
 		VersionArg = '-v'
 	}
 	[pscustomobject]@{
-		Key = 'deno'; Label = 'Deno'; Version = '2.9.5'; Role = '主軸'
-		Dir = 'deno-2.9.5'; Exe = 'deno.exe'; Mode = 'exe'
-		Url = 'https://github.com/denoland/deno/releases/download/v2.9.5/deno-x86_64-pc-windows-msvc.zip'
-		Sha256Url = 'https://github.com/denoland/deno/releases/download/v2.9.5/deno-x86_64-pc-windows-msvc.zip.sha256sum'; Sha256Kind = 'single'
+		Key = 'deno'; Label = 'Deno'; Version = '2.9.7'; Role = '主軸'
+		Dir = 'deno-2.9.7'; Exe = 'deno.exe'; Mode = 'exe'
+		Url = 'https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-pc-windows-msvc.zip'
+		Sha256Url = 'https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-pc-windows-msvc.zip.sha256sum'; Sha256Kind = 'single'
 		VersionArg = '-V'
 	}
 	[pscustomobject]@{
-		Key = 'bun'; Label = 'Bun'; Version = '1.4.0'; Role = '主軸'
-		Dir = 'bun-1.4.0'; Exe = 'bun.exe'; Mode = 'exe'
-		Url = 'https://github.com/oven-sh/bun/releases/download/bun-v1.4.0/bun-windows-x64.zip'
+		Key = 'bun'; Label = 'Bun'; Version = '1.4.3'; Role = '主軸'
+		Dir = 'bun-1.4.3'; Exe = 'bun.exe'; Mode = 'exe'
+		Url = 'https://github.com/oven-sh/bun/releases/download/bun-v1.4.3/bun-windows-x64.zip'
 		Sha256Url = $null; Sha256Kind = $null
 		VersionArg = '-v'
 	}
@@ -188,7 +188,8 @@ foreach ($item in $Items) {
 	}
 	else {
 		$fileName = Split-Path -Leaf ([uri]$item.Url).AbsolutePath
-		$archive  = Join-Path $DownloadDir $fileName
+		# Deno・Bun は版が変わってもファイル名が同じなので、版ごとのフォルダ名を前置して古い取得物を再利用しない
+		$archive  = Join-Path $DownloadDir ('{0}-{1}' -f $item.Dir, $fileName)
 
 		Get-RemoteFile -Url $item.Url -OutFile $archive
 

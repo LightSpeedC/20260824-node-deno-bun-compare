@@ -1,11 +1,11 @@
 EXIT=0 TIMEDOUT=False
 --- stdout ---
 
-added 94 packages in 20s
+added 92 packages in 18s
 
 --- stderr ---
 npm notice
-npm notice New major version of npm available! 11.19.0 -> 12.0.2
-npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
-npm notice To update run: npm install -g npm@12.0.2
+npm notice New major version of npm available! 11.20.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
 npm notice

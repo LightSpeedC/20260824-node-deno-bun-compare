@@ -29,7 +29,7 @@ foreach ($d in @($WorkRoot, $RawDir)) {
 	if (-not (Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }
 }
 
-$manifest = Get-Content -LiteralPath (Join-Path $ToolsDir 'runtimes.json') -Raw | ConvertFrom-Json
+$manifest = Get-Content -LiteralPath (Join-Path $ToolsDir 'runtimes.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 function Get-ToolExe {
 	param([Parameter(Mandatory)][string]$Key)
 	$e = $manifest.entries | Where-Object { $_.key -eq $Key } | Select-Object -First 1
@@ -68,8 +68,8 @@ function Invoke-Measured {
 	if ($exited) { $code = $p.ExitCode }
 	$o = ''
 	$e = ''
-	try { $o = Get-Content -LiteralPath $outLog -Raw -ErrorAction Stop } catch { $o = '' }
-	try { $e = Get-Content -LiteralPath $errLog -Raw -ErrorAction Stop } catch { $e = '' }
+	try { $o = Get-Content -LiteralPath $outLog -Raw -Encoding UTF8 -ErrorAction Stop } catch { $o = '' }
+	try { $e = Get-Content -LiteralPath $errLog -Raw -Encoding UTF8 -ErrorAction Stop } catch { $e = '' }
 	return [pscustomobject]@{ Ms = $sw.Elapsed.TotalMilliseconds; ExitCode = $code; TimedOut = (-not $exited); Out = [string]$o; Err = [string]$e }
 }
 
