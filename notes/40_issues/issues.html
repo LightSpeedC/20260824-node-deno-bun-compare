@@ -44,7 +44,7 @@ footer{max-width:1600px;margin:0 auto;padding:18px 30px 30px;}
 <div class="titlebar">
 	<div class="inner">
 		<h1>Node.js / Deno / Bun 比較検証 課題</h1>
-		<div class="date">📅 作成: 2026-10-10 / 更新: 2026-10-11</div>
+		<div class="date">📅 作成: 2026-10-10 / 更新: 2026-10-25</div>
 	</div>
 </div>
 
@@ -64,12 +64,13 @@ footer{max-width:1600px;margin:0 auto;padding:18px 30px 30px;}
 		</ul>
 	</details>
 
-	<details open>
-		<summary><span class="no">i261011-01</span><span class="badge b-none">未</span>計測スクリプトを Windows PowerShell 5.1 で動くようにする</summary>
+	<details>
+		<summary><span class="no">i261011-01</span><span class="badge b-ok">済</span>計測スクリプトを Windows PowerShell 5.1 で動くようにする</summary>
 		<p>再計測では 5.1 で動かすと次の 2 つが起き、pwsh 7 で流し直しました。共通ルールは ps1 が 5.1 で動くことを求めています。</p>
+		<p>原因は 1 つでした。<code>Start-Process -PassThru</code> で受けたプロセスの <code>Handle</code> に触れずに <code>WaitForExit(ミリ秒)</code> で待つと、5.1 では <code>ExitCode</code> が空になります（出力をリダイレクトし、子が少し時間をかけて終わるとき）。SEA の件も、標準エラー出力ではなく、空の終了コードを失敗と判定していたものです。</p>
 		<ul>
-			<li><span class="badge b-none">未</span>依存インストール計測で、子プロセスの終了コードが空になる</li>
-			<li><span class="badge b-none">未</span>単一実行ファイル化で、Node.js SEA の進捗メッセージ（標準エラー出力）を失敗と判定する</li>
+			<li><span class="badge b-ok">済</span>3 本の計測スクリプトで、起動の直後に <code>Handle</code> に触れる（<code>tests/start-process-exitcode.test.ts</code> で確かめる）</li>
+			<li><span class="badge b-ok">済</span>5.1 で全項目を流し、依存インストールと SEA が通ることを確かめる（Node.js 26.12.1 / 24.22.1、Deno 2.9.8、Bun 1.4.4）</li>
 		</ul>
 	</details>
 </section>

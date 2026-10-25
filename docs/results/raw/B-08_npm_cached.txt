@@ -1,6 +1,6 @@
 EXIT=0 TIMEDOUT=False
 --- stdout ---
 
-added 92 packages in 3s
+added 92 packages in 8s
 
 --- stderr ---

@@ -59,6 +59,8 @@ function Invoke-Measured {
 	$sw = [System.Diagnostics.Stopwatch]::StartNew()
 	$p = Start-Process -FilePath $Exe -ArgumentList $ArgList -WorkingDirectory $WorkDir -PassThru `
 		-WindowStyle Hidden -RedirectStandardOutput $outLog -RedirectStandardError $errLog
+	# 5.1 では Handle に触れてから待たないと ExitCode が空になる (i261011-01)
+	$null = $p.Handle
 	$exited = $p.WaitForExit($Timeout * 1000)
 	$sw.Stop()
 	if (-not $exited) {

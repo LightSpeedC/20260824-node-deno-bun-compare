@@ -35,10 +35,10 @@ if (-not $meas) { throw 'docs/results/raw/measurements.json がありません�
 # 比較対象（node24 は参考値として最後に置く）
 $RuntimeOrder = @('node26', 'deno', 'bun', 'node24')
 $RuntimeLabels = @{
-	node26 = 'Node.js 26.11.1'
-	node24 = 'Node.js 24.21.0 (参考)'
-	deno   = 'Deno 2.9.7'
-	bun    = 'Bun 1.4.3'
+	node26 = 'Node.js 26.12.1'
+	node24 = 'Node.js 24.22.1 (参考)'
+	deno   = 'Deno 2.9.8'
+	bun    = 'Bun 1.4.4'
 }
 
 # 項目 → 評価軸の対応。Higher=$true は「大きいほど良い」指標

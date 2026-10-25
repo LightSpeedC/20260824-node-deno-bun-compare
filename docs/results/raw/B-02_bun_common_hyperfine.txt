@@ -1,2 +1,2 @@
-W:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.3/bun.exe run W:/2026/20260824-node-deno-bun-compare/src/bench/deps/b02-startup-deps.mjs
+W:/2026/20260824-node-deno-bun-compare/tools/bun-1.4.4/bun.exe run W:/2026/20260824-node-deno-bun-compare/src/bench/deps/b02-startup-deps.mjs
 

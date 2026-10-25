@@ -1,3 +1,2 @@
-W:/2026/20260824-node-deno-bun-compare/tools/node-v26.11.1-win-x64/node.exe --test W:/2026/20260824-node-deno-bun-compare/src/bench/tests/suite.test.mjs
+W:/2026/20260824-node-deno-bun-compare/tools/node-v26.12.1-win-x64/node.exe --test W:/2026/20260824-node-deno-bun-compare/src/bench/tests/suite.test.mjs
 
-EXCEPTION:  

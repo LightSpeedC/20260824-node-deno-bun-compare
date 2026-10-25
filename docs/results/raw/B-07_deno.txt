@@ -1,20 +1,20 @@
 --- run 1 ---
-BENCH {"id":"B-07","ms":278.822,"detail":{"rows":100000,"createMs":0.137,"insertMs":225.509,"aggregateMs":25.151,"pointSelectMs":28.025,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":313.059,"detail":{"rows":100000,"createMs":0.136,"insertMs":251.811,"aggregateMs":30.564,"pointSelectMs":30.547,"groups":8,"pointHits":20000}}
 --- run 2 ---
-BENCH {"id":"B-07","ms":347.654,"detail":{"rows":100000,"createMs":0.148,"insertMs":286.963,"aggregateMs":29.004,"pointSelectMs":31.539,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":285.194,"detail":{"rows":100000,"createMs":0.134,"insertMs":226.969,"aggregateMs":29.923,"pointSelectMs":28.168,"groups":8,"pointHits":20000}}
 --- run 3 ---
-BENCH {"id":"B-07","ms":293.4,"detail":{"rows":100000,"createMs":0.163,"insertMs":232.099,"aggregateMs":28.482,"pointSelectMs":32.657,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":287.763,"detail":{"rows":100000,"createMs":0.26,"insertMs":220.642,"aggregateMs":34.75,"pointSelectMs":32.111,"groups":8,"pointHits":20000}}
 --- run 4 ---
-BENCH {"id":"B-07","ms":307.766,"detail":{"rows":100000,"createMs":0.13,"insertMs":252.601,"aggregateMs":27.279,"pointSelectMs":27.756,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":383.147,"detail":{"rows":100000,"createMs":0.216,"insertMs":310.905,"aggregateMs":38.488,"pointSelectMs":33.537,"groups":8,"pointHits":20000}}
 --- run 5 ---
-BENCH {"id":"B-07","ms":324.059,"detail":{"rows":100000,"createMs":0.139,"insertMs":257.272,"aggregateMs":36.956,"pointSelectMs":29.692,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":311.578,"detail":{"rows":100000,"createMs":0.158,"insertMs":248.08,"aggregateMs":34.62,"pointSelectMs":28.721,"groups":8,"pointHits":20000}}
 --- run 6 ---
-BENCH {"id":"B-07","ms":295.348,"detail":{"rows":100000,"createMs":0.153,"insertMs":224.196,"aggregateMs":37.847,"pointSelectMs":33.152,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":321.006,"detail":{"rows":100000,"createMs":0.144,"insertMs":252.752,"aggregateMs":31.716,"pointSelectMs":36.394,"groups":8,"pointHits":20000}}
 --- run 7 ---
-BENCH {"id":"B-07","ms":322.316,"detail":{"rows":100000,"createMs":0.164,"insertMs":266.45,"aggregateMs":27.773,"pointSelectMs":27.929,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":297.899,"detail":{"rows":100000,"createMs":0.143,"insertMs":235.513,"aggregateMs":32.28,"pointSelectMs":29.963,"groups":8,"pointHits":20000}}
 --- run 8 ---
-BENCH {"id":"B-07","ms":329.627,"detail":{"rows":100000,"createMs":0.224,"insertMs":262.884,"aggregateMs":34.572,"pointSelectMs":31.947,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":315.175,"detail":{"rows":100000,"createMs":0.147,"insertMs":253.464,"aggregateMs":30.631,"pointSelectMs":30.932,"groups":8,"pointHits":20000}}
 --- run 9 ---
-BENCH {"id":"B-07","ms":319.422,"detail":{"rows":100000,"createMs":0.187,"insertMs":265.878,"aggregateMs":26.236,"pointSelectMs":27.121,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":371.966,"detail":{"rows":100000,"createMs":0.313,"insertMs":302.047,"aggregateMs":36.865,"pointSelectMs":32.741,"groups":8,"pointHits":20000}}
 --- run 10 ---
-BENCH {"id":"B-07","ms":395.93,"detail":{"rows":100000,"createMs":0.145,"insertMs":338.256,"aggregateMs":27.897,"pointSelectMs":29.632,"groups":8,"pointHits":20000}}
+BENCH {"id":"B-07","ms":346.073,"detail":{"rows":100000,"createMs":0.142,"insertMs":269.488,"aggregateMs":34.677,"pointSelectMs":41.766,"groups":8,"pointHits":20000}}

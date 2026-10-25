@@ -1,39 +1,39 @@
 {
-  "startedAt": "2026-10-10 21:37:14",
-  "finishedAt": "2026-10-10 21:37:38",
-  "results": [
-    {
-      "id": "B-10",
-      "runtime": "deno",
-      "method": "deno compile",
-      "seconds": 1.96,
-      "sizeMB": 76.1,
-      "ok": true,
-      "exitCode": 0,
-      "verified": true,
-      "note": ""
-    },
-    {
-      "id": "B-10",
-      "runtime": "bun",
-      "method": "bun build --compile",
-      "seconds": 0.53,
-      "sizeMB": 91.9,
-      "ok": true,
-      "exitCode": 0,
-      "verified": true,
-      "note": ""
-    },
-    {
-      "id": "B-10",
-      "runtime": "node26",
-      "method": "SEA (--experimental-sea-config + postject)",
-      "seconds": 15.37,
-      "sizeMB": 100.3,
-      "ok": true,
-      "exitCode": 0,
-      "verified": true,
-      "note": "手順が 3 段（blob 生成・node.exe 複製・postject 注入）で npm 依存あり"
-    }
-  ]
+    "startedAt":  "2026-10-25 13:10:25",
+    "finishedAt":  "2026-10-25 13:11:02",
+    "results":  [
+                    {
+                        "id":  "B-10",
+                        "runtime":  "deno",
+                        "method":  "deno compile",
+                        "seconds":  9.61,
+                        "sizeMB":  76.7,
+                        "ok":  true,
+                        "exitCode":  0,
+                        "verified":  true,
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-10",
+                        "runtime":  "bun",
+                        "method":  "bun build --compile",
+                        "seconds":  0.69,
+                        "sizeMB":  109.9,
+                        "ok":  true,
+                        "exitCode":  0,
+                        "verified":  true,
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-10",
+                        "runtime":  "node26",
+                        "method":  "SEA (--experimental-sea-config + postject)",
+                        "seconds":  14.42,
+                        "sizeMB":  100.6,
+                        "ok":  true,
+                        "exitCode":  0,
+                        "verified":  true,
+                        "note":  "手順が 3 段（blob 生成・node.exe 複製・postject 注入）で npm 依存あり"
+                    }
+                ]
 }

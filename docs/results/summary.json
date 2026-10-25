@@ -1,1402 +1,1410 @@
 {
-  "generatedAt": "2026-10-11 09:57:14",
-  "settings": {
-    "runs": 10,
-    "warmup": 3,
-    "fileCount": 2000,
-    "httpSeconds": 10,
-    "httpConnections": 50,
-    "quick": false,
-    "appended": true
-  },
-  "runtimes": [
-    "node26",
-    "deno",
-    "bun",
-    "node24"
-  ],
-  "axisWeights": {
-    "起動性能": 15,
-    "実行性能": 20,
-    "npm 互換性": 15,
-    "TypeScript": 10,
-    "ツールチェーン": 10,
-    "パッケージ管理": 10,
-    "運用・サポート": 10,
-    "開発体験": 5,
-    "Windows 対応": 5
-  },
-  "rows": [
-    {
-      "axis": "起動性能",
-      "weight": 15,
-      "runtime": "node24",
-      "score": 37.2,
-      "source": "定量"
-    },
-    {
-      "axis": "実行性能",
-      "weight": 20,
-      "runtime": "node24",
-      "score": 77.2,
-      "source": "定量"
-    },
-    {
-      "axis": "npm 互換性",
-      "weight": 15,
-      "runtime": "node24",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "TypeScript",
-      "weight": 10,
-      "runtime": "node24",
-      "score": 44.7,
-      "source": "定量"
-    },
-    {
-      "axis": "ツールチェーン",
-      "weight": 10,
-      "runtime": "node24",
-      "score": 21.3,
-      "source": "定量"
-    },
-    {
-      "axis": "パッケージ管理",
-      "weight": 10,
-      "runtime": "node24",
-      "score": 25.6,
-      "source": "定量"
-    },
-    {
-      "axis": "運用・サポート",
-      "weight": 10,
-      "runtime": "node24",
-      "score": 100.0,
-      "source": "定性"
-    },
-    {
-      "axis": "開発体験",
-      "weight": 5,
-      "runtime": "node24",
-      "score": 80.0,
-      "source": "定性"
-    },
-    {
-      "axis": "Windows 対応",
-      "weight": 5,
-      "runtime": "node24",
-      "score": 100.0,
-      "source": "定性"
-    }
-  ],
-  "scores": [
-    {
-      "id": "B-01",
-      "item": "空スクリプト起動",
-      "axis": "起動性能",
-      "runtime": "node26",
-      "value": 48.013,
-      "score": 42.6,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-01",
-      "item": "空スクリプト起動",
-      "axis": "起動性能",
-      "runtime": "node24",
-      "value": 50.336,
-      "score": 40.6,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-01",
-      "item": "空スクリプト起動",
-      "axis": "起動性能",
-      "runtime": "deno",
-      "value": 82.123,
-      "score": 24.9,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-01",
-      "item": "空スクリプト起動",
-      "axis": "起動性能",
-      "runtime": "bun",
-      "value": 20.449,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-02",
-      "item": "依存込み起動",
-      "axis": "起動性能",
-      "runtime": "node26",
-      "value": 116.38,
-      "score": 35.8,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-02",
-      "item": "依存込み起動",
-      "axis": "起動性能",
-      "runtime": "node24",
-      "value": 123.724,
-      "score": 33.7,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-02",
-      "item": "依存込み起動",
-      "axis": "起動性能",
-      "runtime": "deno",
-      "value": 130.912,
-      "score": 31.8,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-02",
-      "item": "依存込み起動",
-      "axis": "起動性能",
-      "runtime": "bun",
-      "value": 41.681,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "axis": "実行性能",
-      "runtime": "node26",
-      "value": 25003.945,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "axis": "実行性能",
-      "runtime": "node24",
-      "value": 20014.534,
-      "score": 80.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "axis": "実行性能",
-      "runtime": "deno",
-      "value": 16329.765,
-      "score": 65.3,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "axis": "実行性能",
-      "runtime": "bun",
-      "value": 24607.193,
-      "score": 98.4,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-04",
-      "item": "JSON 処理",
-      "axis": "実行性能",
-      "runtime": "node26",
-      "value": 81.98,
-      "score": 68.7,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-04",
-      "item": "JSON 処理",
-      "axis": "実行性能",
-      "runtime": "node24",
-      "value": 90.306,
-      "score": 62.4,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-04",
-      "item": "JSON 処理",
-      "axis": "実行性能",
-      "runtime": "deno",
-      "value": 84.238,
-      "score": 66.9,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-04",
-      "item": "JSON 処理",
-      "axis": "実行性能",
-      "runtime": "bun",
-      "value": 56.36,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-05",
-      "item": "ファイル I/O",
-      "axis": "実行性能",
-      "runtime": "node26",
-      "value": 1798.276,
-      "score": 96.9,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-05",
-      "item": "ファイル I/O",
-      "axis": "実行性能",
-      "runtime": "node24",
-      "value": 1742.318,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-05",
-      "item": "ファイル I/O",
-      "axis": "実行性能",
-      "runtime": "deno",
-      "value": 1811.784,
-      "score": 96.2,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-05",
-      "item": "ファイル I/O",
-      "axis": "実行性能",
-      "runtime": "bun",
-      "value": 1755.698,
-      "score": 99.2,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-06",
-      "item": "CPU バウンド処理",
-      "axis": "実行性能",
-      "runtime": "node26",
-      "value": 641.04,
-      "score": 56.1,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-06",
-      "item": "CPU バウンド処理",
-      "axis": "実行性能",
-      "runtime": "node24",
-      "value": 683.826,
-      "score": 52.6,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-06",
-      "item": "CPU バウンド処理",
-      "axis": "実行性能",
-      "runtime": "deno",
-      "value": 670.916,
-      "score": 53.6,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-06",
-      "item": "CPU バウンド処理",
-      "axis": "実行性能",
-      "runtime": "bun",
-      "value": 359.818,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-07",
-      "item": "SQLite",
-      "axis": "実行性能",
-      "runtime": "node26",
-      "value": 194.19,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-07",
-      "item": "SQLite",
-      "axis": "実行性能",
-      "runtime": "node24",
-      "value": 213.211,
-      "score": 91.1,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-07",
-      "item": "SQLite",
-      "axis": "実行性能",
-      "runtime": "deno",
-      "value": 320.869,
-      "score": 60.5,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-07",
-      "item": "SQLite",
-      "axis": "実行性能",
-      "runtime": "bun",
-      "value": 204.749,
-      "score": 94.8,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "item": "依存インストール",
-      "axis": "パッケージ管理",
-      "runtime": "node26",
-      "value": 3.48,
-      "score": 25.6,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "item": "依存インストール",
-      "axis": "パッケージ管理",
-      "runtime": "node24",
-      "value": 3.48,
-      "score": 25.6,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "item": "依存インストール",
-      "axis": "パッケージ管理",
-      "runtime": "deno",
-      "value": 0.89,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "item": "依存インストール",
-      "axis": "パッケージ管理",
-      "runtime": "bun",
-      "value": 6.19,
-      "score": 14.4,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-09",
-      "item": "TypeScript 実行",
-      "axis": "TypeScript",
-      "runtime": "node26",
-      "value": 129.62,
-      "score": 48.4,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-09",
-      "item": "TypeScript 実行",
-      "axis": "TypeScript",
-      "runtime": "node24",
-      "value": 140.299,
-      "score": 44.7,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-09",
-      "item": "TypeScript 実行",
-      "axis": "TypeScript",
-      "runtime": "deno",
-      "value": 118.976,
-      "score": 52.7,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-09",
-      "item": "TypeScript 実行",
-      "axis": "TypeScript",
-      "runtime": "bun",
-      "value": 62.682,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-10",
-      "item": "単一実行ファイル",
-      "axis": "ツールチェーン",
-      "runtime": "deno",
-      "value": 1.96,
-      "score": 27.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-10",
-      "item": "単一実行ファイル",
-      "axis": "ツールチェーン",
-      "runtime": "bun",
-      "value": 0.53,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-10",
-      "item": "単一実行ファイル",
-      "axis": "ツールチェーン",
-      "runtime": "node26",
-      "value": 15.37,
-      "score": 3.4,
-      "ok": true,
-      "note": "手順が 3 段（blob 生成・node.exe 複製・postject 注入）で npm 依存あり"
-    },
-    {
-      "id": "B-11",
-      "item": "テスト実行",
-      "axis": "ツールチェーン",
-      "runtime": "node26",
-      "value": 178.277,
-      "score": 23.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-11",
-      "item": "テスト実行",
-      "axis": "ツールチェーン",
-      "runtime": "node24",
-      "value": 192.492,
-      "score": 21.3,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-11",
-      "item": "テスト実行",
-      "axis": "ツールチェーン",
-      "runtime": "deno",
-      "value": 169.946,
-      "score": 24.1,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "B-11",
-      "item": "テスト実行",
-      "axis": "ツールチェーン",
-      "runtime": "bun",
-      "value": 41.026,
-      "score": 100.0,
-      "ok": true,
-      "note": ""
-    },
-    {
-      "id": "P-03",
-      "item": "npm 互換性",
-      "axis": "npm 互換性",
-      "runtime": "bun",
-      "value": 100.0,
-      "score": 100.0,
-      "ok": true,
-      "note": "8/8 パッケージ"
-    },
-    {
-      "id": "P-03",
-      "item": "npm 互換性",
-      "axis": "npm 互換性",
-      "runtime": "deno",
-      "value": 100.0,
-      "score": 100.0,
-      "ok": true,
-      "note": "8/8 パッケージ"
-    },
-    {
-      "id": "P-03",
-      "item": "npm 互換性",
-      "axis": "npm 互換性",
-      "runtime": "node24",
-      "value": 100.0,
-      "score": 100.0,
-      "ok": true,
-      "note": "8/8 パッケージ"
-    },
-    {
-      "id": "P-03",
-      "item": "npm 互換性",
-      "axis": "npm 互換性",
-      "runtime": "node26",
-      "value": 100.0,
-      "score": 100.0,
-      "ok": true,
-      "note": "8/8 パッケージ"
-    }
-  ],
-  "axisScores": [
-    {
-      "axis": "起動性能",
-      "weight": 15,
-      "runtime": "node26",
-      "score": 39.2,
-      "source": "定量"
-    },
-    {
-      "axis": "起動性能",
-      "weight": 15,
-      "runtime": "deno",
-      "score": 28.4,
-      "source": "定量"
-    },
-    {
-      "axis": "起動性能",
-      "weight": 15,
-      "runtime": "bun",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "起動性能",
-      "weight": 15,
-      "runtime": "node24",
-      "score": 37.2,
-      "source": "定量"
-    },
-    {
-      "axis": "実行性能",
-      "weight": 20,
-      "runtime": "node26",
-      "score": 84.3,
-      "source": "定量"
-    },
-    {
-      "axis": "実行性能",
-      "weight": 20,
-      "runtime": "deno",
-      "score": 68.5,
-      "source": "定量"
-    },
-    {
-      "axis": "実行性能",
-      "weight": 20,
-      "runtime": "bun",
-      "score": 98.5,
-      "source": "定量"
-    },
-    {
-      "axis": "実行性能",
-      "weight": 20,
-      "runtime": "node24",
-      "score": 77.2,
-      "source": "定量"
-    },
-    {
-      "axis": "npm 互換性",
-      "weight": 15,
-      "runtime": "node26",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "npm 互換性",
-      "weight": 15,
-      "runtime": "deno",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "npm 互換性",
-      "weight": 15,
-      "runtime": "bun",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "npm 互換性",
-      "weight": 15,
-      "runtime": "node24",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "TypeScript",
-      "weight": 10,
-      "runtime": "node26",
-      "score": 48.4,
-      "source": "定量"
-    },
-    {
-      "axis": "TypeScript",
-      "weight": 10,
-      "runtime": "deno",
-      "score": 52.7,
-      "source": "定量"
-    },
-    {
-      "axis": "TypeScript",
-      "weight": 10,
-      "runtime": "bun",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "TypeScript",
-      "weight": 10,
-      "runtime": "node24",
-      "score": 44.7,
-      "source": "定量"
-    },
-    {
-      "axis": "ツールチェーン",
-      "weight": 10,
-      "runtime": "node26",
-      "score": 13.2,
-      "source": "定量"
-    },
-    {
-      "axis": "ツールチェーン",
-      "weight": 10,
-      "runtime": "deno",
-      "score": 25.6,
-      "source": "定量"
-    },
-    {
-      "axis": "ツールチェーン",
-      "weight": 10,
-      "runtime": "bun",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "ツールチェーン",
-      "weight": 10,
-      "runtime": "node24",
-      "score": 21.3,
-      "source": "定量"
-    },
-    {
-      "axis": "パッケージ管理",
-      "weight": 10,
-      "runtime": "node26",
-      "score": 25.6,
-      "source": "定量"
-    },
-    {
-      "axis": "パッケージ管理",
-      "weight": 10,
-      "runtime": "deno",
-      "score": 100.0,
-      "source": "定量"
-    },
-    {
-      "axis": "パッケージ管理",
-      "weight": 10,
-      "runtime": "bun",
-      "score": 14.4,
-      "source": "定量"
-    },
-    {
-      "axis": "パッケージ管理",
-      "weight": 10,
-      "runtime": "node24",
-      "score": 25.6,
-      "source": "定量"
-    },
-    {
-      "axis": "運用・サポート",
-      "weight": 10,
-      "runtime": "node26",
-      "score": 100.0,
-      "source": "定性"
-    },
-    {
-      "axis": "運用・サポート",
-      "weight": 10,
-      "runtime": "deno",
-      "score": 60.0,
-      "source": "定性"
-    },
-    {
-      "axis": "運用・サポート",
-      "weight": 10,
-      "runtime": "bun",
-      "score": 40.0,
-      "source": "定性"
-    },
-    {
-      "axis": "運用・サポート",
-      "weight": 10,
-      "runtime": "node24",
-      "score": 100.0,
-      "source": "定性"
-    },
-    {
-      "axis": "開発体験",
-      "weight": 5,
-      "runtime": "node26",
-      "score": 80.0,
-      "source": "定性"
-    },
-    {
-      "axis": "開発体験",
-      "weight": 5,
-      "runtime": "deno",
-      "score": 100.0,
-      "source": "定性"
-    },
-    {
-      "axis": "開発体験",
-      "weight": 5,
-      "runtime": "bun",
-      "score": 100.0,
-      "source": "定性"
-    },
-    {
-      "axis": "開発体験",
-      "weight": 5,
-      "runtime": "node24",
-      "score": 80.0,
-      "source": "定性"
-    },
-    {
-      "axis": "Windows 対応",
-      "weight": 5,
-      "runtime": "node26",
-      "score": 100.0,
-      "source": "定性"
-    },
-    {
-      "axis": "Windows 対応",
-      "weight": 5,
-      "runtime": "deno",
-      "score": 80.0,
-      "source": "定性"
-    },
-    {
-      "axis": "Windows 対応",
-      "weight": 5,
-      "runtime": "bun",
-      "score": 100.0,
-      "source": "定性"
-    },
-    {
-      "axis": "Windows 対応",
-      "weight": 5,
-      "runtime": "node24",
-      "score": 100.0,
-      "source": "定性"
-    }
-  ],
-  "totals": [
-    {
-      "runtime": "node26",
-      "label": "Node.js 26.11.1",
-      "total": 65.5,
-      "coveredWeight": 100.0,
-      "missingAxes": []
-    },
-    {
-      "runtime": "deno",
-      "label": "Deno 2.9.7",
-      "total": 65.8,
-      "coveredWeight": 100.0,
-      "missingAxes": []
-    },
-    {
-      "runtime": "bun",
-      "label": "Bun 1.4.3",
-      "total": 85.1,
-      "coveredWeight": 100.0,
-      "missingAxes": []
-    },
-    {
-      "runtime": "node24",
-      "label": "Node.js 24.21.0 (参考)",
-      "total": 64.2,
-      "coveredWeight": 100.0,
-      "missingAxes": []
-    }
-  ],
-  "httpNative": [
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "runtime": "deno",
-      "variant": "Deno.serve",
-      "metric": "req/s",
-      "unit": "req/s",
-      "ok": true,
-      "note": "",
-      "n": 1,
-      "median": 32911.35,
-      "mean": 32911.35,
-      "min": 32911.35,
-      "max": 32911.35,
-      "sd": 0,
-      "cv": 0,
-      "detail": {
-        "connections": 50,
-        "durationSec": 10,
-        "successRate": 1.0,
-        "p50Ms": 1.266,
-        "p99Ms": 5.462,
-        "statusCodes": {
-          "200": 329313
-        },
-        "port": 3205
-      }
-    },
-    {
-      "id": "B-03",
-      "item": "HTTP スループット",
-      "runtime": "bun",
-      "variant": "Bun.serve",
-      "metric": "req/s",
-      "unit": "req/s",
-      "ok": true,
-      "note": "",
-      "n": 1,
-      "median": 30251.709,
-      "mean": 30251.709,
-      "min": 30251.709,
-      "max": 30251.709,
-      "sd": 0,
-      "cv": 0,
-      "detail": {
-        "connections": 50,
-        "durationSec": 10,
-        "successRate": 1.0,
-        "p50Ms": 1.496,
-        "p99Ms": 4.454,
-        "statusCodes": {
-          "200": 302732
-        },
-        "port": 3206
-      }
-    }
-  ],
-  "install": [
-    {
-      "id": "B-08",
-      "pm": "npm",
-      "label": "npm（Node 26 同梱）",
-      "scenario": "クリーン",
-      "seconds": 19.84,
-      "exitCode": 0,
-      "timedOut": false,
-      "ok": true,
-      "files": 2286,
-      "sizeMB": 51.4,
-      "scriptPolicy": "既定で実行",
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "pm": "npm",
-      "label": "npm（Node 26 同梱）",
-      "scenario": "キャッシュ有",
-      "seconds": 3.48,
-      "exitCode": 0,
-      "timedOut": false,
-      "ok": true,
-      "files": 2286,
-      "sizeMB": 51.4,
-      "scriptPolicy": "既定で実行",
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "pm": "deno",
-      "label": "deno install",
-      "scenario": "クリーン",
-      "seconds": 11.25,
-      "exitCode": 0,
-      "timedOut": false,
-      "ok": true,
-      "files": 2381,
-      "sizeMB": 51.3,
-      "scriptPolicy": "--allow-scripts で明示的に許可",
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "pm": "deno",
-      "label": "deno install",
-      "scenario": "キャッシュ有",
-      "seconds": 0.89,
-      "exitCode": 0,
-      "timedOut": false,
-      "ok": true,
-      "files": 2381,
-      "sizeMB": 51.3,
-      "scriptPolicy": "--allow-scripts で明示的に許可",
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "pm": "bun",
-      "label": "bun install",
-      "scenario": "クリーン",
-      "seconds": 12.17,
-      "exitCode": 0,
-      "timedOut": false,
-      "ok": true,
-      "files": 2279,
-      "sizeMB": 51.4,
-      "scriptPolicy": "既定でブロック（trustedDependencies が必要）",
-      "note": ""
-    },
-    {
-      "id": "B-08",
-      "pm": "bun",
-      "label": "bun install",
-      "scenario": "キャッシュ有",
-      "seconds": 6.19,
-      "exitCode": 0,
-      "timedOut": false,
-      "ok": true,
-      "files": 2279,
-      "sizeMB": 51.4,
-      "scriptPolicy": "既定でブロック（trustedDependencies が必要）",
-      "note": ""
-    }
-  ],
-  "compat": [
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "zod",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 1711.522,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "dayjs",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 44.776,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "express",
-      "kind": "HTTP フレームワーク",
-      "imported": true,
-      "usable": true,
-      "ms": 2519.418,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "pg",
-      "kind": "DB ドライバ",
-      "imported": true,
-      "usable": true,
-      "ms": 709.923,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "esbuild",
-      "kind": "ビルドツール（ネイティブバイナリ同梱）",
-      "imported": true,
-      "usable": true,
-      "ms": 28.611,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "prettier",
-      "kind": "CLI ツール（bin エントリあり）",
-      "imported": true,
-      "usable": true,
-      "ms": 48.362,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "sharp",
-      "kind": "ネイティブアドオン（プリビルド配布）",
-      "imported": true,
-      "usable": true,
-      "ms": 1018.903,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "bcrypt",
-      "kind": "ネイティブアドオン（Node-API・同梱バイナリ）",
-      "imported": true,
-      "usable": true,
-      "ms": 43.425,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "zod",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 92.274,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "dayjs",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 3.381,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "express",
-      "kind": "HTTP フレームワーク",
-      "imported": true,
-      "usable": true,
-      "ms": 135.157,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "pg",
-      "kind": "DB ドライバ",
-      "imported": true,
-      "usable": true,
-      "ms": 34.106,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "esbuild",
-      "kind": "ビルドツール（ネイティブバイナリ同梱）",
-      "imported": true,
-      "usable": true,
-      "ms": 11.057,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "prettier",
-      "kind": "CLI ツール（bin エントリあり）",
-      "imported": true,
-      "usable": true,
-      "ms": 40.186,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "sharp",
-      "kind": "ネイティブアドオン（プリビルド配布）",
-      "imported": true,
-      "usable": true,
-      "ms": 51.303,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "bcrypt",
-      "kind": "ネイティブアドオン（Node-API・同梱バイナリ）",
-      "imported": true,
-      "usable": true,
-      "ms": 8.657,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "zod",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 37.025,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "dayjs",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 53.384,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "express",
-      "kind": "HTTP フレームワーク",
-      "imported": true,
-      "usable": true,
-      "ms": 233.595,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "pg",
-      "kind": "DB ドライバ",
-      "imported": true,
-      "usable": true,
-      "ms": 28.333,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "esbuild",
-      "kind": "ビルドツール（ネイティブバイナリ同梱）",
-      "imported": true,
-      "usable": true,
-      "ms": 5.474,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "prettier",
-      "kind": "CLI ツール（bin エントリあり）",
-      "imported": true,
-      "usable": true,
-      "ms": 14.731,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "sharp",
-      "kind": "ネイティブアドオン（プリビルド配布）",
-      "imported": true,
-      "usable": true,
-      "ms": 73.318,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "bcrypt",
-      "kind": "ネイティブアドオン（Node-API・同梱バイナリ）",
-      "imported": true,
-      "usable": true,
-      "ms": 13.371,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "zod",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 172.238,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "dayjs",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 16.752,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "express",
-      "kind": "HTTP フレームワーク",
-      "imported": true,
-      "usable": true,
-      "ms": 727.452,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "pg",
-      "kind": "DB ドライバ",
-      "imported": true,
-      "usable": true,
-      "ms": 164.893,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "esbuild",
-      "kind": "ビルドツール（ネイティブバイナリ同梱）",
-      "imported": true,
-      "usable": true,
-      "ms": 18.113,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "prettier",
-      "kind": "CLI ツール（bin エントリあり）",
-      "imported": true,
-      "usable": true,
-      "ms": 39.441,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "sharp",
-      "kind": "ネイティブアドオン（プリビルド配布）",
-      "imported": true,
-      "usable": true,
-      "ms": 132.648,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "bcrypt",
-      "kind": "ネイティブアドオン（Node-API・同梱バイナリ）",
-      "imported": true,
-      "usable": true,
-      "ms": 46.089,
-      "reason": ""
-    }
-  ],
-  "compile": [
-    {
-      "id": "B-10",
-      "runtime": "deno",
-      "method": "deno compile",
-      "seconds": 1.96,
-      "sizeMB": 76.1,
-      "ok": true,
-      "exitCode": 0,
-      "verified": true,
-      "note": ""
-    },
-    {
-      "id": "B-10",
-      "runtime": "bun",
-      "method": "bun build --compile",
-      "seconds": 0.53,
-      "sizeMB": 91.9,
-      "ok": true,
-      "exitCode": 0,
-      "verified": true,
-      "note": ""
-    },
-    {
-      "id": "B-10",
-      "runtime": "node26",
-      "method": "SEA (--experimental-sea-config + postject)",
-      "seconds": 15.37,
-      "sizeMB": 100.3,
-      "ok": true,
-      "exitCode": 0,
-      "verified": true,
-      "note": "手順が 3 段（blob 生成・node.exe 複製・postject 注入）で npm 依存あり"
-    }
-  ],
-  "qualitative": {
-    "note": "定性評価。5 段階の意味は計画書 章3 の基準に従う。各スコアの根拠は今回の検証で実際に観測した事実に限定し、観測できていないことは根拠に書かない。",
-    "scale": {
-      "5": "標準機能だけで完結し、設定ファイルも追加インストールも不要",
-      "4": "標準機能で足りるが、既定値の変更や短い設定が必要",
-      "3": "公式が案内する追加パッケージ・追加ツールを入れれば実現できる",
-      "2": "サードパーティ製に依存し、組み合わせの検証が必要",
-      "1": "実現手段が無い、または回避策が実務に耐えない"
-    },
-    "scores": [
-      {
-        "axis": "運用・サポート",
-        "node26": 5,
-        "node24": 5,
-        "deno": 3,
-        "bun": 2,
-        "rationale": {
-          "node26": "LTS 制度が確立している。検証時点で 26(Current)・24(Active LTS/Krypton)・22(Maintenance LTS/Jod) の 3 系列が並走していることを配布情報で確認した。26 系は 2026-10 に LTS 化予定。",
-          "node24": "Active LTS。26 と同じ LTS 制度に乗る。",
-          "deno": "LTS 相当の長期サポート枠は無く、stable への追従が前提。手元にあった 1.31.1 は 2.x 系のコードを動かせず、メジャー移行で権限モデルと API が変わることを実際に確認した。",
-          "bun": "LTS 相当の枠が無い。検証開始の 4 日前（2026-08-20）に 1.4.0 がリリースされており、更新が速い分だけ追従コストが高い。"
-        }
-      },
-      {
-        "axis": "開発体験",
-        "node26": 4,
-        "node24": 4,
-        "deno": 5,
-        "bun": 5,
-        "rationale": {
-          "node26": "設定なしで .ts をそのまま実行でき、node --test でテストも動いた。ただし fmt / lint / bundle は標準に無く別途用意が必要。",
-          "node24": "26 と同じ。--test・型ストリップともに追加設定なしで動作した。",
-          "deno": "run / test / fmt / lint / compile / install が 1 バイナリで完結する。一方で権限フラグが必須で、今回のスクリプトはいずれも -A を付けないと動かなかった（安全側の既定だが手間は増える）。",
-          "bun": "起動が他の 2〜4 倍速く反復が速い（B-01: 41.7ms 対 Node 101.3ms）。install / test / build が一体で、node:test 記法のテストもそのまま動いた。"
-        }
-      },
-      {
-        "axis": "Windows 対応",
-        "node26": 5,
-        "node24": 5,
-        "deno": 4,
-        "bun": 5,
-        "rationale": {
-          "node26": "全 11 項目が Windows 11 上で問題なく完走した。パス・改行に起因する失敗は無し。",
-          "node24": "26 と同じく全項目が完走した。",
-          "deno": "全項目は完走したが、Windows のファイル操作で他より遅い。削除 1123.6ms（Node 684.9ms / Bun 752.2ms）、ディレクトリ列挙 8.6ms（他 1.4〜3.2ms）。",
-          "bun": "全項目が完走し、ファイル書き込みは 4 者で最速（2242.6ms）。Windows 固有の問題は観測されなかった。"
-        }
-      }
-    ]
-  }
+    "generatedAt":  "2026-10-25 13:11:03",
+    "settings":  {
+                     "runs":  10,
+                     "warmup":  3,
+                     "fileCount":  2000,
+                     "httpSeconds":  10,
+                     "httpConnections":  50,
+                     "quick":  false,
+                     "appended":  false
+                 },
+    "runtimes":  [
+                     "node26",
+                     "deno",
+                     "bun",
+                     "node24"
+                 ],
+    "axisWeights":  {
+                        "起動性能":  15,
+                        "実行性能":  20,
+                        "npm 互換性":  15,
+                        "TypeScript":  10,
+                        "ツールチェーン":  10,
+                        "パッケージ管理":  10,
+                        "運用・サポート":  10,
+                        "開発体験":  5,
+                        "Windows 対応":  5
+                    },
+    "rows":  [
+                 {
+                     "axis":  "起動性能",
+                     "weight":  15,
+                     "runtime":  "node24",
+                     "score":  37.4,
+                     "source":  "定量"
+                 },
+                 {
+                     "axis":  "実行性能",
+                     "weight":  20,
+                     "runtime":  "node24",
+                     "score":  78.5,
+                     "source":  "定量"
+                 },
+                 {
+                     "axis":  "npm 互換性",
+                     "weight":  15,
+                     "runtime":  "node24",
+                     "score":  100,
+                     "source":  "定量"
+                 },
+                 {
+                     "axis":  "TypeScript",
+                     "weight":  10,
+                     "runtime":  "node24",
+                     "score":  43.4,
+                     "source":  "定量"
+                 },
+                 {
+                     "axis":  "ツールチェーン",
+                     "weight":  10,
+                     "runtime":  "node24",
+                     "score":  22.9,
+                     "source":  "定量"
+                 },
+                 {
+                     "axis":  "パッケージ管理",
+                     "weight":  10,
+                     "runtime":  "node24",
+                     "score":  10.3,
+                     "source":  "定量"
+                 },
+                 {
+                     "axis":  "運用・サポート",
+                     "weight":  10,
+                     "runtime":  "node24",
+                     "score":  100,
+                     "source":  "定性"
+                 },
+                 {
+                     "axis":  "開発体験",
+                     "weight":  5,
+                     "runtime":  "node24",
+                     "score":  80,
+                     "source":  "定性"
+                 },
+                 {
+                     "axis":  "Windows 対応",
+                     "weight":  5,
+                     "runtime":  "node24",
+                     "score":  100,
+                     "source":  "定性"
+                 }
+             ],
+    "scores":  [
+                   {
+                       "id":  "B-01",
+                       "item":  "空スクリプト起動",
+                       "axis":  "起動性能",
+                       "runtime":  "node26",
+                       "value":  50.773,
+                       "score":  39.6,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-01",
+                       "item":  "空スクリプト起動",
+                       "axis":  "起動性能",
+                       "runtime":  "node24",
+                       "value":  48.14,
+                       "score":  41.7,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-01",
+                       "item":  "空スクリプト起動",
+                       "axis":  "起動性能",
+                       "runtime":  "deno",
+                       "value":  57.732,
+                       "score":  34.8,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-01",
+                       "item":  "空スクリプト起動",
+                       "axis":  "起動性能",
+                       "runtime":  "bun",
+                       "value":  20.086,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-02",
+                       "item":  "依存込み起動",
+                       "axis":  "起動性能",
+                       "runtime":  "node26",
+                       "value":  117.722,
+                       "score":  33.1,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-02",
+                       "item":  "依存込み起動",
+                       "axis":  "起動性能",
+                       "runtime":  "node24",
+                       "value":  117.343,
+                       "score":  33.2,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-02",
+                       "item":  "依存込み起動",
+                       "axis":  "起動性能",
+                       "runtime":  "deno",
+                       "value":  134.692,
+                       "score":  28.9,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-02",
+                       "item":  "依存込み起動",
+                       "axis":  "起動性能",
+                       "runtime":  "bun",
+                       "value":  38.925,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-03",
+                       "item":  "HTTP スループット",
+                       "axis":  "実行性能",
+                       "runtime":  "node26",
+                       "value":  31895.318,
+                       "score":  89.5,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-03",
+                       "item":  "HTTP スループット",
+                       "axis":  "実行性能",
+                       "runtime":  "node24",
+                       "value":  26487.459,
+                       "score":  74.3,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-03",
+                       "item":  "HTTP スループット",
+                       "axis":  "実行性能",
+                       "runtime":  "deno",
+                       "value":  21697.661,
+                       "score":  60.9,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-03",
+                       "item":  "HTTP スループット",
+                       "axis":  "実行性能",
+                       "runtime":  "bun",
+                       "value":  35643.32,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-04",
+                       "item":  "JSON 処理",
+                       "axis":  "実行性能",
+                       "runtime":  "node26",
+                       "value":  80.065,
+                       "score":  77.7,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-04",
+                       "item":  "JSON 処理",
+                       "axis":  "実行性能",
+                       "runtime":  "node24",
+                       "value":  84.268,
+                       "score":  73.8,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-04",
+                       "item":  "JSON 処理",
+                       "axis":  "実行性能",
+                       "runtime":  "deno",
+                       "value":  84.62,
+                       "score":  73.5,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-04",
+                       "item":  "JSON 処理",
+                       "axis":  "実行性能",
+                       "runtime":  "bun",
+                       "value":  62.204,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-05",
+                       "item":  "ファイル I/O",
+                       "axis":  "実行性能",
+                       "runtime":  "node26",
+                       "value":  2535.838,
+                       "score":  78.5,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-05",
+                       "item":  "ファイル I/O",
+                       "axis":  "実行性能",
+                       "runtime":  "node24",
+                       "value":  2001.406,
+                       "score":  99.5,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-05",
+                       "item":  "ファイル I/O",
+                       "axis":  "実行性能",
+                       "runtime":  "deno",
+                       "value":  2243.788,
+                       "score":  88.8,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-05",
+                       "item":  "ファイル I/O",
+                       "axis":  "実行性能",
+                       "runtime":  "bun",
+                       "value":  1991.639,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-06",
+                       "item":  "CPU バウンド処理",
+                       "axis":  "実行性能",
+                       "runtime":  "node26",
+                       "value":  724.742,
+                       "score":  48.1,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-06",
+                       "item":  "CPU バウンド処理",
+                       "axis":  "実行性能",
+                       "runtime":  "node24",
+                       "value":  646.308,
+                       "score":  53.9,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-06",
+                       "item":  "CPU バウンド処理",
+                       "axis":  "実行性能",
+                       "runtime":  "deno",
+                       "value":  636.111,
+                       "score":  54.8,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-06",
+                       "item":  "CPU バウンド処理",
+                       "axis":  "実行性能",
+                       "runtime":  "bun",
+                       "value":  348.278,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-07",
+                       "item":  "SQLite",
+                       "axis":  "実行性能",
+                       "runtime":  "node26",
+                       "value":  181.178,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-07",
+                       "item":  "SQLite",
+                       "axis":  "実行性能",
+                       "runtime":  "node24",
+                       "value":  198.68,
+                       "score":  91.2,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-07",
+                       "item":  "SQLite",
+                       "axis":  "実行性能",
+                       "runtime":  "deno",
+                       "value":  314.117,
+                       "score":  57.7,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-07",
+                       "item":  "SQLite",
+                       "axis":  "実行性能",
+                       "runtime":  "bun",
+                       "value":  205.54,
+                       "score":  88.1,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-08",
+                       "item":  "依存インストール",
+                       "axis":  "パッケージ管理",
+                       "runtime":  "node26",
+                       "value":  8.44,
+                       "score":  10.3,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-08",
+                       "item":  "依存インストール",
+                       "axis":  "パッケージ管理",
+                       "runtime":  "node24",
+                       "value":  8.44,
+                       "score":  10.3,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-08",
+                       "item":  "依存インストール",
+                       "axis":  "パッケージ管理",
+                       "runtime":  "deno",
+                       "value":  0.87,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-08",
+                       "item":  "依存インストール",
+                       "axis":  "パッケージ管理",
+                       "runtime":  "bun",
+                       "value":  6.65,
+                       "score":  13.1,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-09",
+                       "item":  "TypeScript 実行",
+                       "axis":  "TypeScript",
+                       "runtime":  "node26",
+                       "value":  147.015,
+                       "score":  41.7,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-09",
+                       "item":  "TypeScript 実行",
+                       "axis":  "TypeScript",
+                       "runtime":  "node24",
+                       "value":  141.244,
+                       "score":  43.4,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-09",
+                       "item":  "TypeScript 実行",
+                       "axis":  "TypeScript",
+                       "runtime":  "deno",
+                       "value":  107.066,
+                       "score":  57.3,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-09",
+                       "item":  "TypeScript 実行",
+                       "axis":  "TypeScript",
+                       "runtime":  "bun",
+                       "value":  61.306,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-10",
+                       "item":  "単一実行ファイル",
+                       "axis":  "ツールチェーン",
+                       "runtime":  "deno",
+                       "value":  9.61,
+                       "score":  7.2,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-10",
+                       "item":  "単一実行ファイル",
+                       "axis":  "ツールチェーン",
+                       "runtime":  "bun",
+                       "value":  0.69,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-10",
+                       "item":  "単一実行ファイル",
+                       "axis":  "ツールチェーン",
+                       "runtime":  "node26",
+                       "value":  14.42,
+                       "score":  4.8,
+                       "ok":  true,
+                       "note":  "手順が 3 段（blob 生成・node.exe 複製・postject 注入）で npm 依存あり"
+                   },
+                   {
+                       "id":  "B-11",
+                       "item":  "テスト実行",
+                       "axis":  "ツールチェーン",
+                       "runtime":  "node26",
+                       "value":  188.18,
+                       "score":  24.8,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-11",
+                       "item":  "テスト実行",
+                       "axis":  "ツールチェーン",
+                       "runtime":  "node24",
+                       "value":  204.148,
+                       "score":  22.9,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-11",
+                       "item":  "テスト実行",
+                       "axis":  "ツールチェーン",
+                       "runtime":  "deno",
+                       "value":  136.739,
+                       "score":  34.2,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "B-11",
+                       "item":  "テスト実行",
+                       "axis":  "ツールチェーン",
+                       "runtime":  "bun",
+                       "value":  46.745,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  ""
+                   },
+                   {
+                       "id":  "P-03",
+                       "item":  "npm 互換性",
+                       "axis":  "npm 互換性",
+                       "runtime":  "node26",
+                       "value":  100,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  "8/8 パッケージ"
+                   },
+                   {
+                       "id":  "P-03",
+                       "item":  "npm 互換性",
+                       "axis":  "npm 互換性",
+                       "runtime":  "node24",
+                       "value":  100,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  "8/8 パッケージ"
+                   },
+                   {
+                       "id":  "P-03",
+                       "item":  "npm 互換性",
+                       "axis":  "npm 互換性",
+                       "runtime":  "deno",
+                       "value":  100,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  "8/8 パッケージ"
+                   },
+                   {
+                       "id":  "P-03",
+                       "item":  "npm 互換性",
+                       "axis":  "npm 互換性",
+                       "runtime":  "bun",
+                       "value":  100,
+                       "score":  100,
+                       "ok":  true,
+                       "note":  "8/8 パッケージ"
+                   }
+               ],
+    "axisScores":  [
+                       {
+                           "axis":  "起動性能",
+                           "weight":  15,
+                           "runtime":  "node26",
+                           "score":  36.4,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "起動性能",
+                           "weight":  15,
+                           "runtime":  "deno",
+                           "score":  31.8,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "起動性能",
+                           "weight":  15,
+                           "runtime":  "bun",
+                           "score":  100,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "起動性能",
+                           "weight":  15,
+                           "runtime":  "node24",
+                           "score":  37.4,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "実行性能",
+                           "weight":  20,
+                           "runtime":  "node26",
+                           "score":  78.8,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "実行性能",
+                           "weight":  20,
+                           "runtime":  "deno",
+                           "score":  67.1,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "実行性能",
+                           "weight":  20,
+                           "runtime":  "bun",
+                           "score":  97.6,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "実行性能",
+                           "weight":  20,
+                           "runtime":  "node24",
+                           "score":  78.5,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "npm 互換性",
+                           "weight":  15,
+                           "runtime":  "node26",
+                           "score":  100,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "npm 互換性",
+                           "weight":  15,
+                           "runtime":  "deno",
+                           "score":  100,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "npm 互換性",
+                           "weight":  15,
+                           "runtime":  "bun",
+                           "score":  100,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "npm 互換性",
+                           "weight":  15,
+                           "runtime":  "node24",
+                           "score":  100,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "TypeScript",
+                           "weight":  10,
+                           "runtime":  "node26",
+                           "score":  41.7,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "TypeScript",
+                           "weight":  10,
+                           "runtime":  "deno",
+                           "score":  57.3,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "TypeScript",
+                           "weight":  10,
+                           "runtime":  "bun",
+                           "score":  100,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "TypeScript",
+                           "weight":  10,
+                           "runtime":  "node24",
+                           "score":  43.4,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "ツールチェーン",
+                           "weight":  10,
+                           "runtime":  "node26",
+                           "score":  14.8,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "ツールチェーン",
+                           "weight":  10,
+                           "runtime":  "deno",
+                           "score":  20.7,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "ツールチェーン",
+                           "weight":  10,
+                           "runtime":  "bun",
+                           "score":  100,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "ツールチェーン",
+                           "weight":  10,
+                           "runtime":  "node24",
+                           "score":  22.9,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "パッケージ管理",
+                           "weight":  10,
+                           "runtime":  "node26",
+                           "score":  10.3,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "パッケージ管理",
+                           "weight":  10,
+                           "runtime":  "deno",
+                           "score":  100,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "パッケージ管理",
+                           "weight":  10,
+                           "runtime":  "bun",
+                           "score":  13.1,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "パッケージ管理",
+                           "weight":  10,
+                           "runtime":  "node24",
+                           "score":  10.3,
+                           "source":  "定量"
+                       },
+                       {
+                           "axis":  "運用・サポート",
+                           "weight":  10,
+                           "runtime":  "node26",
+                           "score":  100,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "運用・サポート",
+                           "weight":  10,
+                           "runtime":  "deno",
+                           "score":  60,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "運用・サポート",
+                           "weight":  10,
+                           "runtime":  "bun",
+                           "score":  40,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "運用・サポート",
+                           "weight":  10,
+                           "runtime":  "node24",
+                           "score":  100,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "開発体験",
+                           "weight":  5,
+                           "runtime":  "node26",
+                           "score":  80,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "開発体験",
+                           "weight":  5,
+                           "runtime":  "deno",
+                           "score":  100,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "開発体験",
+                           "weight":  5,
+                           "runtime":  "bun",
+                           "score":  100,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "開発体験",
+                           "weight":  5,
+                           "runtime":  "node24",
+                           "score":  80,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "Windows 対応",
+                           "weight":  5,
+                           "runtime":  "node26",
+                           "score":  100,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "Windows 対応",
+                           "weight":  5,
+                           "runtime":  "deno",
+                           "score":  80,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "Windows 対応",
+                           "weight":  5,
+                           "runtime":  "bun",
+                           "score":  100,
+                           "source":  "定性"
+                       },
+                       {
+                           "axis":  "Windows 対応",
+                           "weight":  5,
+                           "runtime":  "node24",
+                           "score":  100,
+                           "source":  "定性"
+                       }
+                   ],
+    "totals":  [
+                   {
+                       "runtime":  "node26",
+                       "label":  "Node.js 26.12.1",
+                       "total":  61.9,
+                       "coveredWeight":  100,
+                       "missingAxes":  [
+
+                                       ]
+                   },
+                   {
+                       "runtime":  "deno",
+                       "label":  "Deno 2.9.8",
+                       "total":  66,
+                       "coveredWeight":  100,
+                       "missingAxes":  [
+
+                                       ]
+                   },
+                   {
+                       "runtime":  "bun",
+                       "label":  "Bun 1.4.4",
+                       "total":  84.8,
+                       "coveredWeight":  100,
+                       "missingAxes":  [
+
+                                       ]
+                   },
+                   {
+                       "runtime":  "node24",
+                       "label":  "Node.js 24.22.1 (参考)",
+                       "total":  63,
+                       "coveredWeight":  100,
+                       "missingAxes":  [
+
+                                       ]
+                   }
+               ],
+    "httpNative":  [
+                       {
+                           "id":  "B-03",
+                           "item":  "HTTP スループット",
+                           "runtime":  "deno",
+                           "variant":  "Deno.serve",
+                           "metric":  "req/s",
+                           "unit":  "req/s",
+                           "ok":  true,
+                           "note":  "",
+                           "n":  1,
+                           "median":  46377.65,
+                           "mean":  46377.65,
+                           "min":  46377.65,
+                           "max":  46377.65,
+                           "sd":  0,
+                           "cv":  0,
+                           "detail":  {
+                                          "connections":  50,
+                                          "durationSec":  10,
+                                          "successRate":  1.0,
+                                          "p50Ms":  1.058,
+                                          "p99Ms":  2.032,
+                                          "statusCodes":  {
+                                                              "200":  464428
+                                                          },
+                                          "port":  3205
+                                      }
+                       },
+                       {
+                           "id":  "B-03",
+                           "item":  "HTTP スループット",
+                           "runtime":  "bun",
+                           "variant":  "Bun.serve",
+                           "metric":  "req/s",
+                           "unit":  "req/s",
+                           "ok":  true,
+                           "note":  "",
+                           "n":  1,
+                           "median":  40239.099,
+                           "mean":  40239.099,
+                           "min":  40239.099,
+                           "max":  40239.099,
+                           "sd":  0,
+                           "cv":  0,
+                           "detail":  {
+                                          "connections":  50,
+                                          "durationSec":  10,
+                                          "successRate":  1.0,
+                                          "p50Ms":  1.22,
+                                          "p99Ms":  2.33,
+                                          "statusCodes":  {
+                                                              "200":  402482
+                                                          },
+                                          "port":  3206
+                                      }
+                       }
+                   ],
+    "install":  [
+                    {
+                        "id":  "B-08",
+                        "pm":  "npm",
+                        "label":  "npm（Node 26 同梱）",
+                        "scenario":  "クリーン",
+                        "seconds":  16.76,
+                        "exitCode":  0,
+                        "timedOut":  false,
+                        "ok":  true,
+                        "files":  2285,
+                        "sizeMB":  51.4,
+                        "scriptPolicy":  "既定で実行",
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-08",
+                        "pm":  "npm",
+                        "label":  "npm（Node 26 同梱）",
+                        "scenario":  "キャッシュ有",
+                        "seconds":  8.44,
+                        "exitCode":  0,
+                        "timedOut":  false,
+                        "ok":  true,
+                        "files":  2285,
+                        "sizeMB":  51.4,
+                        "scriptPolicy":  "既定で実行",
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-08",
+                        "pm":  "deno",
+                        "label":  "deno install",
+                        "scenario":  "クリーン",
+                        "seconds":  7.74,
+                        "exitCode":  0,
+                        "timedOut":  false,
+                        "ok":  true,
+                        "files":  2380,
+                        "sizeMB":  51.4,
+                        "scriptPolicy":  "--allow-scripts で明示的に許可",
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-08",
+                        "pm":  "deno",
+                        "label":  "deno install",
+                        "scenario":  "キャッシュ有",
+                        "seconds":  0.87,
+                        "exitCode":  0,
+                        "timedOut":  false,
+                        "ok":  true,
+                        "files":  2380,
+                        "sizeMB":  51.4,
+                        "scriptPolicy":  "--allow-scripts で明示的に許可",
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-08",
+                        "pm":  "bun",
+                        "label":  "bun install",
+                        "scenario":  "クリーン",
+                        "seconds":  12.42,
+                        "exitCode":  0,
+                        "timedOut":  false,
+                        "ok":  true,
+                        "files":  2278,
+                        "sizeMB":  51.4,
+                        "scriptPolicy":  "既定でブロック（trustedDependencies が必要）",
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-08",
+                        "pm":  "bun",
+                        "label":  "bun install",
+                        "scenario":  "キャッシュ有",
+                        "seconds":  6.65,
+                        "exitCode":  0,
+                        "timedOut":  false,
+                        "ok":  true,
+                        "files":  2278,
+                        "sizeMB":  51.4,
+                        "scriptPolicy":  "既定でブロック（trustedDependencies が必要）",
+                        "note":  ""
+                    }
+                ],
+    "compat":  [
+                   {
+                       "runtime":  "node26",
+                       "installedBy":  "npm",
+                       "package":  "zod",
+                       "kind":  "純 JS ライブラリ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  105.482,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node26",
+                       "installedBy":  "npm",
+                       "package":  "dayjs",
+                       "kind":  "純 JS ライブラリ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  3.026,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node26",
+                       "installedBy":  "npm",
+                       "package":  "express",
+                       "kind":  "HTTP フレームワーク",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  166.037,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node26",
+                       "installedBy":  "npm",
+                       "package":  "pg",
+                       "kind":  "DB ドライバ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  42.958,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node26",
+                       "installedBy":  "npm",
+                       "package":  "esbuild",
+                       "kind":  "ビルドツール（ネイティブバイナリ同梱）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  5.4,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node26",
+                       "installedBy":  "npm",
+                       "package":  "prettier",
+                       "kind":  "CLI ツール（bin エントリあり）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  27.378,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node26",
+                       "installedBy":  "npm",
+                       "package":  "sharp",
+                       "kind":  "ネイティブアドオン（プリビルド配布）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  55.05,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node26",
+                       "installedBy":  "npm",
+                       "package":  "bcrypt",
+                       "kind":  "ネイティブアドオン（Node-API・同梱バイナリ）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  11.145,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node24",
+                       "installedBy":  "npm",
+                       "package":  "zod",
+                       "kind":  "純 JS ライブラリ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  96.429,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node24",
+                       "installedBy":  "npm",
+                       "package":  "dayjs",
+                       "kind":  "純 JS ライブラリ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  2.23,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node24",
+                       "installedBy":  "npm",
+                       "package":  "express",
+                       "kind":  "HTTP フレームワーク",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  137.371,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node24",
+                       "installedBy":  "npm",
+                       "package":  "pg",
+                       "kind":  "DB ドライバ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  49.774,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node24",
+                       "installedBy":  "npm",
+                       "package":  "esbuild",
+                       "kind":  "ビルドツール（ネイティブバイナリ同梱）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  7.436,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node24",
+                       "installedBy":  "npm",
+                       "package":  "prettier",
+                       "kind":  "CLI ツール（bin エントリあり）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  29.251,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node24",
+                       "installedBy":  "npm",
+                       "package":  "sharp",
+                       "kind":  "ネイティブアドオン（プリビルド配布）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  56.671,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "node24",
+                       "installedBy":  "npm",
+                       "package":  "bcrypt",
+                       "kind":  "ネイティブアドオン（Node-API・同梱バイナリ）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  8.197,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "deno",
+                       "installedBy":  "deno",
+                       "package":  "zod",
+                       "kind":  "純 JS ライブラリ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  70.325,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "deno",
+                       "installedBy":  "deno",
+                       "package":  "dayjs",
+                       "kind":  "純 JS ライブラリ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  62.814,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "deno",
+                       "installedBy":  "deno",
+                       "package":  "express",
+                       "kind":  "HTTP フレームワーク",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  262.946,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "deno",
+                       "installedBy":  "deno",
+                       "package":  "pg",
+                       "kind":  "DB ドライバ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  39.616,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "deno",
+                       "installedBy":  "deno",
+                       "package":  "esbuild",
+                       "kind":  "ビルドツール（ネイティブバイナリ同梱）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  18.27,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "deno",
+                       "installedBy":  "deno",
+                       "package":  "prettier",
+                       "kind":  "CLI ツール（bin エントリあり）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  31.489,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "deno",
+                       "installedBy":  "deno",
+                       "package":  "sharp",
+                       "kind":  "ネイティブアドオン（プリビルド配布）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  133.502,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "deno",
+                       "installedBy":  "deno",
+                       "package":  "bcrypt",
+                       "kind":  "ネイティブアドオン（Node-API・同梱バイナリ）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  24.947,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "bun",
+                       "installedBy":  "bun",
+                       "package":  "zod",
+                       "kind":  "純 JS ライブラリ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  512.559,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "bun",
+                       "installedBy":  "bun",
+                       "package":  "dayjs",
+                       "kind":  "純 JS ライブラリ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  1.606,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "bun",
+                       "installedBy":  "bun",
+                       "package":  "express",
+                       "kind":  "HTTP フレームワーク",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  1209.371,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "bun",
+                       "installedBy":  "bun",
+                       "package":  "pg",
+                       "kind":  "DB ドライバ",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  361.625,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "bun",
+                       "installedBy":  "bun",
+                       "package":  "esbuild",
+                       "kind":  "ビルドツール（ネイティブバイナリ同梱）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  37.605,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "bun",
+                       "installedBy":  "bun",
+                       "package":  "prettier",
+                       "kind":  "CLI ツール（bin エントリあり）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  89.196,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "bun",
+                       "installedBy":  "bun",
+                       "package":  "sharp",
+                       "kind":  "ネイティブアドオン（プリビルド配布）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  244.85,
+                       "reason":  ""
+                   },
+                   {
+                       "runtime":  "bun",
+                       "installedBy":  "bun",
+                       "package":  "bcrypt",
+                       "kind":  "ネイティブアドオン（Node-API・同梱バイナリ）",
+                       "imported":  true,
+                       "usable":  true,
+                       "ms":  84.384,
+                       "reason":  ""
+                   }
+               ],
+    "compile":  [
+                    {
+                        "id":  "B-10",
+                        "runtime":  "deno",
+                        "method":  "deno compile",
+                        "seconds":  9.61,
+                        "sizeMB":  76.7,
+                        "ok":  true,
+                        "exitCode":  0,
+                        "verified":  true,
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-10",
+                        "runtime":  "bun",
+                        "method":  "bun build --compile",
+                        "seconds":  0.69,
+                        "sizeMB":  109.9,
+                        "ok":  true,
+                        "exitCode":  0,
+                        "verified":  true,
+                        "note":  ""
+                    },
+                    {
+                        "id":  "B-10",
+                        "runtime":  "node26",
+                        "method":  "SEA (--experimental-sea-config + postject)",
+                        "seconds":  14.42,
+                        "sizeMB":  100.6,
+                        "ok":  true,
+                        "exitCode":  0,
+                        "verified":  true,
+                        "note":  "手順が 3 段（blob 生成・node.exe 複製・postject 注入）で npm 依存あり"
+                    }
+                ],
+    "qualitative":  {
+                        "note":  "定性評価。5 段階の意味は計画書 章3 の基準に従う。各スコアの根拠は今回の検証で実際に観測した事実に限定し、観測できていないことは根拠に書かない。",
+                        "scale":  {
+                                      "5":  "標準機能だけで完結し、設定ファイルも追加インストールも不要",
+                                      "4":  "標準機能で足りるが、既定値の変更や短い設定が必要",
+                                      "3":  "公式が案内する追加パッケージ・追加ツールを入れれば実現できる",
+                                      "2":  "サードパーティ製に依存し、組み合わせの検証が必要",
+                                      "1":  "実現手段が無い、または回避策が実務に耐えない"
+                                  },
+                        "scores":  [
+                                       {
+                                           "axis":  "運用・サポート",
+                                           "node26":  5,
+                                           "node24":  5,
+                                           "deno":  3,
+                                           "bun":  2,
+                                           "rationale":  {
+                                                             "node26":  "LTS 制度が確立している。検証時点で 26(Current)・24(Active LTS/Krypton)・22(Maintenance LTS/Jod) の 3 系列が並走していることを配布情報で確認した。26 系は 2026-10 に LTS 化予定。",
+                                                             "node24":  "Active LTS。26 と同じ LTS 制度に乗る。",
+                                                             "deno":  "LTS 相当の長期サポート枠は無く、stable への追従が前提。手元にあった 1.31.1 は 2.x 系のコードを動かせず、メジャー移行で権限モデルと API が変わることを実際に確認した。",
+                                                             "bun":  "LTS 相当の枠が無い。検証開始の 4 日前（2026-08-20）に 1.4.0 がリリースされており、更新が速い分だけ追従コストが高い。"
+                                                         }
+                                       },
+                                       {
+                                           "axis":  "開発体験",
+                                           "node26":  4,
+                                           "node24":  4,
+                                           "deno":  5,
+                                           "bun":  5,
+                                           "rationale":  {
+                                                             "node26":  "設定なしで .ts をそのまま実行でき、node --test でテストも動いた。ただし fmt / lint / bundle は標準に無く別途用意が必要。",
+                                                             "node24":  "26 と同じ。--test・型ストリップともに追加設定なしで動作した。",
+                                                             "deno":  "run / test / fmt / lint / compile / install が 1 バイナリで完結する。一方で権限フラグが必須で、今回のスクリプトはいずれも -A を付けないと動かなかった（安全側の既定だが手間は増える）。",
+                                                             "bun":  "起動が他の 2〜4 倍速く反復が速い（B-01: 41.7ms 対 Node 101.3ms）。install / test / build が一体で、node:test 記法のテストもそのまま動いた。"
+                                                         }
+                                       },
+                                       {
+                                           "axis":  "Windows 対応",
+                                           "node26":  5,
+                                           "node24":  5,
+                                           "deno":  4,
+                                           "bun":  5,
+                                           "rationale":  {
+                                                             "node26":  "全 11 項目が Windows 11 上で問題なく完走した。パス・改行に起因する失敗は無し。",
+                                                             "node24":  "26 と同じく全項目が完走した。",
+                                                             "deno":  "全項目は完走したが、Windows のファイル操作で他より遅い。削除 1123.6ms（Node 684.9ms / Bun 752.2ms）、ディレクトリ列挙 8.6ms（他 1.4〜3.2ms）。",
+                                                             "bun":  "全項目が完走し、ファイル書き込みは 4 者で最速（2242.6ms）。Windows 固有の問題は観測されなかった。"
+                                                         }
+                                       }
+                                   ]
+                    }
 }

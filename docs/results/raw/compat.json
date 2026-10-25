@@ -1,325 +1,325 @@
 {
-  "generatedAt": "2026-10-11 09:57:08",
-  "results": [
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "zod",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 1711.522,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "dayjs",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 44.776,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "express",
-      "kind": "HTTP フレームワーク",
-      "imported": true,
-      "usable": true,
-      "ms": 2519.418,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "pg",
-      "kind": "DB ドライバ",
-      "imported": true,
-      "usable": true,
-      "ms": 709.923,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "esbuild",
-      "kind": "ビルドツール（ネイティブバイナリ同梱）",
-      "imported": true,
-      "usable": true,
-      "ms": 28.611,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "prettier",
-      "kind": "CLI ツール（bin エントリあり）",
-      "imported": true,
-      "usable": true,
-      "ms": 48.362,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "sharp",
-      "kind": "ネイティブアドオン（プリビルド配布）",
-      "imported": true,
-      "usable": true,
-      "ms": 1018.903,
-      "reason": ""
-    },
-    {
-      "runtime": "node26",
-      "installedBy": "npm",
-      "package": "bcrypt",
-      "kind": "ネイティブアドオン（Node-API・同梱バイナリ）",
-      "imported": true,
-      "usable": true,
-      "ms": 43.425,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "zod",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 92.274,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "dayjs",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 3.381,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "express",
-      "kind": "HTTP フレームワーク",
-      "imported": true,
-      "usable": true,
-      "ms": 135.157,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "pg",
-      "kind": "DB ドライバ",
-      "imported": true,
-      "usable": true,
-      "ms": 34.106,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "esbuild",
-      "kind": "ビルドツール（ネイティブバイナリ同梱）",
-      "imported": true,
-      "usable": true,
-      "ms": 11.057,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "prettier",
-      "kind": "CLI ツール（bin エントリあり）",
-      "imported": true,
-      "usable": true,
-      "ms": 40.186,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "sharp",
-      "kind": "ネイティブアドオン（プリビルド配布）",
-      "imported": true,
-      "usable": true,
-      "ms": 51.303,
-      "reason": ""
-    },
-    {
-      "runtime": "node24",
-      "installedBy": "npm",
-      "package": "bcrypt",
-      "kind": "ネイティブアドオン（Node-API・同梱バイナリ）",
-      "imported": true,
-      "usable": true,
-      "ms": 8.657,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "zod",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 37.025,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "dayjs",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 53.384,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "express",
-      "kind": "HTTP フレームワーク",
-      "imported": true,
-      "usable": true,
-      "ms": 233.595,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "pg",
-      "kind": "DB ドライバ",
-      "imported": true,
-      "usable": true,
-      "ms": 28.333,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "esbuild",
-      "kind": "ビルドツール（ネイティブバイナリ同梱）",
-      "imported": true,
-      "usable": true,
-      "ms": 5.474,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "prettier",
-      "kind": "CLI ツール（bin エントリあり）",
-      "imported": true,
-      "usable": true,
-      "ms": 14.731,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "sharp",
-      "kind": "ネイティブアドオン（プリビルド配布）",
-      "imported": true,
-      "usable": true,
-      "ms": 73.318,
-      "reason": ""
-    },
-    {
-      "runtime": "deno",
-      "installedBy": "deno",
-      "package": "bcrypt",
-      "kind": "ネイティブアドオン（Node-API・同梱バイナリ）",
-      "imported": true,
-      "usable": true,
-      "ms": 13.371,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "zod",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 172.238,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "dayjs",
-      "kind": "純 JS ライブラリ",
-      "imported": true,
-      "usable": true,
-      "ms": 16.752,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "express",
-      "kind": "HTTP フレームワーク",
-      "imported": true,
-      "usable": true,
-      "ms": 727.452,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "pg",
-      "kind": "DB ドライバ",
-      "imported": true,
-      "usable": true,
-      "ms": 164.893,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "esbuild",
-      "kind": "ビルドツール（ネイティブバイナリ同梱）",
-      "imported": true,
-      "usable": true,
-      "ms": 18.113,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "prettier",
-      "kind": "CLI ツール（bin エントリあり）",
-      "imported": true,
-      "usable": true,
-      "ms": 39.441,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "sharp",
-      "kind": "ネイティブアドオン（プリビルド配布）",
-      "imported": true,
-      "usable": true,
-      "ms": 132.648,
-      "reason": ""
-    },
-    {
-      "runtime": "bun",
-      "installedBy": "bun",
-      "package": "bcrypt",
-      "kind": "ネイティブアドオン（Node-API・同梱バイナリ）",
-      "imported": true,
-      "usable": true,
-      "ms": 46.089,
-      "reason": ""
-    }
-  ]
+    "generatedAt":  "2026-10-25 13:10:24",
+    "results":  [
+                    {
+                        "runtime":  "node26",
+                        "installedBy":  "npm",
+                        "package":  "zod",
+                        "kind":  "純 JS ライブラリ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  105.482,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node26",
+                        "installedBy":  "npm",
+                        "package":  "dayjs",
+                        "kind":  "純 JS ライブラリ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  3.026,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node26",
+                        "installedBy":  "npm",
+                        "package":  "express",
+                        "kind":  "HTTP フレームワーク",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  166.037,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node26",
+                        "installedBy":  "npm",
+                        "package":  "pg",
+                        "kind":  "DB ドライバ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  42.958,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node26",
+                        "installedBy":  "npm",
+                        "package":  "esbuild",
+                        "kind":  "ビルドツール（ネイティブバイナリ同梱）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  5.4,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node26",
+                        "installedBy":  "npm",
+                        "package":  "prettier",
+                        "kind":  "CLI ツール（bin エントリあり）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  27.378,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node26",
+                        "installedBy":  "npm",
+                        "package":  "sharp",
+                        "kind":  "ネイティブアドオン（プリビルド配布）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  55.05,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node26",
+                        "installedBy":  "npm",
+                        "package":  "bcrypt",
+                        "kind":  "ネイティブアドオン（Node-API・同梱バイナリ）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  11.145,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node24",
+                        "installedBy":  "npm",
+                        "package":  "zod",
+                        "kind":  "純 JS ライブラリ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  96.429,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node24",
+                        "installedBy":  "npm",
+                        "package":  "dayjs",
+                        "kind":  "純 JS ライブラリ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  2.23,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node24",
+                        "installedBy":  "npm",
+                        "package":  "express",
+                        "kind":  "HTTP フレームワーク",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  137.371,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node24",
+                        "installedBy":  "npm",
+                        "package":  "pg",
+                        "kind":  "DB ドライバ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  49.774,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node24",
+                        "installedBy":  "npm",
+                        "package":  "esbuild",
+                        "kind":  "ビルドツール（ネイティブバイナリ同梱）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  7.436,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node24",
+                        "installedBy":  "npm",
+                        "package":  "prettier",
+                        "kind":  "CLI ツール（bin エントリあり）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  29.251,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node24",
+                        "installedBy":  "npm",
+                        "package":  "sharp",
+                        "kind":  "ネイティブアドオン（プリビルド配布）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  56.671,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "node24",
+                        "installedBy":  "npm",
+                        "package":  "bcrypt",
+                        "kind":  "ネイティブアドオン（Node-API・同梱バイナリ）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  8.197,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "deno",
+                        "installedBy":  "deno",
+                        "package":  "zod",
+                        "kind":  "純 JS ライブラリ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  70.325,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "deno",
+                        "installedBy":  "deno",
+                        "package":  "dayjs",
+                        "kind":  "純 JS ライブラリ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  62.814,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "deno",
+                        "installedBy":  "deno",
+                        "package":  "express",
+                        "kind":  "HTTP フレームワーク",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  262.946,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "deno",
+                        "installedBy":  "deno",
+                        "package":  "pg",
+                        "kind":  "DB ドライバ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  39.616,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "deno",
+                        "installedBy":  "deno",
+                        "package":  "esbuild",
+                        "kind":  "ビルドツール（ネイティブバイナリ同梱）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  18.27,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "deno",
+                        "installedBy":  "deno",
+                        "package":  "prettier",
+                        "kind":  "CLI ツール（bin エントリあり）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  31.489,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "deno",
+                        "installedBy":  "deno",
+                        "package":  "sharp",
+                        "kind":  "ネイティブアドオン（プリビルド配布）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  133.502,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "deno",
+                        "installedBy":  "deno",
+                        "package":  "bcrypt",
+                        "kind":  "ネイティブアドオン（Node-API・同梱バイナリ）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  24.947,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "bun",
+                        "installedBy":  "bun",
+                        "package":  "zod",
+                        "kind":  "純 JS ライブラリ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  512.559,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "bun",
+                        "installedBy":  "bun",
+                        "package":  "dayjs",
+                        "kind":  "純 JS ライブラリ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  1.606,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "bun",
+                        "installedBy":  "bun",
+                        "package":  "express",
+                        "kind":  "HTTP フレームワーク",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  1209.371,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "bun",
+                        "installedBy":  "bun",
+                        "package":  "pg",
+                        "kind":  "DB ドライバ",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  361.625,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "bun",
+                        "installedBy":  "bun",
+                        "package":  "esbuild",
+                        "kind":  "ビルドツール（ネイティブバイナリ同梱）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  37.605,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "bun",
+                        "installedBy":  "bun",
+                        "package":  "prettier",
+                        "kind":  "CLI ツール（bin エントリあり）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  89.196,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "bun",
+                        "installedBy":  "bun",
+                        "package":  "sharp",
+                        "kind":  "ネイティブアドオン（プリビルド配布）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  244.85,
+                        "reason":  ""
+                    },
+                    {
+                        "runtime":  "bun",
+                        "installedBy":  "bun",
+                        "package":  "bcrypt",
+                        "kind":  "ネイティブアドオン（Node-API・同梱バイナリ）",
+                        "imported":  true,
+                        "usable":  true,
+                        "ms":  84.384,
+                        "reason":  ""
+                    }
+                ]
 }

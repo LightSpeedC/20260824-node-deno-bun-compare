@@ -72,10 +72,10 @@ $Hyperfine = Get-ToolExe 'hyperfine'
 $Oha       = Get-ToolExe 'oha'
 
 $Runtimes = @(
-	[pscustomobject]@{ Key = 'node26'; Label = 'Node.js 26.11.1'; Exe = (Get-ToolExe 'node26'); RunArgs = @();               TestArgs = @('--test') }
-	[pscustomobject]@{ Key = 'node24'; Label = 'Node.js 24.21.0'; Exe = (Get-ToolExe 'node24'); RunArgs = @();               TestArgs = @('--test') }
-	[pscustomobject]@{ Key = 'deno';   Label = 'Deno 2.9.7';      Exe = (Get-ToolExe 'deno');   RunArgs = @('run', '-A');    TestArgs = @('test', '-A', '--no-check') }
-	[pscustomobject]@{ Key = 'bun';    Label = 'Bun 1.4.3';       Exe = (Get-ToolExe 'bun');    RunArgs = @('run');          TestArgs = @('test') }
+	[pscustomobject]@{ Key = 'node26'; Label = 'Node.js 26.12.1'; Exe = (Get-ToolExe 'node26'); RunArgs = @();               TestArgs = @('--test') }
+	[pscustomobject]@{ Key = 'node24'; Label = 'Node.js 24.22.1'; Exe = (Get-ToolExe 'node24'); RunArgs = @();               TestArgs = @('--test') }
+	[pscustomobject]@{ Key = 'deno';   Label = 'Deno 2.9.8';Exe = (Get-ToolExe 'deno');   RunArgs = @('run', '-A');    TestArgs = @('test', '-A', '--no-check') }
+	[pscustomobject]@{ Key = 'bun';    Label = 'Bun 1.4.4';Exe = (Get-ToolExe 'bun');    RunArgs = @('run');          TestArgs = @('test') }
 )
 
 # ---------------------------------------------------------------------------
@@ -284,6 +284,8 @@ function Start-BenchServer {
 	$env:BENCH_PORT = "$Port"
 	$proc = Start-Process -FilePath $Exe -ArgumentList $ArgList -PassThru -WindowStyle Hidden `
 		-RedirectStandardOutput $outLog -RedirectStandardError $errLog
+	# 5.1 では Handle に触れておかないと、終了後に ExitCode が空になる (i261011-01)
+	$null = $proc.Handle
 
 	$ready = $false
 	for ($i = 0; $i -lt 160; $i++) {
