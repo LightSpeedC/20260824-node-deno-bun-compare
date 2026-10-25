@@ -38,7 +38,7 @@
 			<rect x="610" y="25" width="270" height="200" rx="12" fill="url(#i3)"/>
 			<text x="745" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Bun 1.4</text>
 			<text x="745" y="92" text-anchor="middle" fill="#fff" font-size="13">速度と起動時間を最優先</text>
-			<text x="745" y="122" text-anchor="middle" fill="#fff" font-size="13">Zig + JavaScriptCore</text>
+			<text x="745" y="122" text-anchor="middle" fill="#fff" font-size="13">Rust + JavaScriptCore</text>
 			<text x="745" y="152" text-anchor="middle" fill="#fff" font-size="13">Node API 互換を強く志向</text>
 			<text x="745" y="182" text-anchor="middle" fill="#fff" font-size="13">bundler / test / runner 一体</text>
 			<text x="745" y="210" text-anchor="middle" fill="#fff" font-size="13">package.json をそのまま解釈</text>

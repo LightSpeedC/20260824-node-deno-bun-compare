@@ -277,7 +277,7 @@ Windows 11 の同一マシン上で、3 ランタイムの最新版を <code>too
 
 	<h2>読み取れること</h2>
 	<ul>
-		<li><strong>Bun の起動優位は一貫している</strong> — 4 項目すべてで最速。空起動 20.1 ms は Node.js の 2.5 倍速で、依存を 5 つ import しても 38.9 ms に収まりました。JavaScriptCore と Zig 実装の効果が最も素直に出る領域です。</li>
+		<li><strong>Bun の起動優位は一貫している</strong> — 4 項目すべてで最速。空起動 20.1 ms は Node.js の 2.5 倍速で、依存を 5 つ import しても 38.9 ms に収まりました。JavaScriptCore と Rust 実装の効果が最も素直に出る領域です（Bun は 1.4 系で実装言語を Zig から Rust に移しており、今回の計測値はすべて Rust 版のものです）。</li>
 		<li><strong>Deno の空起動は最も遅い</strong> — 57.7 ms で Node.js より 7 ms 遅い。ただし TypeScript を含めると 107.1 ms で Node.js（147.0 ms）を 40 ms 上回ります。Deno は TS を前提に最適化されており、<code>.ts</code> を投げる使い方では有利になります。</li>
 		<li><strong>TypeScript は 3 者とも設定ゼロで動いた</strong> — <code>tsconfig.json</code> もトランスパイル手順も無しに <code>.ts</code> を直接実行できました。Node.js の型ストリップは消去可能な構文に限られるため、<code>enum</code> や <code>namespace</code> を使うコードでは差が出ます（今回はそれらを避けた共通コードで測定）。</li>
 		<li><strong>Node.js 26 と 24 の差は小さい</strong> — 26 系が速いのはテスト実行（8%）だけで、空起動と TypeScript 実行は 24 系の方が 4〜6% 速く出ました。どちらも変動係数（5〜13%）の範囲内で、世代を上げても起動は速くなっていません。</li>

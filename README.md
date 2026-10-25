@@ -104,6 +104,8 @@ Windows 11 Home（build 26300）／ Intel Core i7-11370H（4 物理コア・8 �
 
 [Node.js / Deno / Bun 開発での AI 利用](notes/01_research/r261011-01-AI開発利用.md)
 
+[Node.js / Deno / Bun の実装言語](notes/01_research/r261025-01-実装言語.md)
+
 ## 5. 課題
 
 これから行う作業と、その状態をまとめています。

@@ -53,7 +53,7 @@ footer{max-width:1600px;margin:0 auto;padding:18px 30px 30px;}
 	<div class="inner">
 		<h1>Node.js / Deno / Bun 開発での AI 利用 調査</h1>
 		<p class="lead">3 つのランタイムの開発そのものに AI が使われているか、いつ頃からか、どんな方針か</p>
-		<div class="date">📅 作成: 2026-10-11 / 更新: 2026-10-11</div>
+		<div class="date">📅 作成: 2026-10-11 / 更新: 2026-10-25</div>
 	</div>
 </div>
 
@@ -109,9 +109,7 @@ footer{max-width:1600px;margin:0 auto;padding:18px 30px 30px;}
 	<h1>Bun</h1>
 	<p>リポジトリに <a href="https://github.com/oven-sh/bun/blob/main/CLAUDE.md">CLAUDE.md</a> があります。中身は、ビルドとテストの手順、コードの構成、PR の作法をまとめた開発ガイドです。レビューの基準として <code>REVIEW.md</code> と <code>.claude/docs/landing-prs.md</code> を参照しています。Claude 系のエージェントを開発に使っている強い状況証拠ですが、コミットや PR の上での実際の度合いは確かめていません。</p>
 	<p>Anthropic は 2025-12-03 に Bun の買収を<a href="https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone">発表</a>しました。それ以前から数か月の協業があり、Claude Code のインフラとネイティブインストーラーに Bun が使われていました。買収後も MIT ライセンスのオープンソースを続けるとしています。この発表では、Bun 自身の開発に AI を使うとは述べていません。</p>
-	<div class="callout">
-		<strong>要確認</strong>：取得したページの要約に「Bun は主に Rust で書かれている」という記述がありました。Bun は Zig で書かれているというのが従来の理解で、要約の誤りか実際の変化かは確かめていません。
-	</div>
+	<p>Bun は 2026 年に実装言語を Zig から Rust に移しました。約 53.5 万行の Zig のコードの移植を、主に Claude Code が行ったと<a href="https://www.infoq.com/news/2026/09/bun-AI-rewrite-zig-rust-4-months/">報じられています</a>。2026-10-25 に GitHub の言語集計を見ると、Rust が 76.0% で、Zig は一覧にありません。マージの日付と、書き換えた行数は報道によって食い違っており、公式の発表では確かめていません。</p>
 </section>
 
 </div>

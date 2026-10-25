@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<title>Node.js / Deno / Bun の実装言語 調査</title>
+<style>
+:root{
+	--navy1:#12224d;
+	--navy2:#2f5fbf;
+	--ink:#1c2330;
+	--ink-soft:#4a5568;
+	--line:#d9dfe8;
+	--code-bg:#f4f6fa;
+	--link:#1a4fa0;
+	--accent:var(--navy1);
+	--accent2:var(--navy2);
+	--soft:#f2f5fb;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Segoe UI","Yu Gothic UI",Meiryo,sans-serif;font-size:15.5px;line-height:1.85;}
+.titlebar{background:linear-gradient(135deg,var(--navy1),var(--navy2));color:#fff;padding:34px 30px 30px;}
+.titlebar .inner{max-width:1600px;margin:0 auto;}
+.titlebar h1{font-size:2em;margin:0 0 10px;color:#fff;}
+.titlebar .lead{color:#e6edff;background:transparent;margin:0 0 6px;}
+.titlebar .date{font-size:.88em;color:#d5e2ff;background:transparent;}
+.wrap{max-width:1600px;margin:0 auto;padding:0 30px;}
+.backlink{margin:18px 0 0;}
+.back-home{display:inline-block;background:linear-gradient(100deg,var(--navy1),var(--navy2));color:#fff;text-decoration:none;font-weight:700;padding:2px 12px;border-radius:6px;}
+a{color:var(--link);background:transparent;}
+section{background:linear-gradient(180deg,var(--soft),#fff 62%);border:1px solid var(--line);border-radius:10px;padding:4px 26px 26px;margin:34px 0;}
+section h1{background:linear-gradient(100deg,var(--accent),var(--accent2));color:#fff;font-size:1.5em;padding:14px 20px;margin:26px 0 20px;border-radius:8px;box-shadow:0 6px 16px rgba(18,34,77,.22);}
+h2{font-size:1.16em;border-left:7px solid var(--accent);background:linear-gradient(90deg,var(--soft),#fff);color:var(--ink);padding:6px 12px;margin:30px 0 12px;border-radius:0 6px 6px 0;}
+code{background:var(--code-bg);border:1px solid var(--line);color:#17335f;border-radius:4px;padding:1px 5px;font-family:Consolas,monospace;font-size:.92em;}
+.tablewrap{overflow-x:auto;margin:14px 0;}
+table{border-collapse:collapse;width:100%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(18,34,77,.10);font-size:.95em;}
+th{background:linear-gradient(100deg,var(--accent),var(--accent2));color:#fff;text-align:left;padding:9px 12px;white-space:nowrap;}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfe;}
+td.nowrap{white-space:nowrap;}
+td.num{text-align:right;white-space:nowrap;}
+.callout{border-left:6px solid var(--accent);background:linear-gradient(180deg,var(--soft),#fff);color:var(--ink);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;}
+.callout strong{color:var(--accent);background:transparent;}
+footer{max-width:1600px;margin:0 auto;padding:18px 30px 30px;}
+.ch01{--accent:hsl(280,78%,25%);--accent2:hsl(280,58%,55%);--soft:hsl(280,28%,95%);}
+.ch02{--accent:hsl(186.7,78%,25%);--accent2:hsl(186.7,58%,55%);--soft:hsl(186.7,28%,95%);}
+.ch03{--accent:hsl(93.3,78%,25%);--accent2:hsl(93.3,58%,55%);--soft:hsl(93.3,28%,95%);}
+.ch04{--accent:hsl(0,78%,25%);--accent2:hsl(0,58%,55%);--soft:hsl(0,28%,95%);}
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+	<div class="inner">
+		<h1>Node.js / Deno / Bun の実装言語 調査</h1>
+		<p class="lead">3 つのランタイムが何の言語で書かれているか、その割合と移り変わり</p>
+		<div class="date">📅 作成: 2026-10-25 / 更新: 2026-10-25</div>
+	</div>
+</div>
+
+<div class="wrap">
+<p class="backlink"><a class="back-home" href="../../README.html" title="README">⌂</a></p>
+
+<div class="callout callout-important">
+	<strong>浅い調査です</strong>：GitHub の言語集計を 3 件取得し、Bun の移行について Web 検索を 1 件行った範囲です。Bun の移行のマージ日と行数は報道どうしで食い違っており、Bun の公式の発表では確かめていません（Rust 版になった版は、リリースのタグで確かめました）。Deno と Node.js の経緯は、記憶にもとづく部分を「未確認」と明記しています。
+</div>
+
+<section class="ch01" id="ch01">
+	<h1>要約</h1>
+	<div class="tablewrap">
+	<table>
+		<thead><tr><th>ランタイム</th><th>中核の言語</th><th>移り変わり</th></tr></thead>
+		<tbody>
+			<tr><td class="nowrap">Bun</td><td>Rust（JavaScriptCore は C++）</td><td>2026 年に Zig から Rust へ書き換えた。作業の大半は AI のコーディングエージェント</td></tr>
+			<tr><td class="nowrap">Deno</td><td>Rust（標準ライブラリ・Node 互換層は TypeScript / JavaScript）</td><td>大きな変化なし。ごく初期は Go だった（未確認）</td></tr>
+			<tr><td class="nowrap">Node.js</td><td>C++（V8・libuv を含む）、標準ライブラリは JavaScript</td><td>全体を別の言語へ移す動きは見当たらない</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h2>GitHub の言語集計（2026-10-25 取得）</h2>
+	<p><code>gh api repos/&lt;owner&gt;/&lt;repo&gt;/languages</code> が返すバイト数を、割合に直した値です。上位 4 つと、その他の主なものを載せています。</p>
+	<div class="tablewrap">
+	<table>
+		<thead><tr><th>リポジトリ</th><th class="nowrap">1 位</th><th class="nowrap">2 位</th><th class="nowrap">3 位</th><th class="nowrap">4 位</th><th>その他</th></tr></thead>
+		<tbody>
+			<tr><td class="nowrap">nodejs/node</td><td class="num">JavaScript 66.5%</td><td class="num">C++ 22.6%</td><td class="num">Python 7.6%</td><td class="num">C 1.9%</td><td>HTML 0.5%・Shell 0.4%</td></tr>
+			<tr><td class="nowrap">denoland/deno</td><td class="num">Rust 62.3%</td><td class="num">TypeScript 26.0%</td><td class="num">JavaScript 10.3%</td><td class="num">C 1.2%</td><td>—</td></tr>
+			<tr><td class="nowrap">oven-sh/bun</td><td class="num">Rust 76.0%</td><td class="num">C++ 13.7%</td><td class="num">TypeScript 7.2%</td><td class="num">C 1.6%</td><td>JavaScript 1.2%・Zig は一覧に無い</td></tr>
+		</tbody>
+	</table>
+	</div>
+	<div class="callout callout-important">
+		<strong>この割合は実行時の比重ではない</strong>：集計はリポジトリに置かれたファイルの量で、同梱している外部のコードやビルド用のスクリプトも数えます。Node.js の C++ と Python の多くは、V8 などの依存とビルド用ツールの分とみられます（未確認）。
+	</div>
+</section>
+
+<section class="ch02" id="ch02">
+	<h1>Bun</h1>
+	<p>Bun は 2026 年に、実装言語を Zig から Rust に移しました。約 53.5 万行の Zig のコードの移植を、主に Claude Code が行い、人が書くなら 1 年かかる見積もりの作業を約 4 か月で終えたと<a href="https://www.infoq.com/news/2026/09/bun-AI-rewrite-zig-rust-4-months/">報じられています</a>。作者は「既存のテストの 99.8% が Linux x64 glibc で Rust 版でも通る」と発表しました。</p>
+	<p>報道どうしで食い違う点があります。</p>
+	<ul>
+		<li>マージの日付: 2026-05-11 とする記事と、2026-05-14 とする<a href="https://www.theregister.com/devops/2026/05/14/anthropics-bun-rust-rewrite-merged-at-speed-of-ai/5240381">記事</a>がある</li>
+		<li>Rust 版の行数: 約 78 万行とする記事と、100 万行を超えるとする<a href="https://xenospectrum.com/en/bun-zig-rust-rewrite/">記事</a>がある</li>
+		<li>Rust 版を含むリリース: 1.4.0 を 2026-07 とする記事と、2026-08 とする記事がある（GitHub のリリースは 2026-08-20。下の表）</li>
+	</ul>
+	<p>Zig の作者が批判を公表するなど、反応は割れています（<a href="https://blog.nidhin.dev/why-bun-is-leaving-zig-the-full-story-of-the-rust-rewrite">経緯の解説</a>、<a href="https://www.lesswrong.com/posts/qEbqPitYhWHthwFNu/bun-s-migration-from-zig-to-rust-as-a-potential-case-study">論考</a>）。</p>
+	<h2>Rust 版になった版（リリースのタグで確認）</h2>
+	<p>GitHub のリリースのタグで、Zig と Rust のビルド定義の有無を見ました。</p>
+	<div class="tablewrap">
+	<table>
+		<thead><tr><th>版</th><th class="nowrap">リリース</th><th class="nowrap"><code>build.zig</code></th><th class="nowrap"><code>src/main.zig</code></th><th class="nowrap"><code>Cargo.toml</code></th><th>実装</th></tr></thead>
+		<tbody>
+			<tr><td class="nowrap">1.3.14</td><td class="nowrap">—</td><td class="nowrap">あり</td><td class="nowrap">あり</td><td class="nowrap">なし</td><td>Zig</td></tr>
+			<tr><td class="nowrap">1.4.0</td><td class="nowrap">2026-08-20</td><td class="nowrap">なし</td><td class="nowrap">なし</td><td class="nowrap">あり</td><td>Rust</td></tr>
+		</tbody>
+	</table>
+	</div>
+	<p>この比較検証で測った Bun（1.4.0・1.4.3・1.4.4）は、すべて Rust 版です。結果レポートと計画書の記述もそれに合わせています。</p>
+</section>
+
+<section class="ch03" id="ch03">
+	<h1>Deno</h1>
+	<p>中核（ランタイム・CLI・V8 との結合）は Rust で、標準ライブラリと Node.js 互換層は TypeScript と JavaScript で書かれています。言語の構成はいまも変わっていません。</p>
+	<p>ごく初期（2018 年ごろ）は Go で書かれていて、のちに Rust に移ったと記憶しています。今回は確かめていません。</p>
+</section>
+
+<section class="ch04" id="ch04">
+	<h1>Node.js</h1>
+	<p>中核は C++ で、V8 と libuv を同梱しています。<code>node:fs</code> などの標準ライブラリは JavaScript です。全体を別の言語へ移す動きは見当たりませんでした。</p>
+	<p>依存の一部に Rust が入り始めているという話は聞いたことがありますが、今回は確かめていません。</p>
+</section>
+
+</div>
+
+<footer><a class="back-home" href="../../README.html" title="README">⌂</a></footer>
+
+</body>
+</html>

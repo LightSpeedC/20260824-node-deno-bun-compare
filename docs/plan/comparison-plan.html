@@ -30,7 +30,7 @@
 	<div class="inner">
 		<h1>Node.js / Deno / Bun 比較検証 計画書</h1>
 		<p class="lead">計画時の主軸: <code>Node.js 26.7.0</code> / <code>Deno 2.9.5</code> / <code>Bun 1.4.0</code></p>
-		<div class="date">📅 作成: 2026-08-24 / 更新: 2026-10-10</div>
+		<div class="date">📅 作成: 2026-08-24 / 更新: 2026-10-25</div>
 	</div>
 </div>
 
@@ -66,7 +66,7 @@ JavaScript / TypeScript ランタイムである <strong>Node.js</strong>、<str
 	<p>
 	Node.js は 2009 年から続くデファクトスタンダードで、npm エコシステムと LTS による長期運用が最大の武器です。
 	Deno は同じ作者による「Node.js の設計をやり直す」試みとして始まり、2.x 以降は npm 互換を取り込んで実務投入しやすくなりました。
-	Bun は Zig + JavaScriptCore による実装で、起動速度・実行速度とオールインワンのツールチェーンを前面に出しています。
+	Bun は Rust + JavaScriptCore による実装（1.4.0（2026-08-20）から Rust。それ以前は Zig）で、起動速度・実行速度とオールインワンのツールチェーンを前面に出しています。
 	3 者は今や「どれを選んでも一応動く」段階に入っており、だからこそ用途ごとの向き不向きを自分の手元で確かめる価値があります。
 	</p>
 
@@ -200,7 +200,7 @@ JavaScript / TypeScript ランタイムである <strong>Node.js</strong>、<str
 			<rect x="610" y="25" width="270" height="200" rx="12" fill="url(#g-plan-2c)"/>
 			<text x="745" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Bun 1.4</text>
 			<text x="745" y="92" text-anchor="middle" fill="#fff" font-size="13">速度と起動時間を最優先</text>
-			<text x="745" y="122" text-anchor="middle" fill="#fff" font-size="13">Zig + JavaScriptCore</text>
+			<text x="745" y="122" text-anchor="middle" fill="#fff" font-size="13">Rust + JavaScriptCore</text>
 			<text x="745" y="152" text-anchor="middle" fill="#fff" font-size="13">Node API 互換を強く志向</text>
 			<text x="745" y="182" text-anchor="middle" fill="#fff" font-size="13">bundler / test / runner 一体</text>
 			<text x="745" y="210" text-anchor="middle" fill="#fff" font-size="13">package.json をそのまま解釈</text>
